@@ -1,18 +1,13 @@
-import Image from "next/image";
+import Image from 'next/image';
 
-import styles from "../../styles/FooterComponent.module.css";
+import styles from '../../styles/FooterComponent.module.css';
 
 const FooterComponent = () => {
   return (
     <footer id="footer" className={styles.footer}>
       <div className={styles.container}>
         <div>
-          <Image
-            src="/Logo_Digilandbali.svg"
-            width={180}
-            height={30}
-            alt="Logo-DigilandBali"
-          />
+          <Image src="/Logo_Digilandbali.svg" width={180} height={30} alt="Logo-DigilandBali" />
         </div>
         <div className={styles.info}>
           <div className={styles.discover}>
@@ -42,9 +37,9 @@ const FooterComponent = () => {
           </div>
         </div>
       </div>
-      <div style={{ display: "flex", flexDirection: "row" }}>
+      <div style={{display: 'flex', flexDirection: 'row'}}>
         <label>
-          Verified Contract:{" "}
+          Verified Contract:{' '}
           <a
             href="https://rinkeby.etherscan.io/address/0x3a0508AF8eCDE61C99083Fbb263d6a99BFe05eCe"
             target="_blank"
@@ -54,30 +49,10 @@ const FooterComponent = () => {
           </a>
         </label>
         <div className={styles.contactIcons}>
-          <Image
-            src="/Discord_White.svg"
-            width={24}
-            height={24}
-            alt="Discord-white"
-          />
-          <Image
-            src="/Telegram_White.svg"
-            width={24}
-            height={24}
-            alt="Discord-white"
-          />
-          <Image
-            src="/Twitter_White.svg"
-            width={24}
-            height={24}
-            alt="Discord-white"
-          />
-          <Image
-            src="/Opensea_White.svg"
-            width={24}
-            height={24}
-            alt="Discord-white"
-          />
+          <Image src="/Discord_White.svg" width={24} height={24} alt="Discord-white" />
+          <Image src="/Telegram_White.svg" width={24} height={24} alt="Discord-white" />
+          <Image src="/Twitter_White.svg" width={24} height={24} alt="Discord-white" />
+          <Image src="/Opensea_White.svg" width={24} height={24} alt="Discord-white" />
         </div>
       </div>
     </footer>

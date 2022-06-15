@@ -1,16 +1,15 @@
-import { useState } from "react";
+import {useState} from 'react';
 
-import { mintDigilandNFT } from "../helpers/metamask-interact";
+import {mintDigilandNFT} from '../helpers/metamask-interact';
+import ContentComponent from './ContentComponent';
 
-import ContentComponent from "./ContentComponent";
-
-const MintComponent = ({ walletAddress }) => {
+const MintComponent = ({walletAddress}) => {
   //State for forms
-  const [referralCode, setReferralCode] = useState("");
+  const [referralCode, setReferralCode] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [mintedQuantity, setMintedQuantity] = useState(0);
 
-  const [mintStatus, setMintStatus] = useState("");
+  const [mintStatus, setMintStatus] = useState('');
 
   //Constant state
   const [maxQuantity] = useState(80);
@@ -22,7 +21,7 @@ const MintComponent = ({ walletAddress }) => {
       let tempMinted = mintedQuantity + quantity;
       setMintedQuantity(tempMinted);
 
-      const { status } = await mintDigilandNFT(quantity);
+      const {status} = await mintDigilandNFT(quantity);
       setMintStatus(status);
     }
   };
@@ -39,11 +38,11 @@ const MintComponent = ({ walletAddress }) => {
     setQuantity(increasedQuantity);
   };
 
-  const handleChangeQuantity = (e) => {
+  const handleChangeQuantity = e => {
     setQuantity(Number(e.target.value));
   };
 
-  const handleChangeReferralCode = (e) => {
+  const handleChangeReferralCode = e => {
     setReferralCode(e.target.value);
   };
 

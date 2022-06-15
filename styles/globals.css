@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700&display=swap');
 
 body {
   background: url(/Bg_main.svg) no-repeat center center fixed;
   color: #333;
-  font-family: "Syne";
+  font-family: 'Syne';
 }
 
 a {
@@ -51,7 +51,7 @@ button {
   padding: 8px 14px;
   /* identical to box height, or 21px */
 
-  font-feature-settings: "pnum" on, "lnum" on;
+  font-feature-settings: 'pnum' on, 'lnum' on;
 
   /* White */
   color: #fff;
@@ -74,8 +74,8 @@ footer {
 }
 
 /*remove increment/decrement arrow*/
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

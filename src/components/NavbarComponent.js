@@ -1,16 +1,11 @@
-import Link from "next/link";
-import Image from "next/image";
+import Image from 'next/image';
+import Link from 'next/link';
 
-const NavbarComponent = ({ onConnect, walletAddress }) => {
+const NavbarComponent = ({onConnect, walletAddress}) => {
   return (
     <nav id="navbar">
       <div id="logo">
-        <Image
-          src="/Digiland_Symbol.svg"
-          width={27}
-          height={27}
-          alt="Digiland-logo"
-        />
+        <Image src="/Digiland_Symbol.svg" width={27} height={27} alt="Digiland-logo" />
       </div>
 
       <div className="link">
@@ -21,11 +16,7 @@ const NavbarComponent = ({ onConnect, walletAddress }) => {
       </div>
 
       <button onClick={onConnect}>
-        {walletAddress && walletAddress.length > 0 ? (
-          "Connected"
-        ) : (
-          <span>Connect</span>
-        )}
+        {walletAddress && walletAddress.length > 0 ? 'Connected' : <span>Connect</span>}
       </button>
     </nav>
   );

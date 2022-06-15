@@ -1,5 +1,5 @@
-import Layout from "../../src/components/Layout";
-import MintComponent from "../../src/components/MintComponent";
+import Layout from '../../src/components/Layout';
+import MintComponent from '../../src/components/MintComponent';
 
 const MintPage = () => {
   return (
