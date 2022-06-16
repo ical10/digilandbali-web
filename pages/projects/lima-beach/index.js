@@ -1,5 +1,5 @@
 import Layout from '../../../src/components/Layout';
-import FirstSection from '../FirstSection';
+import FirstSection from './FirstSection';
 
 const LimaBeachPage = () => {
   return (

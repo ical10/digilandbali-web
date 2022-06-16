@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-import ImageCarousel from '../../src/components/ImageCarousel';
-import SectionBreak from '../../src/components/SectionBreak';
-import styles from '../../styles/limabeach/FirstSection.module.css';
+import ImageCarousel from '../../../src/components/ImageCarousel';
+import SectionBreak from '../../../src/components/SectionBreak';
+import styles from '../../../styles/limabeach/FirstSection.module.css';
 
 const FirstSection = () => {
   return (
