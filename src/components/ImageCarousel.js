@@ -1,6 +1,6 @@
 import Carousel from 'react-material-ui-carousel';
 
-import sharedStyles from '../../styles/limabeach/SharedStyles.module.css';
+import Image from 'next/image';
 
 const ImageCarousel = props => {
   const items = [
