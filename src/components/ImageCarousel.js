@@ -3,24 +3,24 @@ import Carousel from 'react-material-ui-carousel';
 import Image from 'next/image';
 
 const ImageCarousel = props => {
-  var items = [
+  const items = [
     {
-      src: '/Discord_White.svg',
+      src: '/Headerslide.svg',
       width: props.width,
       height: props.height,
     },
     {
-      src: '/Telegram_White.svg',
+      src: '/Headerslide.svg',
       width: props.width,
       height: props.height,
     },
     {
-      src: '/Twitter_White.svg',
+      src: '/Headerslide.svg',
       width: props.width,
       height: props.height,
     },
     {
-      src: '/Opensea_White.svg',
+      src: '/Headerslide.svg',
       width: props.width,
       height: props.height,
     },

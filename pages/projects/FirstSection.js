@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import ImageCarousel from '../../src/components/ImageCarousel';
+import SectionBreak from '../../src/components/SectionBreak';
 import styles from '../../styles/limabeach/FirstSection.module.css';
 
 const FirstSection = () => {
@@ -42,6 +43,7 @@ const FirstSection = () => {
           </div>
         </div>
       </div>
+      <SectionBreak width={328} height={70} />
     </section>
   );
 };
