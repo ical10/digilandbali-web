@@ -1,0 +1,22 @@
+.root {
+  /* Frame 147 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 25px 106px;
+  gap: 10px;
+
+  width: 1280px;
+  height: 120px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
