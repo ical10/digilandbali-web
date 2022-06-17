@@ -172,3 +172,132 @@
   order: 0;
   flex-grow: 1;
 }
+
+.thirdSubSection {
+  /* Frame 505 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 64px;
+
+  width: 1280px;
+  height: 790px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.imageDescContainer {
+  /* Frame 258 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 124px;
+
+  width: 1280px;
+  height: 280px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.paragraphContainer {
+  /* Frame 254 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 22px;
+
+  width: 632px;
+  height: 280px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+}
+
+.titleSmall {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 160%;
+  /* or 38px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White */
+
+  color: #ffffff;
+}
+
+.imageRawLayoutContainer {
+  width: 100%;
+  position: relative;
+  object-fit: contain;
+}
+
+.labelDescContainer {
+  /* Frame 253 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 25px;
+
+  width: 632px;
+  height: 26px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.thirdSubSection {
+  /* Frame 9421 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 56px;
+
+  width: 1280px;
+  height: 506px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 4;
+  align-self: stretch;
+  flex-grow: 0;
+}
