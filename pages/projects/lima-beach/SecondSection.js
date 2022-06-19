@@ -1,9 +1,11 @@
 import Image from 'next/image';
 
 import styles from '../../../styles/limabeach/SecondSection.module.css';
+import FifthSubSection from './FifthSubSection';
 import FirstSubSection from './FirstSubSection';
 import FourthSubSection from './FourthSubSection';
 import SecondSubSection from './SecondSubSection';
+import SixthSubSection from './SixthSubSection';
 import ThirdSubSection from './ThirdSubSection';
 
 const SecondSection = () => {
@@ -13,6 +15,8 @@ const SecondSection = () => {
       <SecondSubSection />
       <ThirdSubSection />
       <FourthSubSection />
+      <FifthSubSection />
+      <SixthSubSection />
       <div className={styles.tokenDistributionContainer}>
         <div className={styles.imageContainer}>
           <Image
