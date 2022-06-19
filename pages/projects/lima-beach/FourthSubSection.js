@@ -1,45 +1,69 @@
 import Image from 'next/image';
 
+import {
+  ConservancyFeeIcon,
+  DailyRoomServiceIcon,
+  ElectricityIcon,
+  FreeParkingIcon,
+  InternetIcon,
+  PlayButtonIcon,
+  PropertyTaxIcon,
+  SinkingFundsIcon,
+  WaterServiceIcon,
+} from '../../../src/components/icons/FacilityIcons';
 import styles from '../../../styles/limabeach/SecondSection.module.css';
 
 const FourthSubSection = () => {
   return (
     <>
       <div className={styles.fourthSubSection}>
-        <h1 className={styles.titleBig}>Luxury Property with Developer Price.</h1>
-        <div className={styles.imageDescContainer}>
-          <div className={styles.imageRawLayoutContainer}>
-            <Image src={'/NFTapart.svg'} width="524px" height="280px" layout="raw" />
+        <div className={styles.descriptionWrapper}>
+          <div className={styles.titleWrapper}>
+            <h1 className={styles.titleBig}>Free 58 Years Hospitality Managements.</h1>
           </div>
-          <div className={styles.paragraphContainer}>
-            {' '}
-            <div className={styles.titleSmall}>NFT Apartments</div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate nunc tortor proin
-              adipiscing lacus augue gravida et. Quam aliquet cras suspendisse in rutrum quis nisl
-              at lacus. Cursus purus tristique et congue Cursus purus tristique et congue.
-            </p>
-            <div className={styles.labelDescContainer}>
-              <label>60 m2</label>
-              <label>Download blueprint</label>
-            </div>
+          <div className={styles.subtitleWrapper}>
+            <label>
+              Hospitality management has done the accounting and marketing of the units as luxury
+              rooms with a smart hotel experience that will cover the entire cost of management for
+              the next 58 years.
+            </label>
           </div>
         </div>
-        <div className={styles.imageDescContainer}>
-          <div className={styles.imageRawLayoutContainer}>
-            <Image src={'/NFTSkyvila.svg'} width="524px" height="280px" layout="raw" />
+        <div className={styles.facilitiesContainer}>
+          <div className={styles.rowFacilitiesContainer}>
+            <div className={styles.facilityCardContainer}>
+              <ConservancyFeeIcon />
+              <label className={styles.cardLabel}>Conservancy Fee</label>
+            </div>
+            <div className={styles.facilityCardContainer}>
+              <WaterServiceIcon />
+              <label className={styles.cardLabel}>Water Service</label>
+            </div>
+            <div className={styles.facilityCardContainer}>
+              <InternetIcon />
+              <label className={styles.cardLabel}>Internet or Wifi</label>
+            </div>
+            <div className={styles.facilityCardContainer}>
+              <DailyRoomServiceIcon />
+              <label className={styles.cardLabel}>Daily Room Service</label>
+            </div>
           </div>
-          <div className={styles.paragraphContainer}>
-            {' '}
-            <div className={styles.titleSmall}>NFT Skyvilla</div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate nunc tortor proin
-              adipiscing lacus augue gravida et. Quam aliquet cras suspendisse in rutrum quis nisl
-              at lacus. Cursus purus tristique et congue Cursus purus tristique et congue.
-            </p>
-            <div className={styles.labelDescContainer}>
-              <label>120 m2</label>
-              <label>Download blueprint</label>
+          <div className={styles.rowFacilitiesContainer}>
+            <div className={styles.facilityCardContainer}>
+              <ElectricityIcon />
+              <label className={styles.cardLabel}>Electricity Fee</label>
+            </div>
+            <div className={styles.facilityCardContainer}>
+              <SinkingFundsIcon />
+              <label className={styles.cardLabel}>Sinking Funds</label>
+            </div>
+            <div className={styles.facilityCardContainer}>
+              <PropertyTaxIcon />
+              <label className={styles.cardLabel}>Property Tax</label>
+            </div>
+            <div className={styles.facilityCardContainer}>
+              <FreeParkingIcon />
+              <label className={styles.cardLabel}>Free Parking</label>
             </div>
           </div>
         </div>
