@@ -2,6 +2,9 @@ import SvgIcon from '@mui/material/SvgIcon';
 
 import React from 'react';
 
+import IconFirstCircle from '../../../public/01.svg';
+import IconSecondCircle from '../../../public/02.svg';
+import IconThirdCircle from '../../../public/03.svg';
 import IconConservancyFee from '../../../public/IconConservancyFee.svg';
 import IconDailyRoomService from '../../../public/IconDailyRoomService.svg';
 import IconElectricity from '../../../public/IconElectricity.svg';
@@ -46,4 +49,16 @@ export const SinkingFundsIcon = props => (
 
 export const WaterServiceIcon = props => (
   <SvgIcon component={IconWaterService} viewBox="0 0 40 40" {...props} />
+);
+
+export const FirstIcon = props => (
+  <SvgIcon component={IconFirstCircle} viewBox="0 0 32 32" {...props} />
+);
+
+export const SecondIcon = props => (
+  <SvgIcon component={IconSecondCircle} viewBox="0 0 32 32" {...props} />
+);
+
+export const ThirdIcon = props => (
+  <SvgIcon component={IconThirdCircle} viewBox="0 0 32 32" {...props} />
 );
