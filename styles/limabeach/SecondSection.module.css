@@ -1793,12 +1793,56 @@
   gap: 80px;
 
   width: 1280px;
-  height: 848px;
+  height: 848.11px;
 
   /* Inside auto layout */
 
   flex: none;
   order: 11;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.tokenDistributionLabel {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 150%;
+  /* identical to box height, or 36px */
+
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White-2 */
+
+  color: #e2e2e2;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.tokenDistributionHeaderContainer {
+  /* Frame 149 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+
+  width: 1280px;
+  height: 122px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
   align-self: stretch;
   flex-grow: 0;
 }
@@ -1820,6 +1864,29 @@
 
   flex: none;
   order: 12;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.roadmapHeaderContainer {
+  /* Frame 149 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 18px;
+
+  width: 1280px;
+  height: 144px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
   align-self: stretch;
   flex-grow: 0;
 }
