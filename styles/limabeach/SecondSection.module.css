@@ -816,6 +816,254 @@
   flex-grow: 0;
 }
 
+.permissiveDocSectionContainer {
+  /* Frame 9425 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 62px;
+
+  width: 1280px;
+  height: 738px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 7;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.permissiveDocHeaderContainer {
+  /* Frame 9442 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+
+  width: 1280px;
+  height: 198px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.permissiveDocTopHeaderContainer {
+  /* Frame 142 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+
+  width: 1280px;
+  height: 78px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.permissiveDocHeaderTitle {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  /* identical to box height */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #e2e2e2;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+
+.permissiveDocHeaderLabel {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White-2 */
+
+  color: #e2e2e2;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.permissiveDocLinkWrapper {
+  /* Frame 9474 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0px;
+  gap: 8px;
+
+  width: 398px;
+  height: 38px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.permissiveDocImageDescContainer {
+  /* Frame 9441 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 160px;
+
+  width: 1280px;
+  height: 476px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.permissiveDocFirstImageContainer {
+  /* Frame 9440 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  width: 320px;
+  height: 476px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.permissiveDocSecondImageContainer {
+  /* Frame 9440 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  width: 320px;
+  height: 476px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.permissiveDocThirdImageContainer {
+  /* Frame 9440 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  width: 320px;
+  height: 476px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.permissiveDocImageTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 150%;
+  /* identical to box height, or 36px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.permissiveDocImageLabel {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White-2 */
+
+  color: #e2e2e2;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 3;
+  flex-grow: 0;
+}
+
 .tokenDistributionContainer {
   /* Frame 225 */
 
@@ -834,7 +1082,7 @@
   /* Inside auto layout */
 
   flex: none;
-  order: 7;
+  order: 8;
   align-self: stretch;
   flex-grow: 0;
 }
@@ -855,7 +1103,7 @@
   /* Inside auto layout */
 
   flex: none;
-  order: 8;
+  order: 9;
   align-self: stretch;
   flex-grow: 0;
 }

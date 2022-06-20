@@ -5,6 +5,7 @@ import FifthSubSection from './FifthSubSection';
 import FirstSubSection from './FirstSubSection';
 import FourthSubSection from './FourthSubSection';
 import SecondSubSection from './SecondSubSection';
+import SeventhSubSection from './SeventhSubSection';
 import SixthSubSection from './SixthSubSection';
 import ThirdSubSection from './ThirdSubSection';
 
@@ -17,6 +18,7 @@ const SecondSection = () => {
       <FourthSubSection />
       <FifthSubSection />
       <SixthSubSection />
+      <SeventhSubSection />
       <div className={styles.tokenDistributionContainer}>
         <div className={styles.imageContainer}>
           <Image
