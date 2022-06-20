@@ -1193,6 +1193,418 @@
   flex-grow: 0;
 }
 
+.mintingStageContainer {
+  /* Lima Beach Minting Stage */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+  gap: 128px;
+
+  width: 1280px;
+  height: 1608px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 9;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageHeaderContainer {
+  /* Frame 149 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 18px;
+
+  width: 1280px;
+  height: 144px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.mintingStageTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  /* identical to box height */
+
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #e2e2e2;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageLabelContainer {
+  /* Frame 153 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px;
+  gap: 10px;
+
+  width: 1280px;
+  height: 68px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageLabel {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
+
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White-2 */
+
+  color: #e2e2e2;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 1;
+}
+
+.mintingStageCard {
+  /* Card */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 80px;
+  gap: 10px;
+
+  width: 1280px;
+  height: 320px;
+
+  /* Display-2 */
+
+  background: #344054;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageCardContent {
+  /* Content */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px;
+  gap: 357px;
+
+  width: 1120px;
+  height: 48px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageTextMintNow {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White */
+
+  color: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.mintingStageImageDescContainer {
+  /* Frame 9457 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 56px;
+
+  width: 1280px;
+  height: 952px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageFirstRowImageDescContainer {
+  /* Frame 9464 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 92px;
+
+  width: 1280px;
+  height: 196px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageFirstRowDescContainer {
+  /* Frame 9449 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 24px;
+
+  width: 868px;
+  height: 196px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+}
+
+.mintingStageDescLabel {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White-2 */
+
+  color: #e2e2e2;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageDescTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 38px;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White */
+
+  color: #ffffff;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageSecondRowImageDescContainer {
+  /* Frame 9463 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 92px;
+
+  width: 1280px;
+  height: 196px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageSecondRowDescContainer {
+  /* Frame 9450 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+
+  width: 868px;
+  height: 196px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+}
+
+.mintingStageThirdRowImageDescContainer {
+  /* Frame 9462 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 92px;
+
+  width: 1280px;
+  height: 196px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 2;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageThirdRowDescContainer {
+  /* Frame 9451 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 24px;
+
+  width: 868px;
+  height: 196px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+}
+
+.mintingStageFourthRowImageDescContainer {
+  /* Frame 9461 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 92px;
+
+  width: 1280px;
+  height: 196px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 3;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.mintingStageFourthRowDescContainer {
+  /* Frame 9452 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 24px;
+
+  width: 868px;
+  height: 134px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 1;
+}
+
 .tokenDistributionContainer {
   /* Frame 225 */
 
@@ -1211,7 +1623,7 @@
   /* Inside auto layout */
 
   flex: none;
-  order: 8;
+  order: 9;
   align-self: stretch;
   flex-grow: 0;
 }
@@ -1232,7 +1644,7 @@
   /* Inside auto layout */
 
   flex: none;
-  order: 9;
+  order: 10;
   align-self: stretch;
   flex-grow: 0;
 }
