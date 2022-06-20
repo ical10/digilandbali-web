@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import styles from '../../../styles/limabeach/SecondSection.module.css';
+import EighthSubSection from './EighthSubSection';
 import FifthSubSection from './FifthSubSection';
 import FirstSubSection from './FirstSubSection';
 import FourthSubSection from './FourthSubSection';
@@ -19,6 +20,7 @@ const SecondSection = () => {
       <FifthSubSection />
       <SixthSubSection />
       <SeventhSubSection />
+      <EighthSubSection />
       <div className={styles.tokenDistributionContainer}>
         <div className={styles.imageContainer}>
           <Image
