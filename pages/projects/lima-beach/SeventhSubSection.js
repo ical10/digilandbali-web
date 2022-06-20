@@ -29,7 +29,7 @@ const SeventhSubSection = () => {
         <div className={styles.permissiveDocFirstImageContainer}>
           <div className={styles.imageContainer}>
             <Image
-              src={'/Certif1.svg'}
+              src={'/Cert1.svg'}
               width="100%"
               height="100%"
               layout="responsive"
@@ -45,7 +45,7 @@ const SeventhSubSection = () => {
         <div className={styles.permissiveDocSecondImageContainer}>
           <div className={styles.imageContainer}>
             <Image
-              src={'/Certif1.svg'}
+              src={'/Cert2.svg'}
               width="100%"
               height="100%"
               layout="responsive"
@@ -61,7 +61,7 @@ const SeventhSubSection = () => {
         <div className={styles.permissiveDocThirdImageContainer}>
           <div className={styles.imageContainer}>
             <Image
-              src={'/Certif1.svg'}
+              src={'/Cert3.svg'}
               width="100%"
               height="100%"
               layout="responsive"
