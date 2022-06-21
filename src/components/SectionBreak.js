@@ -1,8 +1,6 @@
-import Image from 'next/image';
-
 import styles from '../../styles/limabeach/SectionBreak.module.css';
 
-const SectionBreak = ({width, height}) => {
+const SectionBreak = () => {
   const images = [
     {
       src: '/Tendermint.svg',
@@ -17,7 +15,9 @@ const SectionBreak = ({width, height}) => {
   return (
     <div className={styles.root}>
       {images.map(image => (
-        <Image src={image.src} width={width} height={height} />
+        <div>
+          <img src={image.src} />
+        </div>
       ))}
     </div>
   );

@@ -12,7 +12,9 @@ const HomeSection = () => {
       >
         <div className="flex flex-col p-0 gap-4 w-[339px] h-[137px] tablet:items-center tablet:gap-2 tablet:w-[674px] tablet:h-[310px] desktop:flex-row desktop:gap-0 desktop:w-full desktop:h-[251px]">
           <div className="flex flex-row justify-center items-center p-0 h-[76px] desktop:w-[604px] desktop:h-[251px]">
-            <h1 className={styles.titleBig}>LIMA BEACH SIGNATURE NFT.</h1>
+            <h1 className={styles.titleBig}>
+              LIMA BEACH SIGNATURE NFT<span className={sharedStyles.titleDot}>.</span>
+            </h1>
           </div>
           <div className="desktop:flex desktop:flex-column">
             <div

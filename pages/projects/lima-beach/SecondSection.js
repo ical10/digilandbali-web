@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
 import styles from '../../../styles/limabeach/SecondSection.module.css';
+import AboutLimaBeachSection from './AboutLimaBeachSection';
 import EighthSubSection from './EighthSubSection';
 import FifthSubSection from './FifthSubSection';
-import FirstSubSection from './FirstSubSection';
 import FourthSubSection from './FourthSubSection';
 import NinthSubSection from './NinthSubSection';
 import SecondSubSection from './SecondSubSection';
@@ -15,7 +15,7 @@ import ThirdSubSection from './ThirdSubSection';
 const SecondSection = () => {
   return (
     <div className={styles.root}>
-      <FirstSubSection />
+      <AboutLimaBeachSection />
       <SecondSubSection />
       <ThirdSubSection />
       <FourthSubSection />

@@ -75,3 +75,31 @@
 .flexOrder12 {
   order: 12;
 }
+
+.imageContainer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.titleBig {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  /* identical to box height */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White */
+
+  color: #ffffff;
+
+  margin-bottom: 16px;
+}
+
+.titleDot {
+  font-size: 48px;
+  color: #406aff;
+  padding: 0;
+}

@@ -60,6 +60,7 @@
   flex-grow: 1;
 }
 
+/*TODO: moved to sharedStyles*/
 .titleBig {
   font-style: normal;
   font-weight: 700;
@@ -90,14 +91,6 @@
   color: #ffffff;
 
   margin-bottom: 10px;
-}
-
-.locationContainer {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-
-  margin-bottom: 32px;
 }
 
 .secondSubSection {
