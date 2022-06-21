@@ -1,0 +1,77 @@
+.flexColumnStartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  width: 100%;
+}
+
+.sectionWrapper {
+  padding: 0px;
+  gap: 128px;
+}
+
+.flexAllCenteredContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flexNoneStretch {
+  /* Inside auto layout */
+
+  flex: none;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.flexOrder0 {
+  order: 0;
+}
+
+.flexOrder1 {
+  order: 1;
+}
+
+.flexOrder2 {
+  order: 2;
+}
+
+.flexOrder3 {
+  order: 3;
+}
+
+.flexOrder4 {
+  order: 4;
+}
+
+.flexOrder5 {
+  order: 5;
+}
+
+.flexOrder6 {
+  order: 6;
+}
+
+.flexOrder7 {
+  order: 7;
+}
+
+.flexOrder8 {
+  order: 8;
+}
+.flexOrder9 {
+  order: 9;
+}
+
+.flexOrder10 {
+  order: 10;
+}
+
+.flexOrder11 {
+  order: 11;
+}
+
+.flexOrder12 {
+  order: 12;
+}

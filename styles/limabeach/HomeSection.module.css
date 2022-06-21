@@ -1,0 +1,252 @@
+.rootHeight {
+  height: 1067px;
+}
+
+.titleBig {
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 77px;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #ffffff;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White-2 */
+
+  color: #e2e2e2;
+}
+
+.descriptionContainer {
+  padding: 60px;
+  gap: 10px;
+
+  width: 604px;
+  height: 181px;
+}
+
+.iconContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 10px;
+}
+
+.numberBig {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  /* identical to box height */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #ffffff;
+}
+
+@media screen and (max-width: 920px) {
+  .titleBig {
+    /* text-xl-bold */
+
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #ffffff;
+  }
+
+  .subtitle {
+    /* text-xs-regular */
+
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* White-2 */
+
+    color: #e2e2e2;
+  }
+
+  .numberBig {
+    /* text-md-bold */
+
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #ffffff;
+  }
+  .iconContainer {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    width: 228px;
+    height: 64px;
+
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 677px) {
+  .titleBig {
+    /* text-xl-bold */
+
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #ffffff;
+  }
+
+  .subtitle {
+    /* text-xs-regular */
+
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    /* or 24px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* White-2 */
+
+    color: #e2e2e2;
+  }
+
+  .numberBig {
+    /* text-md-bold */
+
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #ffffff;
+  }
+
+  .iconContainer {
+    /* Auto layout */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+
+    width: 228px;
+    height: 64px;
+
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .titleBig {
+    /* text-sm-bold */
+
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 160%;
+    /* or 38px */
+
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #ffffff;
+  }
+
+  .subtitle {
+    /* text-small-regular */
+
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 150%;
+    /* or 15px */
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* White-2 */
+
+    color: #e2e2e2;
+  }
+
+  .numberBig {
+    /* text-sm-bold */
+
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 160%;
+    /* or 38px */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #ffffff;
+  }
+
+  .iconContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    width: 140px;
+    height: 24px;
+
+    gap: 16px;
+
+    padding: 0px;
+
+    margin: auto;
+  }
+}
