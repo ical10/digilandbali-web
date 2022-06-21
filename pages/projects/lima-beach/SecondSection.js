@@ -6,17 +6,17 @@ import EighthSubSection from './EighthSubSection';
 import FifthSubSection from './FifthSubSection';
 import FourthSubSection from './FourthSubSection';
 import NinthSubSection from './NinthSubSection';
-import SecondSubSection from './SecondSubSection';
 import SeventhSubSection from './SeventhSubSection';
 import SixthSubSection from './SixthSubSection';
 import TenthSubSection from './TenthSubSection';
 import ThirdSubSection from './ThirdSubSection';
+import UtilityNFTSection from './UtilityNFTSection';
 
 const SecondSection = () => {
   return (
     <div className={styles.root}>
       <AboutLimaBeachSection />
-      <SecondSubSection />
+      <UtilityNFTSection />
       <ThirdSubSection />
       <FourthSubSection />
       <FifthSubSection />

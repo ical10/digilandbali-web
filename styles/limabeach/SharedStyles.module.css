@@ -98,8 +98,40 @@
   margin-bottom: 16px;
 }
 
+.sectionTitleBig {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 58px;
+  /* identical to box height */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White */
+
+  color: #ffffff;
+}
+
 .titleDot {
   font-size: 48px;
   color: #406aff;
   padding: 0;
+}
+
+@media screen and (max-width: 677px) {
+  .sectionTitleBig {
+    font-size: 32px;
+    line-height: 38px;
+
+    color: #e2e2e2;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .sectionTitleBig {
+    font-size: 16px;
+    line-height: 160%;
+    /* or 26px */
+
+    color: #e2e2e2;
+  }
 }
