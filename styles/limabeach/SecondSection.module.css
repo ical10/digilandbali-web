@@ -165,40 +165,14 @@
   flex-grow: 1;
 }
 
-.thirdSubSection {
-  /* Frame 505 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 64px;
-
-  width: 1280px;
-  height: 790px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 3;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
 .imageDescContainer {
-  /* Frame 258 */
-
-  /* Auto layout */
-
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 0px;
   gap: 124px;
 
-  width: 1280px;
+  width: 100%;
   height: 280px;
 
   /* Inside auto layout */
@@ -209,27 +183,7 @@
   flex-grow: 0;
 }
 
-.paragraphContainer {
-  /* Frame 254 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 22px;
-
-  width: 632px;
-  height: 280px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 1;
-}
-
+/*TODO: moved to sharedStyles since used in another section*/
 .titleSmall {
   font-style: normal;
   font-weight: 700;
@@ -248,28 +202,6 @@
   width: 100%;
   position: relative;
   object-fit: contain;
-}
-
-.labelDescContainer {
-  /* Frame 253 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  gap: 25px;
-
-  width: 632px;
-  height: 26px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
 }
 
 .fourthSubSection {

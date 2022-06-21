@@ -1,0 +1,161 @@
+.root {
+  padding: 0px;
+  gap: 64px;
+
+  width: 100%;
+}
+
+.imageDescContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 124px;
+
+  width: 100%;
+  height: 182px;
+}
+
+.imageContainer {
+  height: 100%;
+  width: 524px;
+}
+
+.img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.paragraphContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 22px;
+
+  width: 632px;
+}
+
+.titleSmall {
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 160%;
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  color: #ffffff;
+}
+
+.labelDescContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 25px;
+
+  width: 100%;
+  height: 26px;
+}
+
+.text {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White */
+
+  color: #ffffff;
+}
+
+@media screen and (max-width: 677px) {
+  .imageDescContainer {
+    gap: 32px;
+
+    height: 194px;
+  }
+
+  .imageContainer {
+    height: 100%;
+    width: 235px;
+  }
+
+  .paragraphContainer {
+    width: 407px;
+  }
+
+  .titleSmall {
+    font-size: 24px;
+    line-height: 160%;
+    /* or 38px */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* White */
+
+    color: #ffffff;
+  }
+
+  .labelDescContainer {
+    height: 84px;
+  }
+
+  .text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    /* or 21px */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* White */
+
+    color: #ffffff;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .imageDescContainer {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    width: 100%;
+    height: 293px;
+  }
+
+  .imageContainer {
+    width: 100%;
+    height: 148px;
+  }
+
+  .paragraphContainer {
+    gap: 22px;
+
+    width: 100%;
+    height: 92px;
+  }
+
+  .titleSmall {
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #ffffff;
+  }
+
+  .labelDescContainer {
+    height: 57px;
+  }
+
+  .text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 160%;
+
+    color: #e2e2e2;
+  }
+}
