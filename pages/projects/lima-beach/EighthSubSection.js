@@ -1,11 +1,17 @@
 import Image from 'next/image';
 
 import styles from '../../../styles/limabeach/SecondSection.module.css';
+import sharedStyles from '../../../styles/limabeach/SharedStyles.module.css';
 
 const EighthSubSection = () => {
   return (
     <div className={styles.nftFragmentContainer}>
-      <h1 className={styles.titleBig}>Lima Beach NFT Fragments.</h1>
+      <div className="w-full">
+        <h1 className={styles.titleBig}>
+          Lima Beach NFT Fragments<span className={sharedStyles.titleDot}>.</span>
+        </h1>
+        <div className={sharedStyles.titleBorder}></div>
+      </div>
       <div className={styles.nftFragmentImageDescContainer}>
         <div className={styles.nftFragmentImageOuterContainer}>
           <div className={styles.imageContainer}>

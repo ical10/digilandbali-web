@@ -6,9 +6,12 @@ const BluePrintSection = () => {
     <div
       className={`${sharedStyles.flexColumnStartContainer} ${sharedStyles.flexOrder5} ${styles.sneakPeakContainer}`}
     >
-      <h1 className={sharedStyles.sectionTitleBig}>
-        Blue Print Sneak Peak<span className={sharedStyles.titleDot}>.</span>
-      </h1>
+      <div className="w-full">
+        <h1 className={sharedStyles.sectionTitleBig}>
+          Blue Print Sneak Peak<span className={sharedStyles.titleDot}>.</span>
+        </h1>
+        <div className={sharedStyles.titleBorder}></div>
+      </div>
       <div className={styles.sneakPeakImageContainer}>
         <div className={styles.imageContainer}>
           <img src={'/BluePrint1.svg'} className={styles.img} />

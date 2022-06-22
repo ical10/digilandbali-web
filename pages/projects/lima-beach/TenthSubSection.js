@@ -2,13 +2,19 @@ import Image from 'next/image';
 
 import {FirstIcon, SecondIcon, ThirdIcon} from '../../../src/components/icons/FacilityIcons';
 import styles from '../../../styles/limabeach/SecondSection.module.css';
+import sharedStyles from '../../../styles/limabeach/SharedStyles.module.css';
 
 const TenthSubSection = () => {
   return (
     <>
       <div className={styles.investContainer}>
         <div className={styles.investHeaderContainer}>
-          <h1 className={styles.titleBig}>How to Invest.</h1>
+          <div className="w-full">
+            <h1 className={styles.titleBig}>
+              How to Invest<span className={sharedStyles.titleDot}>.</span>
+            </h1>
+            <div className={sharedStyles.titleBorder}></div>
+          </div>
         </div>
         <div className={styles.investStepsContainer}>
           <div className={styles.investStepsDescContainer}>

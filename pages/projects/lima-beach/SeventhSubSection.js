@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import styles from '../../../styles/limabeach/SecondSection.module.css';
+import sharedStyles from '../../../styles/limabeach/SharedStyles.module.css';
 
 import {Import} from 'iconsax-react';
 
@@ -9,12 +10,19 @@ const SeventhSubSection = () => {
     <div className={styles.permissiveDocSectionContainer}>
       <div className={styles.permissiveDocHeaderContainer}>
         <div className={styles.permissiveDocTopHeaderContainer}>
-          <h1 className={styles.permissiveDocHeaderTitle}>Permissive Document.</h1>
-          <div className={styles.permissiveDocLinkWrapper}>
-            <Import color="#BBCDFB" variant="Linear" size={24} />
-            <a href="" style={{color: '#BBCDFB'}}>
-              Download Set of Document
-            </a>
+          <div className="w-full">
+            <div className="w-full flex flex-row items-center">
+              <h1 className={styles.permissiveDocHeaderTitle}>
+                Permissive Document<span className={sharedStyles.titleDot}>.</span>
+              </h1>
+              <div className={styles.permissiveDocLinkWrapper}>
+                <Import color="#BBCDFB" variant="Linear" size={24} />
+                <a href="" style={{color: '#BBCDFB'}}>
+                  Download Set of Document
+                </a>
+              </div>
+            </div>
+            <div className={sharedStyles.titleBorder}></div>
           </div>
         </div>
         <label className={styles.permissiveDocHeaderLabel}>

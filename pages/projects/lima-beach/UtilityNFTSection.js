@@ -11,6 +11,7 @@ const UtilityNFTSection = () => {
           Decentralized NFT Developer Property with Apartments as Utility
           <span className={sharedStyles.titleDot}>.</span>
         </h1>
+        <div className={sharedStyles.titleBorder}></div>
         <div className={styles.imageDimension}>
           <img src={'/Videopreview.svg'} />
         </div>

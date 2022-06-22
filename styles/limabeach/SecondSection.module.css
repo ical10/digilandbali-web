@@ -563,17 +563,14 @@
 }
 
 .permissiveDocTopHeaderContainer {
-  /* Frame 142 */
-
-  /* Auto layout */
-
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  padding: 0px;
 
-  width: 1280px;
+  width: 100%;
   height: 78px;
+
+  margin-bottom: 24px;
 
   /* Inside auto layout */
 
@@ -767,18 +764,16 @@
 }
 
 .nftFragmentContainer {
-  /* Frame 9422 */
-
-  /* Auto layout */
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   padding: 0px;
   gap: 62px;
 
-  width: 1280px;
+  width: 100%;
   height: 360px;
+
+  margin-bottom: 64px;
 
   /* Inside auto layout */
 
@@ -896,18 +891,16 @@
 }
 
 .mintingStageContainer {
-  /* Lima Beach Minting Stage */
-
-  /* Auto layout */
-
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0px;
   gap: 128px;
 
-  width: 1280px;
+  width: 100%;
   height: 1608px;
+
+  margin-bottom: 64px;
 
   /* Inside auto layout */
 
