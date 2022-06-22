@@ -26,54 +26,93 @@
 }
 
 .flexOrder0 {
+  flex: none;
   order: 0;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .flexOrder1 {
+  flex: none;
   order: 1;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .flexOrder2 {
+  flex: none;
   order: 2;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .flexOrder3 {
+  flex: none;
   order: 3;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .flexOrder4 {
+  flex: none;
   order: 4;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .flexOrder5 {
+  flex: none;
   order: 5;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .flexOrder6 {
+  flex: none;
   order: 6;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .flexOrder7 {
+  flex: none;
   order: 7;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .flexOrder8 {
+  flex: none;
   order: 8;
+  align-self: stretch;
+  flex-grow: 0;
 }
 .flexOrder9 {
+  flex: none;
   order: 9;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .flexOrder10 {
+  flex: none;
   order: 10;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .flexOrder11 {
+  flex: none;
   order: 11;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .flexOrder12 {
+  flex: none;
   order: 12;
+  align-self: stretch;
+  flex-grow: 0;
 }
 
 .imageContainer {
@@ -118,9 +157,28 @@
 }
 
 .titleBorder {
-  width: inherit;
+  width: 100%;
   border: 2px solid #5b5b5b;
   margin: 24px 0;
+}
+
+.subtitleWrapper {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 140%;
+  /* or 34px */
+
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White */
+
+  color: #ffffff;
+}
+
+.responsive {
+  max-width: 100%;
+  height: auto;
 }
 
 @media screen and (max-width: 1200px) {
@@ -135,11 +193,21 @@
     font-size: 16px;
     line-height: 160%;
   }
+
+  .subtitleWrapper {
+    font-size: 16px;
+    line-height: 160%;
+  }
 }
 
 @media screen and (max-width: 425px) {
   .sectionTitleBig {
     font-size: 12px;
     line-height: 160%;
+  }
+
+  .subtitleWrapper {
+    font-size: 12px;
+    line-height: 150%;
   }
 }

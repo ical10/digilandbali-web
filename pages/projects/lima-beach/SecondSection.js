@@ -7,8 +7,8 @@ import EighthSubSection from './EighthSubSection';
 import FacilitySection from './FacilitySection';
 import LuxuryPropertySection from './LuxuryPropertySection';
 import NinthSubSection from './NinthSubSection';
-import SeventhSubSection from './SeventhSubSection';
-import SixthSubSection from './SixthSubSection';
+import PermissiveDocSection from './PermissiveDocSection';
+import SmartSysSection from './SmartSysSection';
 import TenthSubSection from './TenthSubSection';
 import UtilityNFTSection from './UtilityNFTSection';
 
@@ -20,8 +20,8 @@ const SecondSection = () => {
       <LuxuryPropertySection />
       <FacilitySection />
       <BluePrintSection />
-      <SixthSubSection />
-      <SeventhSubSection />
+      <SmartSysSection />
+      <PermissiveDocSection />
       <EighthSubSection />
       <NinthSubSection />
       <TenthSubSection />

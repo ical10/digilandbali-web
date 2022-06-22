@@ -39,8 +39,6 @@
 }
 
 .descriptionContainer {
-  /* Auto layout */
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -48,6 +46,8 @@
 
   width: 726px;
   height: 342px;
+
+  overflow: hidden;
 }
 
 .locationContainer {
@@ -137,13 +137,9 @@
   .descriptionContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
     padding: 0px;
     gap: 8px;
-
-    width: 206px;
-    height: 179px;
   }
 
   .description {

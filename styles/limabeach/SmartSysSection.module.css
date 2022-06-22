@@ -1,0 +1,171 @@
+.smartSystemContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+
+  width: 100%;
+  height: 648px;
+}
+
+.smartSystemHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+
+  width: 100%;
+  height: 162px;
+}
+
+.smartSystemDescContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 16px;
+
+  width: 100%;
+  height: 438px;
+}
+
+.smartSystemLeftDescContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 48px;
+
+  width: 416px;
+  height: 438px;
+}
+
+.descContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 308px;
+  height: 114px;
+}
+
+.smartSystemMidDescContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px;
+
+  width: 416px;
+  height: 438px;
+}
+
+.smartSystemRightDescContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 0px;
+  gap: 48px;
+
+  width: 416px;
+  height: 438px;
+}
+
+.imageContainer {
+  width: 416px;
+  height: 318px;
+}
+
+@media screen and (max-width: 1280px) {
+  .smartSystemDescContainer {
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .smartSystemLeftDescContainer {
+    width: 214px;
+  }
+
+  .smartSystemMidDescContainer {
+    width: 214px;
+  }
+
+  .smartSystemRightDescContainer {
+    width: 214px;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .smartSystemContainer {
+    width: inherit;
+  }
+
+  .smartSystemDescContainer {
+    justify-content: center;
+  }
+
+  .smartSystemLeftDescContainer {
+    display: none;
+  }
+
+  .smartSystemRightDescContainer {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 677px) {
+  .smartSystemContainer {
+    gap: 48px;
+
+    width: inherit;
+  }
+
+  .smartSystemDescContainer {
+    justify-content: center;
+  }
+
+  .smartSystemLeftDescContainer {
+    display: none;
+  }
+
+  .smartSystemMidDescContainer {
+    width: 214px;
+  }
+
+  .smartSystemRightDescContainer {
+    display: none;
+  }
+
+  .imageContainer {
+    width: 214px;
+    height: 380px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .smartSystemContainer {
+    gap: 32px;
+
+    width: inherit;
+  }
+
+  .smartSystemDescContainer {
+    justify-content: center;
+  }
+
+  .smartSystemLeftDescContainer {
+    display: none;
+  }
+
+  .smartSystemRightDescContainer {
+    display: none;
+  }
+
+  .imageContainer {
+    width: 174px;
+    height: 146px;
+  }
+}
