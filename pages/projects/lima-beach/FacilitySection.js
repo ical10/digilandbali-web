@@ -1,69 +1,67 @@
-import Image from 'next/image';
-
 import {
   ConservancyFeeIcon,
   DailyRoomServiceIcon,
   ElectricityIcon,
   FreeParkingIcon,
   InternetIcon,
-  PlayButtonIcon,
   PropertyTaxIcon,
   SinkingFundsIcon,
   WaterServiceIcon,
 } from '../../../src/components/icons/FacilityIcons';
-import styles from '../../../styles/limabeach/SecondSection.module.css';
+import styles from '../../../styles/limabeach/FacilitySection.module.css';
+import sharedStyles from '../../../styles/limabeach/SharedStyles.module.css';
 
-const FourthSubSection = () => {
+const FacilitySection = () => {
   return (
     <>
-      <div className={styles.fourthSubSection}>
-        <div className={styles.descriptionWrapper}>
+      <div className={`${styles.flexColumnCenter} ${styles.root} ${sharedStyles.flexOrder4}`}>
+        <div className={`${styles.flexColumnCenter} ${styles.descriptionWrapper}`}>
           <div className={styles.titleWrapper}>
-            <h1 className={styles.titleBig}>Free 58 Years Hospitality Managements.</h1>
+            <h1 className={sharedStyles.sectionTitleBig}>
+              Free 58 Years Hospitality Managements<span className={sharedStyles.titleDot}>.</span>
+            </h1>
           </div>
-          <div className={styles.subtitleWrapper}>
-            <label>
-              Hospitality management has done the accounting and marketing of the units as luxury
-              rooms with a smart hotel experience that will cover the entire cost of management for
-              the next 58 years.
-            </label>
+          <div className={styles.subtitle}>
+            Hospitality management has done the accounting and marketing of the units as luxury
+            rooms with a smart hotel experience that will cover the entire cost of management for
+            the next 58 years.
           </div>
         </div>
         <div className={styles.facilitiesContainer}>
           <div className={styles.rowFacilitiesContainer}>
             <div className={styles.facilityCardContainer}>
               <ConservancyFeeIcon />
-              <label className={styles.cardLabel}>Conservancy Fee</label>
+              <div className={styles.cardText}>Conservancy Fee</div>
             </div>
             <div className={styles.facilityCardContainer}>
               <WaterServiceIcon />
-              <label className={styles.cardLabel}>Water Service</label>
+              <div className={styles.cardText}>Water Service</div>
             </div>
             <div className={styles.facilityCardContainer}>
               <InternetIcon />
-              <label className={styles.cardLabel}>Internet or Wifi</label>
+              <div className={styles.cardText}>Internet or Wifi</div>
             </div>
             <div className={styles.facilityCardContainer}>
               <DailyRoomServiceIcon />
-              <label className={styles.cardLabel}>Daily Room Service</label>
+              <div className={styles.cardText}>Daily Room Service</div>
             </div>
           </div>
           <div className={styles.rowFacilitiesContainer}>
             <div className={styles.facilityCardContainer}>
               <ElectricityIcon />
-              <label className={styles.cardLabel}>Electricity Fee</label>
+              <div className={styles.cardText}>Electricity Fee</div>
             </div>
             <div className={styles.facilityCardContainer}>
               <SinkingFundsIcon />
-              <label className={styles.cardLabel}>Sinking Funds</label>
+              <div className={styles.cardText}>Sinking Funds</div>
             </div>
             <div className={styles.facilityCardContainer}>
               <PropertyTaxIcon />
-              <label className={styles.cardLabel}>Property Tax</label>
+              <div className={styles.cardText}>Property Tax</div>
             </div>
             <div className={styles.facilityCardContainer}>
               <FreeParkingIcon />
-              <label className={styles.cardLabel}>Free Parking</label>
+              <div className={styles.cardText}>Free Parking</div>
             </div>
           </div>
         </div>
@@ -72,4 +70,4 @@ const FourthSubSection = () => {
   );
 };
 
-export default FourthSubSection;
+export default FacilitySection;

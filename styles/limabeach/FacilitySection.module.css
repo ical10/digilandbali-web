@@ -1,0 +1,128 @@
+.flexColumnCenter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.root {
+  gap: 56px;
+
+  width: 100%;
+  height: 506px;
+}
+
+.descriptionWrapper {
+  gap: 16px;
+
+  width: 100%;
+  height: 162px;
+}
+
+.titleWrapper {
+  text-align: center;
+  gap: 24px;
+
+  width: 100%;
+  height: 78px;
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 140%;
+  /* or 34px */
+
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White */
+
+  color: #ffffff;
+}
+
+.facilitiesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  width: 664px;
+  height: 288px;
+}
+
+.rowFacilitiesContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  width: 664px;
+  height: 136px;
+}
+
+.facilityCardContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  gap: 16px;
+
+  width: 154px;
+  height: 136px;
+
+  /* Hospitality-card */
+
+  background: linear-gradient(128.87deg, #1d2932 1.8%, #131b21 100%);
+  border-radius: 4px;
+}
+
+.cardText {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;
+  /* or 24px */
+
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White */
+
+  color: #ffffff;
+}
+
+@media screen and (max-width: 677px) {
+  .root {
+    gap: 16px;
+    width: inherit;
+    height: 706px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    line-height: 150%;
+  }
+
+  .facilitiesContainer {
+    flex-direction: row;
+    height: 568px;
+
+    width: inherit;
+  }
+
+  .rowFacilitiesContainer {
+    flex-direction: column;
+
+    width: inherit;
+  }
+
+  .cardText {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .facilityCardContainer {
+    width: 163px;
+    height: 130px;
+  }
+}

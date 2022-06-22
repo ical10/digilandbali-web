@@ -204,77 +204,7 @@
   object-fit: contain;
 }
 
-.fourthSubSection {
-  /* Frame 9421 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px;
-  gap: 56px;
-
-  width: 1280px;
-  height: 506px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 4;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
-.descriptionWrapper {
-  /* Frame 9420 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px;
-  gap: 16px;
-
-  width: 1280px;
-  height: 162px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
-.titleWrapper {
-  /* Frame 210 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0px;
-  gap: 24px;
-
-  width: 1280px;
-  height: 78px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
 .subtitleContainer {
-  /* Frame 153 */
-
-  /* Auto layout */
-
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -293,8 +223,8 @@
   flex-grow: 0;
 }
 
+/*TODO: move to shareStyles*/
 .subtitleWrapper {
-  font-style: normal;
   font-weight: 400;
   font-size: 24px;
   line-height: 140%;
@@ -306,20 +236,9 @@
   /* White */
 
   color: #ffffff;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
 }
 
 .facilitiesContainer {
-  /* Frame 9419 */
-
-  /* Auto layout */
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -328,19 +247,9 @@
 
   width: 664px;
   height: 288px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 0;
 }
 
 .rowFacilitiesContainer {
-  /* Frame 9417 */
-
-  /* Auto layout */
-
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -349,19 +258,9 @@
 
   width: 664px;
   height: 136px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 }
 
 .facilityCardContainer {
-  /* Frame 9407 */
-
-  /* Auto layout */
-
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -375,12 +274,6 @@
 
   background: linear-gradient(128.87deg, #1d2932 1.8%, #131b21 100%);
   border-radius: 4px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 }
 
 .cardLabel {

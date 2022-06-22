@@ -3,8 +3,8 @@ import Image from 'next/image';
 import styles from '../../../styles/limabeach/SecondSection.module.css';
 import AboutLimaBeachSection from './AboutLimaBeachSection';
 import EighthSubSection from './EighthSubSection';
+import FacilitySection from './FacilitySection';
 import FifthSubSection from './FifthSubSection';
-import FourthSubSection from './FourthSubSection';
 import LuxuryPropertySection from './LuxuryPropertySection';
 import NinthSubSection from './NinthSubSection';
 import SeventhSubSection from './SeventhSubSection';
@@ -18,7 +18,7 @@ const SecondSection = () => {
       <AboutLimaBeachSection />
       <UtilityNFTSection />
       <LuxuryPropertySection />
-      <FourthSubSection />
+      <FacilitySection />
       <FifthSubSection />
       <SixthSubSection />
       <SeventhSubSection />
