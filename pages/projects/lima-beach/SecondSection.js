@@ -3,9 +3,9 @@ import Image from 'next/image';
 import styles from '../../../styles/limabeach/SecondSection.module.css';
 import AboutLimaBeachSection from './AboutLimaBeachSection';
 import BluePrintSection from './BluePrintSection';
-import EighthSubSection from './EighthSubSection';
 import FacilitySection from './FacilitySection';
 import LuxuryPropertySection from './LuxuryPropertySection';
+import NFTFragmentSection from './NFTFragmentSection';
 import NinthSubSection from './NinthSubSection';
 import PermissiveDocSection from './PermissiveDocSection';
 import SmartSysSection from './SmartSysSection';
@@ -22,7 +22,7 @@ const SecondSection = () => {
       <BluePrintSection />
       <SmartSysSection />
       <PermissiveDocSection />
-      <EighthSubSection />
+      <NFTFragmentSection />
       <NinthSubSection />
       <TenthSubSection />
       <div className={styles.tokenDistributionContainer}>
