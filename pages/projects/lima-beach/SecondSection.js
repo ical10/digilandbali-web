@@ -6,11 +6,11 @@ import AboutLimaBeachSection from './AboutLimaBeachSection';
 import BluePrintSection from './BluePrintSection';
 import FacilitySection from './FacilitySection';
 import LuxuryPropertySection from './LuxuryPropertySection';
+import MintSection from './MintSection';
 import MintingStageSection from './MintingStageSection';
 import NFTFragmentSection from './NFTFragmentSection';
 import PermissiveDocSection from './PermissiveDocSection';
 import SmartSysSection from './SmartSysSection';
-import TenthSubSection from './TenthSubSection';
 import UtilityNFTSection from './UtilityNFTSection';
 
 const SecondSection = () => {
@@ -25,7 +25,7 @@ const SecondSection = () => {
       <PermissiveDocSection />
       <NFTFragmentSection />
       <MintingStageSection />
-      <TenthSubSection />
+      <MintSection />
       <div className={styles.tokenDistributionContainer}>
         <div className={styles.tokenDistributionHeaderContainer}>
           <h1 className={sharedStyles.sectionTitleBig}>Token Distribution.</h1>

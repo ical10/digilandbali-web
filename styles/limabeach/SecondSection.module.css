@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px;
-  gap: 3em;
+  gap: 8em;
 
   flex: none;
   order: 1;
@@ -56,8 +55,9 @@
 }
 
 .description {
+  font-family: 'Syne';
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 16px;
   line-height: 150%;
   /* or 24px */
@@ -147,181 +147,6 @@
   /* White */
 
   color: #ffffff;
-}
-
-.investContainer {
-  /* Frame 9423 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 64px;
-
-  width: 1280px;
-  height: 504px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 10;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
-.investHeaderContainer {
-  /* Frame 142 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 330px;
-
-  width: 1280px;
-  height: 78px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
-.investStepsContainer {
-  /* Frame 258 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  gap: 124px;
-
-  width: 1280px;
-  height: 338px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
-.investStepsDescContainer {
-  /* Frame 9377 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 16px;
-
-  width: 632px;
-  height: 338px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 1;
-}
-
-.investStepDetailDescContainer {
-  /* Frame 121 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 16px;
-
-  width: 632px;
-  height: 102px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
-.investFirstStepHeaderContainer {
-  /* Frame 9376 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 0px;
-  gap: 24px;
-
-  width: 632px;
-  height: 38px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
-.investFirstStepLabelContainer {
-  /* Frame 9375 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px 0px 0px 56px;
-  gap: 16px;
-
-  width: 632px;
-  height: 48px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
-.investStepsImageContainer {
-  /* Frame 478 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 10px;
-
-  width: 524px;
-  height: 338px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
 }
 
 .tokenDistributionContainer {

@@ -1,0 +1,138 @@
+.root {
+  display: flex;
+  flex-direction: column;
+
+  max-width: 100%;
+
+  flex: none;
+  order: 10;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 330px;
+
+  max-width: 100%;
+}
+
+.stepsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 124px;
+
+  max-width: 100%;
+}
+
+.descContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 16px;
+
+  max-width: 632px;
+}
+
+.detailContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  gap: 0.5em;
+
+  max-width: 632px;
+}
+
+.stepHeaderContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 24px;
+
+  max-width: 632px;
+}
+
+.stepTextContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 0px 0px 0px 56px;
+  gap: 16px;
+
+  max-width: 632px;
+  height: 48px;
+}
+
+@media screen and (max-width: 1280px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+
+    max-width: 100%;
+  }
+
+  .stepsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    max-width: 100%;
+  }
+
+  .descContainer {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 7.75em;
+    max-width: fit-content;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .root {
+    gap: 0em;
+  }
+
+  .stepsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 1em;
+    max-width: 100%;
+  }
+
+  .descContainer {
+    display: flex;
+    flex-direction: row-reverse;
+
+    gap: 1em;
+    max-width: 632px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .stepsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+  }
+
+  .descContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1em;
+
+    max-width: 632px;
+  }
+}

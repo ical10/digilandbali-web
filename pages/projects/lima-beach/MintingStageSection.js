@@ -65,10 +65,8 @@ const MintingStageSection = () => {
           </div>
         </div>
         <div className={styles.rowImageDescContainer}>
-          <div className={styles.mintingStageNftImageContainer}>
-            <div className={styles.imageContainer}>
-              <img src={'/NFTStage4.svg'} className={sharedStyles.responsive} />
-            </div>
+          <div className={styles.imageContainer}>
+            <img src={'/NFTStage4.svg'} className={sharedStyles.responsive} />
           </div>
           <div className={styles.rowDescContainer}>
             <h1 className={styles.descTitle}>Soft Opening Stage, with $22,500 each Fragment</h1>
