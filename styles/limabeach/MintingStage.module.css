@@ -1,23 +1,14 @@
-.mintingStageContainer {
+.root {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px;
-  gap: 128px;
 
-  width: 100%;
+  gap: 2em;
 
-  margin-bottom: 64px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 9;
-  align-self: stretch;
-  flex-grow: 0;
+  margin: 4em 0;
 }
 
-.mintingStageHeaderContainer {
+.headerContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,45 +19,19 @@
   width: 100%;
 }
 
-.mintingStageTitle {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 48px;
-  line-height: 58px;
-  /* identical to box height */
-
-  text-align: center;
-  font-feature-settings: 'pnum' on, 'lnum' on;
-
-  color: #e2e2e2;
-}
-
-.mintingStageLabelContainer {
+.textContainer {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  padding: 10px;
-  gap: 10px;
-
-  width: 100%;
+  padding: 0.625em;
 }
 
-.mintingStageLabel {
-  font-style: normal;
+.text {
   font-weight: 500;
   font-size: 16px;
   line-height: 150%;
-  /* or 24px */
-
-  text-align: center;
-  font-feature-settings: 'pnum' on, 'lnum' on;
-
-  /* White-2 */
-
-  color: #e2e2e2;
 }
 
-.mintingStageCard {
+.card {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,41 +44,23 @@
   background: #344054;
 }
 
-.mintingStageCardContent {
+.cardContent {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  align-items: center;
-  padding: 0px;
-  gap: 357px;
 
-  width: 1120px;
+  width: 100%;
 }
 
-.mintingStageTextMintNow {
-  font-style: normal;
-  font-weight: 700;
+.textMintNow {
   font-size: 32px;
   line-height: 38px;
   text-align: center;
   font-feature-settings: 'pnum' on, 'lnum' on;
 
-  /* White */
-
   color: #ffffff;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  flex-grow: 0;
 }
 
-.mintingStageImageDescContainer {
-  /* Frame 9457 */
-
-  /* Auto layout */
-
+.imageDescContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -121,226 +68,130 @@
   padding: 0px;
   gap: 56px;
 
-  width: 1280px;
-  height: 952px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
+  max-width: inherit;
 }
 
-.mintingStageFirstRowImageDescContainer {
-  /* Frame 9464 */
+.rowImageDescContainer {
+  display: grid;
+  grid-template-columns: 2fr 4fr;
 
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 92px;
-
-  width: 1280px;
-  height: 196px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
+  gap: 5.75em;
 }
 
-.mintingStageFirstRowDescContainer {
-  /* Frame 9449 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 0px;
-  gap: 24px;
-
-  width: 868px;
-  height: 196px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 1;
-}
-
-.mintingStageDescLabel {
-  font-style: normal;
+.descText {
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  /* or 24px */
 
   font-feature-settings: 'pnum' on, 'lnum' on;
 
-  /* White-2 */
-
   color: #e2e2e2;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 2;
-  align-self: stretch;
-  flex-grow: 0;
 }
 
-.mintingStageDescTitle {
-  font-style: normal;
-  font-weight: 700;
+.descTitle {
   font-size: 32px;
   line-height: 38px;
   font-feature-settings: 'pnum' on, 'lnum' on;
 
-  /* White */
-
   color: #ffffff;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 0;
-  align-self: stretch;
-  flex-grow: 0;
 }
 
-.mintingStageSecondRowImageDescContainer {
-  /* Frame 9463 */
-
-  /* Auto layout */
-
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 92px;
-
-  width: 1280px;
-  height: 196px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  align-self: stretch;
-  flex-grow: 0;
-}
-
-.mintingStageSecondRowDescContainer {
-  /* Frame 9450 */
-
-  /* Auto layout */
-
+.rowDescContainer {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 24px;
-
-  width: 868px;
-  height: 196px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 1;
 }
 
-.mintingStageThirdRowImageDescContainer {
-  /* Frame 9462 */
-
-  /* Auto layout */
-
+.imageContainer {
   display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 92px;
 
-  width: 1280px;
-  height: 196px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 2;
-  align-self: stretch;
-  flex-grow: 0;
+  margin-bottom: 0px;
 }
 
-.mintingStageThirdRowDescContainer {
-  /* Frame 9451 */
+@media screen and (max-width: 920px) {
+  .root {
+    max-width: 674px;
+  }
 
-  /* Auto layout */
+  .rowImageDescContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 0px;
-  gap: 24px;
+    gap: 2em;
+  }
 
-  width: 868px;
-  height: 196px;
+  .imageContainer {
+    display: flex;
 
-  /* Inside auto layout */
+    margin-bottom: 0px;
+  }
 
-  flex: none;
-  order: 1;
-  flex-grow: 1;
+  .cardContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    max-width: 610px;
+  }
+
+  .text {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+  }
+
+  .descTitle {
+    font-size: 16px;
+    line-height: 160%;
+  }
+
+  .descText {
+    font-size: 14px;
+  }
+
+  .textMintNow {
+    font-size: 24px;
+    line-height: 160%;
+  }
 }
 
-.mintingStageFourthRowImageDescContainer {
-  /* Frame 9461 */
+@media screen and (max-width: 425px) {
+  .rowImageDescContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
 
-  /* Auto layout */
+    max-width: inherit;
+  }
 
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 92px;
+  .cardContent {
+    flex-direction: column;
 
-  width: 1280px;
-  height: 196px;
+    gap: 2em;
+  }
 
-  /* Inside auto layout */
+  .text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
 
-  flex: none;
-  order: 3;
-  align-self: stretch;
-  flex-grow: 0;
-}
+    text-align: center;
+  }
 
-.mintingStageFourthRowDescContainer {
-  /* Frame 9452 */
+  .descTitle {
+    font-size: 14px;
+    line-height: 150%;
+  }
 
-  /* Auto layout */
+  .descText {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+  }
 
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 24px;
-
-  width: 868px;
-  height: 134px;
-
-  /* Inside auto layout */
-
-  flex: none;
-  order: 1;
-  flex-grow: 1;
+  .textMintNow {
+    font-size: 16px;
+    line-height: 160%;
+  }
 }

@@ -10,7 +10,7 @@ const TenthSubSection = () => {
       <div className={styles.investContainer}>
         <div className={styles.investHeaderContainer}>
           <div className="w-full">
-            <h1 className={styles.titleBig}>
+            <h1 className={sharedStyles.sectionTitleBig}>
               How to Invest<span className={sharedStyles.titleDot}>.</span>
             </h1>
             <div className={sharedStyles.titleBorder}></div>
@@ -21,7 +21,7 @@ const TenthSubSection = () => {
             <div className={styles.investStepDetailDescContainer}>
               <div className={styles.investFirstStepHeaderContainer}>
                 <FirstIcon />
-                <h1 className={styles.titleSmall}>Prepare your wallet</h1>
+                <h1 className={sharedStyles.titleSmall}>Prepare your wallet</h1>
               </div>
               <div className={styles.investFirstStepLabelContainer}>
                 <label className={styles.description}>
@@ -33,7 +33,7 @@ const TenthSubSection = () => {
             <div className={styles.investStepDetailDescContainer}>
               <div className={styles.investFirstStepHeaderContainer}>
                 <SecondIcon />
-                <h1 className={styles.titleSmall}>Get USDC</h1>
+                <h1 className={sharedStyles.titleSmall}>Get USDC</h1>
               </div>
               <div className={styles.investFirstStepLabelContainer}>
                 <label className={styles.description}>
@@ -45,7 +45,7 @@ const TenthSubSection = () => {
             <div className={styles.investStepDetailDescContainer}>
               <div className={styles.investFirstStepHeaderContainer}>
                 <ThirdIcon />
-                <h1 className={styles.titleSmall}>Go To Minting Page</h1>
+                <h1 className={sharedStyles.titleSmall}>Go To Minting Page</h1>
               </div>
               <div className={styles.investFirstStepLabelContainer}>
                 <label className={styles.description}>

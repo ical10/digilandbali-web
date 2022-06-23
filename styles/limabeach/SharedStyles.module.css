@@ -191,6 +191,8 @@
 .responsive {
   max-width: 100%;
   height: auto;
+
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 1200px) {
@@ -221,5 +223,9 @@
   .subtitleWrapper {
     font-size: 12px;
     line-height: 150%;
+  }
+
+  .titleBorder {
+    margin: 9px 0;
   }
 }

@@ -1,12 +1,13 @@
 import Image from 'next/image';
 
 import styles from '../../../styles/limabeach/SecondSection.module.css';
+import sharedStyles from '../../../styles/limabeach/SharedStyles.module.css';
 import AboutLimaBeachSection from './AboutLimaBeachSection';
 import BluePrintSection from './BluePrintSection';
 import FacilitySection from './FacilitySection';
 import LuxuryPropertySection from './LuxuryPropertySection';
+import MintingStageSection from './MintingStageSection';
 import NFTFragmentSection from './NFTFragmentSection';
-import NinthSubSection from './NinthSubSection';
 import PermissiveDocSection from './PermissiveDocSection';
 import SmartSysSection from './SmartSysSection';
 import TenthSubSection from './TenthSubSection';
@@ -23,11 +24,11 @@ const SecondSection = () => {
       <SmartSysSection />
       <PermissiveDocSection />
       <NFTFragmentSection />
-      <NinthSubSection />
+      <MintingStageSection />
       <TenthSubSection />
       <div className={styles.tokenDistributionContainer}>
         <div className={styles.tokenDistributionHeaderContainer}>
-          <h1 className={styles.titleBig}>Token Distribution.</h1>
+          <h1 className={sharedStyles.sectionTitleBig}>Token Distribution.</h1>
           <label className={styles.tokenDistributionLabel}>1,771 NFT Fragment</label>
         </div>
         <div style={{width: '1140px', height: '646px', position: 'relative'}}>
@@ -36,7 +37,7 @@ const SecondSection = () => {
       </div>
       <div className={styles.roadmapContainer}>
         <div className={styles.roadmapHeaderContainer}>
-          <h1 className={styles.titleBig}>Lima Beach Signature NFT Roadmap.</h1>
+          <h1 className={sharedStyles.sectionTitleBig}>Lima Beach Signature NFT Roadmap.</h1>
           <label className={styles.description}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate nunc tortor proin
             adipiscing lacus augue gravida et. Vulputate nunc tortor proin adipiscing lacus augue
