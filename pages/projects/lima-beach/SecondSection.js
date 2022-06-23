@@ -11,6 +11,7 @@ import MintingStageSection from './MintingStageSection';
 import NFTFragmentSection from './NFTFragmentSection';
 import PermissiveDocSection from './PermissiveDocSection';
 import SmartSysSection from './SmartSysSection';
+import TokenDistSection from './TokenDistSection';
 import UtilityNFTSection from './UtilityNFTSection';
 
 const SecondSection = () => {
@@ -26,15 +27,7 @@ const SecondSection = () => {
       <NFTFragmentSection />
       <MintingStageSection />
       <MintSection />
-      <div className={styles.tokenDistributionContainer}>
-        <div className={styles.tokenDistributionHeaderContainer}>
-          <h1 className={sharedStyles.sectionTitleBig}>Token Distribution.</h1>
-          <label className={styles.tokenDistributionLabel}>1,771 NFT Fragment</label>
-        </div>
-        <div style={{width: '1140px', height: '646px', position: 'relative'}}>
-          <Image src={'/Chart.svg'} layout="fill" />
-        </div>
-      </div>
+      <TokenDistSection />
       <div className={styles.roadmapContainer}>
         <div className={styles.roadmapHeaderContainer}>
           <h1 className={sharedStyles.sectionTitleBig}>Lima Beach Signature NFT Roadmap.</h1>

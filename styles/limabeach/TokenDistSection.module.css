@@ -1,0 +1,65 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  gap: 2em;
+
+  max-width: 100%;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 11;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 150%;
+
+  text-align: center;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+
+  /* White-2 */
+
+  color: #e2e2e2;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+
+  max-width: 100%;
+}
+
+@media screen and (max-width: 920px) {
+  .root {
+    gap: 3em;
+  }
+
+  .text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .root {
+    gap: 2em;
+  }
+
+  .text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+  }
+}
