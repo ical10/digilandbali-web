@@ -211,7 +211,7 @@
   margin: 0 auto;
 }
 
-@media screen and (max-width: 1200px) {
+@media screen and (max-width: 1280px) {
   .sectionTitleBig {
     font-size: 32px;
     line-height: 38px;
@@ -220,14 +220,43 @@
   .description {
     font-family: 'Syne';
     font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
+    font-weight: 500;
+    font-size: 16px;
     line-height: 150%;
-    /* or 18px */
+    /* or 24px */
 
     font-feature-settings: 'pnum' on, 'lnum' on;
 
     /* White-2 */
+
+    color: #e2e2e2;
+  }
+}
+
+@media screen and (max-width: 920px) {
+  .description {
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    /* or 24px */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* White-2 */
+
+    color: #e2e2e2;
+  }
+
+  .titleSmall {
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 160%;
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
 
     color: #e2e2e2;
   }
@@ -268,6 +297,21 @@
     line-height: 150%;
 
     font-feature-settings: 'pnum' on, 'lnum' on;
+
+    color: #e2e2e2;
+  }
+
+  .description {
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+    /* or 18px */
+
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* White-2 */
 
     color: #e2e2e2;
   }

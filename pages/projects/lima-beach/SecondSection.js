@@ -10,6 +10,7 @@ import MintSection from './MintSection';
 import MintingStageSection from './MintingStageSection';
 import NFTFragmentSection from './NFTFragmentSection';
 import PermissiveDocSection from './PermissiveDocSection';
+import RoadmapSection from './RoadmapSection';
 import SmartSysSection from './SmartSysSection';
 import TokenDistSection from './TokenDistSection';
 import UtilityNFTSection from './UtilityNFTSection';
@@ -28,21 +29,7 @@ const SecondSection = () => {
       <MintingStageSection />
       <MintSection />
       <TokenDistSection />
-      <div className={styles.roadmapContainer}>
-        <div className={styles.roadmapHeaderContainer}>
-          <h1 className={sharedStyles.sectionTitleBig}>Lima Beach Signature NFT Roadmap.</h1>
-          <label className={styles.description}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate nunc tortor proin
-            adipiscing lacus augue gravida et. Vulputate nunc tortor proin adipiscing lacus augue
-            gravida et.
-          </label>
-        </div>
-        <div className={styles.imageContainer}>
-          <div style={{width: '100%', height: '1368px', position: 'relative'}}>
-            <Image src={'/Roadmap.svg'} layout="fill" />
-          </div>
-        </div>
-      </div>
+      <RoadmapSection />
     </div>
   );
 };

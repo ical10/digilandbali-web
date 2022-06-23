@@ -1,0 +1,22 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  max-width: 100%;
+
+  flex: none;
+  order: 12;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+
+  max-width: 100%;
+}
