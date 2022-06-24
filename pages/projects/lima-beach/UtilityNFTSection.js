@@ -7,10 +7,10 @@ const UtilityNFTSection = () => {
       <div
         className={`${sharedStyles.flexColumnStartContainer} ${sharedStyles.flexOrder2} ${styles.root}`}
       >
-        <h1 className={sharedStyles.sectionTitleBig}>
+        <div className={sharedStyles.sectionTitleBig}>
           Decentralized NFT Developer Property with Apartments as Utility
           <span className={sharedStyles.titleDot}>.</span>
-        </h1>
+        </div>
         <div className={sharedStyles.titleBorder}></div>
         <div className={styles.imageDimension}>
           <img src={'/Videopreview.svg'} />

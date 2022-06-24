@@ -1,10 +1,8 @@
-import Image from 'next/image';
-
-import styles from '../../../styles/limabeach/SecondSection.module.css';
-import sharedStyles from '../../../styles/limabeach/SharedStyles.module.css';
+import styles from '../../../styles/limabeach/SectionGroup.module.css';
 import AboutLimaBeachSection from './AboutLimaBeachSection';
 import BluePrintSection from './BluePrintSection';
 import FacilitySection from './FacilitySection';
+import HomeSection from './HomeSection';
 import LuxuryPropertySection from './LuxuryPropertySection';
 import MintSection from './MintSection';
 import MintingStageSection from './MintingStageSection';
@@ -15,9 +13,10 @@ import SmartSysSection from './SmartSysSection';
 import TokenDistSection from './TokenDistSection';
 import UtilityNFTSection from './UtilityNFTSection';
 
-const SecondSection = () => {
+const SectionGroup = () => {
   return (
     <div className={styles.root}>
+      <HomeSection />
       <AboutLimaBeachSection />
       <UtilityNFTSection />
       <LuxuryPropertySection />
@@ -34,4 +33,4 @@ const SecondSection = () => {
   );
 };
 
-export default SecondSection;
+export default SectionGroup;

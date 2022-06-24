@@ -1,6 +1,6 @@
 import Carousel from 'react-material-ui-carousel';
 
-import Image from 'next/image';
+import sharedStyles from '../../styles/limabeach/SharedStyles.module.css';
 
 const ImageCarousel = props => {
   const items = [
@@ -36,7 +36,11 @@ const ImageCarousel = props => {
 };
 
 const Item = ({item}, i) => {
-  return <Image src={item.src} width={item.width} height={item.height} alt={`${item.src}-${i}`} />;
+  return (
+    <div className={sharedStyles.responsive}>
+      <img src={item.src} alt={`${item.src}-${i}`} />
+    </div>
+  );
 };
 
 export default ImageCarousel;

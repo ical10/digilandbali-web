@@ -8,7 +8,7 @@ const LuxuryPropertySection = () => {
         className={`${sharedStyles.flexColumnStartContainer} ${sharedStyles.flexOrder3} ${styles.root}`}
       >
         <div className="w-full">
-          <h1 className={sharedStyles.titleBig}>
+          <h1 className={sharedStyles.sectionTitleBig}>
             Luxury Property with Developer Price<span className={sharedStyles.titleDot}>.</span>
           </h1>
           <div className={sharedStyles.titleBorder}></div>

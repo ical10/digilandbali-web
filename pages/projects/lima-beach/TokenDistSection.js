@@ -5,7 +5,9 @@ const TokenDistSection = () => {
   return (
     <div className={styles.root}>
       <div className={styles.headerContainer}>
-        <h1 className={sharedStyles.sectionTitleBig}>Token Distribution.</h1>
+        <h1 className={sharedStyles.sectionTitleBig}>
+          Token Distribution<span className={sharedStyles.titleDot}>.</span>
+        </h1>
         <div className={styles.text}>1,771 NFT Fragment</div>
       </div>
       <div>

@@ -1,18 +1,13 @@
 .root {
-  /* Frame 147 */
-
-  /* Auto layout */
-
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 25px 106px;
-  gap: 10px;
+  gap: 0.625em;
 }
 
 .imageWidth {
-  width: 328px;
+  max-width: 100%;
 }
 
 @media screen and (max-width: 677px) {
@@ -20,12 +15,11 @@
     padding: 0px 99px 0px 80px;
     gap: 40px;
 
-    width: 495px;
-    height: 70px;
+    max-width: 495px;
   }
 
   .imageWidth {
-    width: 138px;
+    max-width: 100%;
   }
 }
 
@@ -34,11 +28,10 @@
     padding: 0px 16px;
     gap: 40px;
 
-    width: 342px;
-    height: 56px;
+    max-width: 342px;
   }
 
   .imageWidth {
-    width: 77px;
+    max-width: 77px;
   }
 }

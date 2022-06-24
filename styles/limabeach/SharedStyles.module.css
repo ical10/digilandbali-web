@@ -6,11 +6,6 @@
   width: 100%;
 }
 
-.sectionWrapper {
-  padding: 0px;
-  gap: 128px;
-}
-
 .flexAllCenteredContainer {
   display: flex;
   justify-content: center;
@@ -166,10 +161,11 @@
 }
 
 .sectionTitleBig {
+  white-space: pre-wrap;
+
   font-weight: 700;
   font-size: 48px;
   line-height: 58px;
-  /* identical to box height */
 
   font-feature-settings: 'pnum' on, 'lnum' on;
 
@@ -234,6 +230,21 @@
 }
 
 @media screen and (max-width: 920px) {
+  .sectionTitleBig {
+    /* text-md-bold */
+
+    font-family: 'Syne';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 38px;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+
+    /* White-2 */
+
+    color: #e2e2e2;
+  }
+
   .description {
     font-family: 'Syne';
     font-style: normal;

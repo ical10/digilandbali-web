@@ -8,7 +8,7 @@ const AboutLimaBeachSection = () => {
   return (
     <>
       <SectionBreak />
-      <div className={styles.firstSubSection}>
+      <div className={styles.root}>
         <div className={styles.imageContainer}>
           <img src={'/Whatislimabeach.svg'} />
         </div>

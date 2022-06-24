@@ -4,12 +4,7 @@
   align-items: flex-start;
   gap: 62px;
 
-  width: 100%;
-  height: 360px;
-
-  margin-top: 128px;
-
-  margin-bottom: 64px;
+  max-width: 100%;
 }
 
 .imageDescContainer {
@@ -20,8 +15,7 @@
   padding: 0px;
   gap: 114px;
 
-  width: 100%;
-  height: 194px;
+  max-width: 100%;
 }
 
 .imageOuterContainer {
@@ -31,8 +25,7 @@
   padding: 0px;
   gap: 10px;
 
-  width: 308px;
-  height: 194px;
+  max-width: 308px;
 }
 
 .imageDescTextContainer {
@@ -42,8 +35,7 @@
   padding: 0px;
   gap: 32px;
 
-  width: 868px;
-  height: 194px;
+  max-width: 868px;
 }
 
 .descTitle {
@@ -74,7 +66,12 @@
 
 @media screen and (max-width: 920px) {
   .root {
-    margin-top: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+
+    max-width: 100%;
   }
 
   .descTitle {
@@ -85,16 +82,39 @@
   .descText {
     font-size: 14px;
   }
-}
 
-@media screen and (max-width: 677px) {
-  .root {
-    margin-top: 128px;
+  .imageDescContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0px;
+
+    max-width: 100%;
   }
 }
 
 @media screen and (max-width: 425px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0px;
+
+    max-width: 100%;
+  }
+
   .descText {
     font-size: 12px;
+  }
+
+  .imageDescContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0px;
+
+    max-width: 100%;
   }
 }

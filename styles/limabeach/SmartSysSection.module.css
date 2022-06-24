@@ -5,7 +5,6 @@
   gap: 48px;
 
   width: 100%;
-  height: 648px;
 }
 
 .smartSystemHeaderContainer {
@@ -16,8 +15,7 @@
   padding: 0px;
   gap: 16px;
 
-  width: 100%;
-  height: 162px;
+  max-width: 100%;
 }
 
 .smartSystemDescContainer {
@@ -27,8 +25,7 @@
   padding: 0px;
   gap: 16px;
 
-  width: 100%;
-  height: 438px;
+  max-width: 100%;
 }
 
 .smartSystemLeftDescContainer {
@@ -38,8 +35,7 @@
   padding: 0px;
   gap: 48px;
 
-  width: 416px;
-  height: 438px;
+  max-width: 416px;
 }
 
 .descContainer {
@@ -48,8 +44,7 @@
   justify-content: center;
   align-items: flex-start;
 
-  width: 308px;
-  height: 114px;
+  max-width: 308px;
 }
 
 .smartSystemMidDescContainer {
@@ -58,8 +53,7 @@
   align-items: center;
   padding: 0px;
 
-  width: 416px;
-  height: 438px;
+  max-width: 416px;
 }
 
 .smartSystemRightDescContainer {
@@ -70,31 +64,31 @@
   padding: 0px;
   gap: 48px;
 
-  width: 416px;
-  height: 438px;
+  max-width: 416px;
 }
 
 .imageContainer {
-  width: 416px;
-  height: 318px;
+  max-width: 416px;
 }
 
 @media screen and (max-width: 1280px) {
   .smartSystemDescContainer {
+    width: 100%;
+
     align-items: flex-start;
     justify-content: space-between;
   }
 
   .smartSystemLeftDescContainer {
-    width: 214px;
+    max-width: 214px;
   }
 
   .smartSystemMidDescContainer {
-    width: 214px;
+    max-width: 214px;
   }
 
   .smartSystemRightDescContainer {
-    width: 214px;
+    max-width: 214px;
   }
 }
 
@@ -132,7 +126,7 @@
   }
 
   .smartSystemMidDescContainer {
-    width: 214px;
+    max-width: 214px;
   }
 
   .smartSystemRightDescContainer {
@@ -140,8 +134,7 @@
   }
 
   .imageContainer {
-    width: 214px;
-    height: 380px;
+    max-width: 214px;
   }
 }
 
@@ -165,7 +158,6 @@
   }
 
   .imageContainer {
-    width: 174px;
-    height: 146px;
+    max-width: 174px;
   }
 }

@@ -8,14 +8,12 @@
   gap: 56px;
 
   width: 100%;
-  height: 506px;
 }
 
 .descriptionWrapper {
   gap: 16px;
 
   width: 100%;
-  height: 162px;
 }
 
 .titleWrapper {
@@ -23,7 +21,6 @@
   gap: 24px;
 
   width: 100%;
-  height: 78px;
 }
 
 .subtitle {
@@ -48,7 +45,6 @@
   gap: 16px;
 
   width: 664px;
-  height: 288px;
 }
 
 .rowFacilitiesContainer {
@@ -59,7 +55,6 @@
   gap: 16px;
 
   width: 664px;
-  height: 136px;
 }
 
 .facilityCardContainer {
@@ -70,7 +65,6 @@
   gap: 16px;
 
   width: 154px;
-  height: 136px;
 
   /* Hospitality-card */
 
@@ -95,7 +89,6 @@
   .root {
     gap: 16px;
     width: inherit;
-    height: 706px;
   }
 
   .subtitle {
@@ -105,7 +98,6 @@
 
   .facilitiesContainer {
     flex-direction: row;
-    height: 568px;
 
     width: inherit;
   }
@@ -123,6 +115,5 @@
 
   .facilityCardContainer {
     width: 163px;
-    height: 130px;
   }
 }

@@ -1,13 +1,11 @@
 import Layout from '../../../src/components/Layout';
-import HomeSection from './HomeSection';
-import SecondSection from './SecondSection';
+import SectionGroup from './SectionGroup';
 
 const LimaBeachPage = () => {
   return (
     <Layout>
       <div>
-        <HomeSection />
-        <SecondSection />
+        <SectionGroup />
       </div>
     </Layout>
   );

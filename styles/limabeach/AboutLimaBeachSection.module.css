@@ -1,6 +1,4 @@
-.firstSubSection {
-  /* Auto layout */
-
+.root {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -8,7 +6,6 @@
   gap: 124px;
 
   width: 100%;
-  height: 430px;
 
   /* Inside auto layout */
 
@@ -22,7 +19,7 @@
   font-weight: 700;
   font-size: 48px;
   line-height: 58px;
-  /* identical to box height */
+  white-space: pre-wrap;
 
   font-feature-settings: 'pnum' on, 'lnum' on;
 
@@ -34,8 +31,8 @@
 }
 
 .imageContainer {
-  width: 430px;
-  height: auto;
+  max-width: 100%;
+  margin-inline: auto;
 }
 
 .descriptionContainer {
@@ -44,8 +41,7 @@
   align-items: flex-start;
   padding: 0px;
 
-  width: 726px;
-  height: 342px;
+  max-width: 726px;
 
   overflow: hidden;
 }
@@ -74,6 +70,18 @@
   margin-bottom: 10px;
 }
 
+@media screen and (max-width: 920px) {
+  .root {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 2em;
+
+    width: 100%;
+  }
+}
+
 @media screen and (max-width: 677px) {
   .titleBig {
     font-size: 32px;
@@ -85,20 +93,14 @@
     color: #e2e2e2;
   }
 
-  .imageContainer {
-    width: 240px;
-    height: 255px;
-  }
-
   .descriptionContainer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    gap: 16px;
+    gap: 1em;
 
-    width: 402px;
-    height: 255px;
+    max-width: 402px;
   }
 
   .description {
@@ -116,22 +118,18 @@
 }
 
 @media screen and (max-width: 425px) {
+  .root {
+    gap: 0;
+  }
+
   .titleBig {
     font-weight: 700;
     font-size: 16px;
-    line-height: 160%;
-    /* or 26px */
+    line-height: 80%;
 
     font-feature-settings: 'pnum' on, 'lnum' on;
 
-    /* White */
-
     color: #ffffff;
-  }
-
-  .imageContainer {
-    width: 120px;
-    height: 170px;
   }
 
   .descriptionContainer {
@@ -139,7 +137,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
-    gap: 8px;
+    gap: 0.5em;
   }
 
   .description {

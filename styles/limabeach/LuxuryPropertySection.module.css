@@ -1,8 +1,5 @@
 .root {
-  padding: 0px;
-  gap: 64px;
-
-  width: 100%;
+  max-width: 100%;
 }
 
 .imageDescContainer {
@@ -10,15 +7,14 @@
   flex-direction: row;
   align-items: center;
   padding: 0px;
-  gap: 124px;
+  gap: 7.75em;
 
-  width: 100%;
-  height: 182px;
+  max-width: 100%;
 }
 
 .imageContainer {
   height: 100%;
-  width: 524px;
+  max-width: 524px;
 }
 
 .img {
@@ -34,7 +30,7 @@
   padding: 0px;
   gap: 22px;
 
-  width: 632px;
+  max-width: 632px;
 }
 
 .titleSmall {
@@ -54,8 +50,7 @@
   padding: 0px;
   gap: 25px;
 
-  width: 100%;
-  height: 26px;
+  max-width: 100%;
 }
 
 .text {
@@ -71,20 +66,18 @@
   color: #ffffff;
 }
 
-@media screen and (max-width: 677px) {
+@media screen and (max-width: 920px) {
   .imageDescContainer {
-    gap: 32px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
 
-    height: 194px;
+    gap: 2em;
   }
+}
 
-  .imageContainer {
-    height: 100%;
-    width: 235px;
-  }
-
+@media screen and (max-width: 677px) {
   .paragraphContainer {
-    width: 407px;
+    max-width: 407px;
   }
 
   .titleSmall {
@@ -97,10 +90,6 @@
     /* White */
 
     color: #ffffff;
-  }
-
-  .labelDescContainer {
-    height: 84px;
   }
 
   .text {
@@ -118,26 +107,27 @@
 }
 
 @media screen and (max-width: 425px) {
+  .root {
+    gap: 2em;
+  }
+
   .imageDescContainer {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 16px;
+    gap: 2em;
 
     width: 100%;
-    height: 293px;
   }
 
   .imageContainer {
     width: 100%;
-    height: 148px;
   }
 
   .paragraphContainer {
     gap: 22px;
 
     width: 100%;
-    height: 92px;
   }
 
   .titleSmall {
@@ -145,10 +135,6 @@
     line-height: 19px;
 
     color: #ffffff;
-  }
-
-  .labelDescContainer {
-    height: 57px;
   }
 
   .text {
