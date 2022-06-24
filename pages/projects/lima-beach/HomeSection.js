@@ -28,8 +28,14 @@ const Icons = ({dimension}) => {
 
   return (
     <>
-      {icons.map(icon => (
-        <Image src={icon.src} width={dimension} height={dimension} alt={icon.alt} />
+      {icons.map((icon, i) => (
+        <Image
+          key={`${icon.alt}-${i}`}
+          src={icon.src}
+          width={dimension}
+          height={dimension}
+          alt={icon.alt}
+        />
       ))}
     </>
   );

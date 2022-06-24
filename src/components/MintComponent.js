@@ -3,7 +3,7 @@ import {useState} from 'react';
 import {mintDigilandNFT} from '../helpers/metamask-interact';
 import ContentComponent from './ContentComponent';
 
-const MintComponent = ({walletaddress}) => {
+const MintComponent = ({walletAddress}) => {
   //State for forms
   const [referralCode, setReferralCode] = useState('');
   const [quantity, setQuantity] = useState(0);
