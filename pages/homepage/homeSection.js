@@ -1,8 +1,24 @@
+import {useRef} from 'react';
+import {animated} from 'react-spring';
+
 import Image from 'next/image';
 
+import {fadeInLeft, fadeInRight} from '../../src/animation';
+import useIntersectionObserver from '../../src/hooks/useIntersectionObserver';
 import styles from '../../styles/HomeSection.module.css';
 
 const HomeSection = () => {
+  // animation trigger
+  const triggerAnimation = {
+    floatText: useRef(),
+  };
+
+  // visible on viewport
+  const visibleAnimation = {
+    floatText: useIntersectionObserver(triggerAnimation.floatText, {rootMargin: '-50%'})
+      ?.isIntersecting,
+  };
+
   return (
     <section>
       <div>
@@ -14,23 +30,29 @@ const HomeSection = () => {
         </div>
       </div>
       <div className="relative">
-        <div className={`${styles.floatingTextContainer} ${styles.floatingText} ${styles.top}`}>
+        <animated.div
+          className={`${styles.floatingTextContainer} ${styles.floatingText} ${styles.top}`}
+          style={fadeInLeft(visibleAnimation.floatText)}
+        >
           <div className={styles.title}>NFT Developer Property</div>
           <div className={styles.subtitle}>
             Build decentralized property with developer price on Bali, build with community for
             community
           </div>
-        </div>
-        <div className={styles.imageMainContainer}>
+        </animated.div>
+        <div className={styles.imageMainContainer} ref={triggerAnimation.floatText}>
           <Image src="/Home.svg" layout="fill" className={styles.imageMain} alt="HomePicture" />
         </div>
-        <div className={`${styles.floatingTextContainer} ${styles.floatingText} ${styles.bottom}`}>
+        <animated.div
+          className={`${styles.floatingTextContainer} ${styles.floatingText} ${styles.bottom}`}
+          style={fadeInRight(visibleAnimation.floatText)}
+        >
           <div className={styles.title}>NFT Developer Property</div>
           <div className={styles.subtitle}>
             Build decentralized property with developer price on Bali, build with community for
             community
           </div>
-        </div>
+        </animated.div>
       </div>
       <div className={`${styles.buttonContainer} ${styles.bottom}`}>
         <button className={`${styles.button} ${styles.buttonWhite}`}>About Digilandbali</button>

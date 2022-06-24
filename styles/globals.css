@@ -4,10 +4,17 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
 body {
   background: url(/Bg_main.svg) no-repeat center center fixed;
   color: #333;
   font-family: 'Syne';
+  background-size: cover;
 }
 
 a {

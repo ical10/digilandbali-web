@@ -15,10 +15,10 @@
 }
 
 .top .left {
-  width: 25%;
+  width: 30%;
 }
 .top .right {
-  width: 75%;
+  width: 70%;
   padding-left: 105px;
 }
 
@@ -36,13 +36,13 @@
 }
 
 .bottomLeftImage .right {
-  width: 75%;
+  width: 70%;
   padding-left: 105px;
   font-size: 24px;
   line-height: 140%;
 }
 .bottomLeftImage .left {
-  width: 25%;
+  width: 30%;
   font-size: 14px;
   line-height: 150%;
 }
@@ -67,9 +67,14 @@
   line-height: 140%;
 }
 
+.miniText {
+  max-width: 303px;
+}
+
 .border {
   border: 2px solid #5b5b5b;
   margin: 24px 0;
+  float: right;
 }
 
 .dot {

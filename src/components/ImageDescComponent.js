@@ -1,27 +1,48 @@
 /* eslint-disable @next/next/no-img-element */
+import {useRef} from 'react';
+import {animated} from 'react-spring';
+
 import styles from '../../styles/ImageDescComponent.module.css';
+import {fadeIn, fadeInUpText} from '../animation';
+import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const ImageDescComponent = ({imageUrl, imageAlt, title, description}) => {
+  const triggerRef = useRef();
+  const dataRef = useIntersectionObserver(triggerRef, {});
+  const visible = dataRef?.isIntersecting;
+
   return (
     <div className={styles.container}>
       {title ? (
-        <div className={`${styles.title} ${styles.top}`}>
+        <animated.div
+          ref={triggerRef}
+          style={fadeInUpText(visible)}
+          className={`${styles.title} ${styles.top}`}
+        >
           {title}
           <span className={styles.dot}>.</span>
-        </div>
+        </animated.div>
       ) : null}
       <div className="flex">
-        <div className={styles.imageContainer}>
+        <animated.div ref={triggerRef} style={fadeIn(visible)} className={styles.imageContainer}>
           <img src={imageUrl} className={styles.image} alt={imageAlt} />
-        </div>
+        </animated.div>
         <div className={styles.textContainer}>
           {title ? (
-            <div className={`${styles.title} ${styles.bottom}`}>
-              {title}
-              <span className={styles.dot}>.</span>
+            <div className="overflow-hidden">
+              <animated.div
+                ref={triggerRef}
+                style={fadeInUpText(visible)}
+                className={`${styles.title} ${styles.bottom}`}
+              >
+                {title}
+                <span className={styles.dot}>.</span>
+              </animated.div>
             </div>
           ) : null}
-          <div className={styles.description}>{description}</div>
+          <animated.div ref={triggerRef} style={fadeIn(visible)} className={styles.description}>
+            {description}
+          </animated.div>
         </div>
       </div>
     </div>

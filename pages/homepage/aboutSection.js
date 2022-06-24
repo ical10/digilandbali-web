@@ -1,10 +1,29 @@
 /* eslint-disable @next/next/no-img-element */
+import {useRef} from 'react';
+import {animated} from 'react-spring';
+
 import Image from 'next/image';
 
+import {fadeIn, imageWidth} from '../../src/animation';
 import HomeTitleSection from '../../src/components/HomeTitleSection';
 import ImageDescComponent from '../../src/components/ImageDescComponent';
+import useIntersectionObserver from '../../src/hooks/useIntersectionObserver';
 
 const AboutSection = () => {
+  // animation trigger
+  const triggerAnimation = {
+    imgLeft: useRef(),
+    imgRight: useRef(),
+    textCenter: useRef(),
+  };
+
+  // visible on viewport
+  const visibleAnimation = {
+    imgLeft: useIntersectionObserver(triggerAnimation.imgLeft, {})?.isIntersecting,
+    imgRight: useIntersectionObserver(triggerAnimation.imgRight, {})?.isIntersecting,
+    textCenter: useIntersectionObserver(triggerAnimation.textCenter, {})?.isIntersecting,
+  };
+
   const stage = [
     {
       name: 'STAGE 01',
@@ -57,11 +76,19 @@ const AboutSection = () => {
         />
       </div>
       <div className="pb-20 tablet:pb-32">
-        <div className="relative w-full hidden desktop:block">
+        <animated.div
+          className="relative w-full hidden desktop:block"
+          style={imageWidth(visibleAnimation.imgLeft)}
+          ref={triggerAnimation.imgLeft}
+        >
           <img src={'/image5.svg'} className="w-full h-auto" alt={'tes'} />
           <div className="text-base text-[#E2E2E2] pt-2 fontFeature">Fragment</div>
-        </div>
-        <div className="tablet:py-8">
+        </animated.div>
+        <animated.div
+          className="tablet:py-8"
+          style={fadeIn(visibleAnimation.textCenter)}
+          ref={triggerAnimation.textCenter}
+        >
           <div className="text-center text-[#FFFFFF] font-bold text-[16px] leading:leading-[25px] tablet:text-[34px] tablet:leading-[50px] desktop:text-[64px] desktop:leading-[77px] pb-4 fontFeature">
             Apartment & Skyvillas
             <br />
@@ -96,11 +123,15 @@ const AboutSection = () => {
               COMMUNITY
             </div>
           </div>
-        </div>
-        <div className="relative w-full hidden desktop:block">
+        </animated.div>
+        <animated.div
+          className="relative w-full hidden desktop:block ml-auto"
+          style={imageWidth(visibleAnimation.imgRight)}
+          ref={triggerAnimation.imgRight}
+        >
           <img src={'/image6.svg'} className="w-full h-auto" alt={'tes'} />
           <div className="text-base text-[#E2E2E2] text-right pt-2 fontFeature">Fragment</div>
-        </div>
+        </animated.div>
       </div>
       <div className="pb-20 tablet:pb-32">
         <HomeTitleSection
