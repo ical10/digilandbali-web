@@ -11,7 +11,11 @@ const TokenDistSection = () => {
         <div className={styles.text}>1,771 NFT Fragment</div>
       </div>
       <div>
-        <img src={'/Chart.svg'} className={sharedStyles.responsive} />
+        <img
+          src={'/Chart.svg'}
+          className={sharedStyles.responsive}
+          alt="Token distribution chart"
+        />
       </div>
     </div>
   );

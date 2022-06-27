@@ -16,7 +16,7 @@ const SectionBreak = () => {
     <div className={styles.root}>
       {images.map((image, i) => (
         <div key={`${image.src}-${i}`}>
-          <img src={image.src} />
+          <img src={image.src} alt={`${image.src} logo`} />
         </div>
       ))}
     </div>

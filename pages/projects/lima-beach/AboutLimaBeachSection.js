@@ -10,7 +10,7 @@ const AboutLimaBeachSection = () => {
       <SectionBreak />
       <div className={styles.root}>
         <div className={styles.imageContainer}>
-          <img src={'/Whatislimabeach.svg'} />
+          <img src={'/Whatislimabeach.svg'} alt="Lima Beach illustration" />
         </div>
         <div className={styles.descriptionContainer}>
           <h1 className={styles.titleBig}>

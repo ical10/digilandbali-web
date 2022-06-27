@@ -13,7 +13,7 @@ const UtilityNFTSection = () => {
         </div>
         <div className={sharedStyles.titleBorder}></div>
         <div className={styles.imageDimension}>
-          <img src={'/Videopreview.svg'} />
+          <img src={'/Videopreview.svg'} alt="video preview" />
         </div>
         <div className="flex flex-col items-start gap-[32px] w-full h-auto">
           <div className={styles.descContainer}>

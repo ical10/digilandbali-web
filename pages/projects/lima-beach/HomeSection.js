@@ -80,7 +80,7 @@ const HomeSection = () => {
         </div>
       </div>
       <div>
-        <img src="/Union.svg" className={sharedStyles.responsive} />
+        <img src="/Union.svg" className={sharedStyles.responsive} alt="decorative image" />
       </div>
     </div>
   );

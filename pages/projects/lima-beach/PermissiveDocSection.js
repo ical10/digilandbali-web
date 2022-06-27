@@ -36,7 +36,11 @@ const PermissiveDocSection = () => {
       <div className={styles.imageDescContainer}>
         <div className={styles.singleImageContainer}>
           <div className={sharedStyles.imageContainer}>
-            <img src={'/Cert1.svg'} className={styles.responsiveImg} />
+            <img
+              src={'/Cert1.svg'}
+              className={styles.responsiveImg}
+              alt="cerficate 1 illustration"
+            />
           </div>
           <h1 className={styles.imageTitle}>Leasehold Documents</h1>
           <div className={sharedStyles.titleBorder}></div>
@@ -47,7 +51,11 @@ const PermissiveDocSection = () => {
         </div>
         <div className={styles.singleImageContainer}>
           <div className={sharedStyles.imageContainer}>
-            <img src={'/Cert2.svg'} className={styles.responsiveImg} />
+            <img
+              src={'/Cert2.svg'}
+              className={styles.responsiveImg}
+              alt="certificate 2 illustration"
+            />
           </div>
           <h1 className={styles.imageTitle}>Land Certificate</h1>
           <div className={sharedStyles.titleBorder}></div>
@@ -58,7 +66,11 @@ const PermissiveDocSection = () => {
         </div>
         <div className={styles.singleImageContainer}>
           <div className={sharedStyles.imageContainer}>
-            <img src={'/Cert3.svg'} className={styles.responsiveImg} />
+            <img
+              src={'/Cert3.svg'}
+              className={styles.responsiveImg}
+              alt="certificate 3 illustration"
+            />
           </div>
           <h1 className={styles.imageTitle}>Time Share</h1>
           <div className={sharedStyles.titleBorder}></div>

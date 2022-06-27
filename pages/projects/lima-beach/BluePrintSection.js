@@ -14,16 +14,16 @@ const BluePrintSection = () => {
       </div>
       <div className={styles.sneakPeakImageContainer}>
         <div className={styles.imageContainer}>
-          <img src={'/BluePrint1.svg'} className={styles.img} />
+          <img src={'/BluePrint1.svg'} className={styles.img} alt="Blueprint 1 illustration" />
         </div>
         <div className={styles.imageContainer}>
-          <img src={'/BluePrint2.svg'} className={styles.img} />
+          <img src={'/BluePrint2.svg'} className={styles.img} alt="BluePrint 2 illustration" />
         </div>
         <div className={styles.imageContainer}>
-          <img src={'/BluePrint3.svg'} className={styles.img} />
+          <img src={'/BluePrint3.svg'} className={styles.img} alt="Blueprint 3 illustration" />
         </div>
         <div className={styles.imageContainer}>
-          <img src={'/BluePrint4.svg'} className={styles.img} />
+          <img src={'/BluePrint4.svg'} className={styles.img} alt="Blueprint 4 illustration" />
         </div>
       </div>
     </div>

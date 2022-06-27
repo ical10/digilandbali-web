@@ -12,7 +12,11 @@ const NFTFragmentSection = () => {
       </div>
       <div className={styles.imageDescContainer}>
         <div className={styles.imageContainer}>
-          <img src={'/image-removebg-preview_1_1.svg'} className={sharedStyles.responsive} />
+          <img
+            src={'/image-removebg-preview_1_1.svg'}
+            className={sharedStyles.responsive}
+            alt="NFT Fragment image illustration"
+          />
         </div>
         <div className={styles.imageDescTextContainer}>
           <h1 className={styles.descTitle}>

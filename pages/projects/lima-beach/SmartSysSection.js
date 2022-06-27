@@ -33,7 +33,11 @@ const SmartSysSection = () => {
         </div>
         <div className={styles.smartSystemMidDescContainer}>
           <div className={styles.imageContainer}>
-            <img src={'/Smart_System.svg'} className={sharedStyles.responsive} />
+            <img
+              src={'/Smart_System.svg'}
+              className={sharedStyles.responsive}
+              alt="Smart system illustration"
+            />
           </div>
         </div>
         <div className={styles.smartSystemRightDescContainer}>

@@ -15,7 +15,7 @@ const RoadmapSection = () => {
         </div>
       </div>
       <div className={styles.imageContainer}>
-        <img src={'/Roadmap.svg'} className={sharedStyles.responsive} />
+        <img src={'/Roadmap.svg'} className={sharedStyles.responsive} alt="Roadmap image" />
       </div>
     </div>
   );

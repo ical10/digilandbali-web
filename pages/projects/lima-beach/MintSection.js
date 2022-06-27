@@ -16,7 +16,11 @@ const MintSection = () => {
         </div>
         <div className={styles.descContainer}>
           <div className={styles.detailContainer}>
-            <img src={'/NFTInvest.svg'} className={sharedStyles.responsive} />
+            <img
+              src={'/NFTInvest.svg'}
+              className={sharedStyles.responsive}
+              alt="How to mint illustration"
+            />
           </div>
           <div className={styles.stepsContainer}>
             <div className={styles.detailContainer}>

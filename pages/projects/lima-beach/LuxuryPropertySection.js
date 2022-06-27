@@ -16,7 +16,7 @@ const LuxuryPropertySection = () => {
         <div className="flex flex-col gap-8 tablet:gap-12 desktop:gap-16">
           <div className={styles.imageDescContainer}>
             <div className={styles.imageContainer}>
-              <img src={'/NFTapart.svg'} className={styles.img} />
+              <img src={'/NFTapart.svg'} className={styles.img} alt="NFT apartment image" />
             </div>
             <div className={styles.paragraphContainer}>
               {' '}
@@ -34,7 +34,7 @@ const LuxuryPropertySection = () => {
           </div>
           <div className={styles.imageDescContainer}>
             <div className={styles.imageContainer}>
-              <img src={'/NFTSkyvila.svg'} className={styles.img} />
+              <img src={'/NFTskyvila.svg'} className={styles.img} alt="NFT Skyvilla image" />
             </div>
             <div className={styles.paragraphContainer}>
               {' '}

@@ -17,7 +17,11 @@ const MintingStageSection = () => {
       <div className={styles.imageDescContainer}>
         <div className={styles.rowImageDescContainer}>
           <div className={styles.imageContainer}>
-            <img src={'/NFTStage1_1.svg'} className={sharedStyles.responsive} />
+            <img
+              src={'/NFTStage1_1.svg'}
+              className={sharedStyles.responsive}
+              alt="NFT Stage 1 illustration"
+            />
           </div>
           <div className={styles.rowDescContainer}>
             <h1 className={styles.descTitle}>Physical Land Stage, with $10,000 each Fragment</h1>
@@ -32,7 +36,11 @@ const MintingStageSection = () => {
         </div>
         <div className={styles.rowImageDescContainer}>
           <div className={styles.imageContainer}>
-            <img src={'/NFTStage2_1.svg'} className={sharedStyles.responsive} />
+            <img
+              src={'/NFTStage2_1.svg'}
+              className={sharedStyles.responsive}
+              alt="NFT Stage 2 illustration"
+            />
           </div>
           <div className={styles.rowDescContainer}>
             <h1 className={styles.descTitle}>
@@ -49,7 +57,11 @@ const MintingStageSection = () => {
         </div>
         <div className={styles.rowImageDescContainer}>
           <div className={styles.imageContainer}>
-            <img src={'/NFTStage3_1.svg'} className={sharedStyles.responsive} />
+            <img
+              src={'/NFTStage3_1.svg'}
+              className={sharedStyles.responsive}
+              alt="NFT Stage 3 illustration"
+            />
           </div>
           <div className={styles.rowDescContainer}>
             <h1 className={styles.descTitle}>
@@ -66,7 +78,11 @@ const MintingStageSection = () => {
         </div>
         <div className={styles.rowImageDescContainer}>
           <div className={styles.imageContainer}>
-            <img src={'/NFTStage4.svg'} className={sharedStyles.responsive} />
+            <img
+              src={'/NFTStage4.svg'}
+              className={sharedStyles.responsive}
+              alt="NFT Stage 4 illustration"
+            />
           </div>
           <div className={styles.rowDescContainer}>
             <h1 className={styles.descTitle}>Soft Opening Stage, with $22,500 each Fragment</h1>

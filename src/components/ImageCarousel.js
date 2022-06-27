@@ -3,28 +3,14 @@ import Carousel from 'react-material-ui-carousel';
 import sharedStyles from '../../styles/limabeach/SharedStyles.module.css';
 
 const ImageCarousel = props => {
-  const items = [
-    {
-      src: '/Headerslide.svg',
-      width: props.width,
-      height: props.height,
-    },
-    {
-      src: '/Headerslide.svg',
-      width: props.width,
-      height: props.height,
-    },
-    {
-      src: '/Headerslide.svg',
-      width: props.width,
-      height: props.height,
-    },
-    {
-      src: '/Headerslide.svg',
-      width: props.width,
-      height: props.height,
-    },
-  ];
+  const item = {
+    src: '/Headerslide.svg',
+    width: props.width,
+    height: props.height,
+    alt: 'image illustration',
+  };
+
+  const items = [item, item, item, item];
 
   return (
     <Carousel>
