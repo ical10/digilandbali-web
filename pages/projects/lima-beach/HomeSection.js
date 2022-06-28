@@ -27,8 +27,8 @@ const Icons = ({dimension}) => {
   return (
     <>
       {icons.map((icon, i) => (
-        <div style={{width: dimension, height: dimension}}>
-          <img key={`${icon.alt}-${i}`} src={icon.src} alt={icon.alt} />
+        <div key={`${icon.alt}-${i}`} style={{width: dimension, height: dimension}}>
+          <img src={icon.src} alt={icon.alt} />
         </div>
       ))}
     </>
