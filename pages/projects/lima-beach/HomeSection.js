@@ -1,10 +1,8 @@
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-import Image from 'next/image';
-
-import ImageCarousel from '../../../src/components/ImageCarousel';
-import styles from '../../../styles/limabeach/HomeSection.module.css';
-import sharedStyles from '../../../styles/limabeach/SharedStyles.module.css';
+import ImageCarousel from 'src/components/ImageCarousel';
+import styles from 'styles/limabeach/HomeSection.module.css';
+import sharedStyles from 'styles/limabeach/SharedStyles.module.css';
 
 const Icons = ({dimension}) => {
   const icons = [
@@ -29,13 +27,9 @@ const Icons = ({dimension}) => {
   return (
     <>
       {icons.map((icon, i) => (
-        <Image
-          key={`${icon.alt}-${i}`}
-          src={icon.src}
-          width={dimension}
-          height={dimension}
-          alt={icon.alt}
-        />
+        <div style={{width: dimension, height: dimension}}>
+          <img key={`${icon.alt}-${i}`} src={icon.src} alt={icon.alt} />
+        </div>
       ))}
     </>
   );
