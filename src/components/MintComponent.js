@@ -1,7 +1,8 @@
 import {useState} from 'react';
 
-import {mintDigilandNFT} from '../helpers/metamask-interact';
 import ContentComponent from './ContentComponent';
+
+import {mintDigilandNFT} from 'src/helpers/metamask-interact';
 
 const MintComponent = ({walletAddress}) => {
   //State for forms
@@ -46,6 +47,10 @@ const MintComponent = ({walletAddress}) => {
     setReferralCode(e.target.value);
   };
 
+  const handleConnectWallet = () => {
+    console.log('connect wallet');
+  };
+
   return (
     <>
       <div>
@@ -61,6 +66,7 @@ const MintComponent = ({walletAddress}) => {
           walletAddress={walletAddress}
           mintStatus={mintStatus}
           onMintPressed={handleMintPressed}
+          onConnectWallet={handleConnectWallet}
         />
       </div>
     </>
