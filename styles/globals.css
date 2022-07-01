@@ -135,6 +135,39 @@ button[disabled] {
   color: #666666;
 }
 
+button.outlined {
+  background: #fff;
+  border: 1px solid #1f50ff;
+  color: #1f50ff;
+  border-radius: 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  gap: 0.625em;
+}
+
+button.outlinedActive {
+  background: #fff;
+  border: 1px solid #76ce8a;
+  color: #76ce8a;
+  border-radius: 4px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  gap: 0.625em;
+}
+
+button.buttonOutlined:disabled,
+button.buttonOutlined[disabled] {
+  border: 1px solid #bbcdfb;
+  background-color: #bbcdfb;
+  color: #bbcdfb;
+}
+
 footer {
   display: flex;
   text-align: center;

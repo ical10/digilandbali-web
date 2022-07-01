@@ -50,3 +50,15 @@
 
   margin-bottom: 32px;
 }
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 1em;
+}
+
+.container > div {
+  border: 1px solid #d0d5dd;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+}
