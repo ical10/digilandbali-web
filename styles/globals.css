@@ -161,10 +161,10 @@ button.outlinedActive {
   gap: 0.625em;
 }
 
-button.buttonOutlined:disabled,
-button.buttonOutlined[disabled] {
+button.outlined:disabled,
+button.outlined[disabled] {
+  background: #fff;
   border: 1px solid #bbcdfb;
-  background-color: #bbcdfb;
   color: #bbcdfb;
 }
 
