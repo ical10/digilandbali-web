@@ -19,11 +19,7 @@ const PermissiveDocSection = () => {
       <div className="w-full overflow-hidden">
         <div className={styles.headerContainer}>
           <div className={styles.topHeaderContainer}>
-            <animated.div
-              className="flex justify-center"
-              ref={triggerRef}
-              style={fadeInUpText(visible)}
-            >
+            <animated.div className="flex" ref={triggerRef} style={fadeInUpText(visible)}>
               <div className={sharedStyles.sectionTitleBig}>
                 Permissive Document<span className={sharedStyles.titleDot}>.</span>
               </div>
@@ -51,15 +47,15 @@ const PermissiveDocSection = () => {
         leasehold rights for 30 years). All the NFT Buyers can cross-check the legal proof with the
         public notary.
       </div>
-      <div className={styles.imageDescContainer}>
+      <animated.div className={styles.imageDescContainer} ref={triggerRef} style={fadeIn(visible)}>
         <div className={styles.singleImageContainer}>
-          <animated.div className={styles.imageContainer} ref={triggerRef} style={fadeIn(visible)}>
+          <div className={styles.imageContainer}>
             <img
               src={'/Cert1.svg'}
               className={styles.responsiveImg}
               alt="cerficate 1 illustration"
             />
-          </animated.div>
+          </div>
           <h1 className={styles.imageTitle}>Leasehold Documents</h1>
           <div className={styles.imageBorder}></div>
           <div className={styles.imageText}>
@@ -68,13 +64,13 @@ const PermissiveDocSection = () => {
           </div>
         </div>
         <div className={styles.singleImageContainer}>
-          <animated.div className={styles.imageContainer} ref={triggerRef} style={fadeIn(visible)}>
+          <div className={styles.imageContainer}>
             <img
               src={'/Cert2.svg'}
               className={styles.responsiveImg}
               alt="certificate 2 illustration"
             />
-          </animated.div>
+          </div>
           <h1 className={styles.imageTitle}>Land Certificate</h1>
           <div className={styles.imageBorder}></div>
           <div className={styles.imageText}>
@@ -83,13 +79,13 @@ const PermissiveDocSection = () => {
           </div>
         </div>
         <div className={styles.singleImageContainer}>
-          <animated.div className={styles.imageContainer} ref={triggerRef} style={fadeIn(visible)}>
+          <div className={styles.imageContainer}>
             <img
               src={'/Cert3.svg'}
               className={styles.responsiveImg}
               alt="certificate 3 illustration"
             />
-          </animated.div>
+          </div>
           <h1 className={styles.imageTitle}>Time Share</h1>
           <div className={styles.imageBorder}></div>
           <div className={styles.imageText}>
@@ -103,7 +99,7 @@ const PermissiveDocSection = () => {
             Download Set of Document
           </a>
         </div>
-      </div>
+      </animated.div>
     </div>
   );
 };

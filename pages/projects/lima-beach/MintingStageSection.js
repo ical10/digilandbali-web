@@ -1,7 +1,10 @@
-import styles from '../../../styles/limabeach/MintingStage.module.css';
-import sharedStyles from '../../../styles/limabeach/SharedStyles.module.css';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+import styles from 'styles/limabeach/MintingStage.module.css';
+import sharedStyles from 'styles/limabeach/SharedStyles.module.css';
 
 const MintingStageSection = () => {
+  const isDesktop = useMediaQuery('(min-width:920px)', {noSsr: true});
   return (
     <div className={`${styles.root} ${sharedStyles.flexOrder9}`}>
       <div className={styles.headerContainer}>
@@ -98,8 +101,7 @@ const MintingStageSection = () => {
       <div className={styles.card}>
         <div className={styles.cardContent}>
           <h1 className={styles.textMintNow}>
-            Are you interested? <br />
-            Mint Now!
+            Are you interested? {isDesktop ? '' : <br />}Mint Now!
           </h1>
           <button className="min-w-max">Go to minting page</button>
         </div>

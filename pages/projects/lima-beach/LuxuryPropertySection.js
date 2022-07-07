@@ -4,6 +4,7 @@ import {animated} from 'react-spring';
 import styles from '../../../styles/limabeach/LuxuryPropertySection.module.css';
 import sharedStyles from '../../../styles/limabeach/SharedStyles.module.css';
 
+import {Import} from 'iconsax-react';
 import {borderWidth, fadeIn, fadeInUpText} from 'src/animation';
 import useIntersectionObserver from 'src/hooks/useIntersectionObserver';
 
@@ -51,8 +52,15 @@ const LuxuryPropertySection = () => {
                 at lacus. Cursus purus tristique et congue Cursus purus tristique et congue.
               </div>
               <div className={styles.labelDescContainer}>
-                <div>60 m2</div>
-                <div>Download blueprint</div>
+                <div className="font-bold text-xs tablet:text-base desktop:text-2xl text-white">
+                  60 m2
+                </div>
+                <div className="text-xs tablet:text-base desktop:text-2xl flex flex-row justify-end items-center ml-auto gap-2 max-w-[398px]">
+                  <Import color="#BBCDFB" variant="Linear" size={24} />
+                  <a href="" style={{color: '#BBCDFB'}}>
+                    Download Blue Print
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -69,8 +77,15 @@ const LuxuryPropertySection = () => {
                 at lacus. Cursus purus tristique et congue Cursus purus tristique et congue.
               </div>
               <div className={styles.labelDescContainer}>
-                <label>120 m2</label>
-                <label>Download blueprint</label>
+                <div className="font-bold text-xs tablet:text-base desktop:text-2xl text-white">
+                  120 m2
+                </div>
+                <div className="text-xs tablet:text-base desktop:text-2xl flex flex-row justify-end items-center ml-auto gap-2 max-w-[398px]">
+                  <Import color="#BBCDFB" variant="Linear" size={24} />
+                  <a href="" style={{color: '#BBCDFB'}}>
+                    Download Blue Print
+                  </a>
+                </div>
               </div>
             </div>
           </div>

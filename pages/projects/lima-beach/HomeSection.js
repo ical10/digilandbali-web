@@ -44,7 +44,7 @@ const HomeSection = () => {
     >
       <div className="w-full flex flex-col gap-1 items-center tablet:items-center desktop:flex desktop:flex-row desktop:gap-14 desktop:justify-end">
         <div>
-          <div className={sharedStyles.sectionTitleBig}>
+          <div className="whitespace-prewrap text-bold text-2xl desktop:text-5xl text-center text-white">
             LIMA BEACH
             <br />
             SIGNATURE NFT<span className={sharedStyles.titleDot}>.</span>
@@ -65,11 +65,13 @@ const HomeSection = () => {
         <div className="flex flex-row justify-center items-center desktop:flex-col">
           <div className="flex flex-col justify-center items-center p-3 gap-[10px] w-[163px] h-full tablet:p-8 tablet:w-full tablet:h-[110px] desktop:px-[48px] desktop:py-[61px] desktop:h-[204px]">
             <h1 className={styles.numberBig}>1,771</h1>
-            <label>NFT Fragments</label>
+            <div className="font-normal text-base text-[#AAAAAA] whitespace-nowrap">
+              NFT Fragments
+            </div>
           </div>
           <div className="flex flex-col justify-center items-center p-3 gap-[10px] w-[163px] h-full tablet:p-8 tablet:w-full tablet:h-[110px] desktop:px-[48px] desktop:py-[61px] desktop:h-[204px]">
             <h1 className={styles.numberBig}>253</h1>
-            <label>Apartements</label>
+            <div className="font-normal text-base text-[#AAAAAA]">Apartments</div>
           </div>
         </div>
       </div>

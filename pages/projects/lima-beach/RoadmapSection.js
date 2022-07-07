@@ -1,7 +1,11 @@
-import styles from '../../../styles/limabeach/RoadmapSection.module.css';
-import sharedStyles from '../../../styles/limabeach/SharedStyles.module.css';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+import styles from 'styles/limabeach/RoadmapSection.module.css';
+import sharedStyles from 'styles/limabeach/SharedStyles.module.css';
 
 const RoadmapSection = () => {
+  const isMobile = useMediaQuery('(max-width: 425px)', {noSsr: true});
+
   return (
     <div className={styles.root}>
       <div className={styles.headerContainer}>
@@ -15,7 +19,11 @@ const RoadmapSection = () => {
         </div>
       </div>
       <div className={styles.imageContainer}>
-        <img src={'/Roadmap.svg'} className={sharedStyles.responsive} alt="Roadmap image" />
+        <img
+          src={isMobile ? '/RoadmapMobile.svg' : '/Roadmap.svg'}
+          className={sharedStyles.responsive}
+          alt="Roadmap image"
+        />
       </div>
     </div>
   );

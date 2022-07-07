@@ -19,7 +19,10 @@ const AboutLimaBeachSection = () => {
 
           <div className={styles.locationContainer}>
             <Location color="#fff" variant="Bold" size={20} />
-            <div>Canggu, Bali, Indonesia</div>
+
+            <div className="font-normal text-base text-[#E2E2E2] whitespace-nowrap">
+              Canggu, Bali, Indonesia
+            </div>
           </div>
           <div className={styles.description}>
             Lima Beach Signature is ProperBlock’s first decentralized property project. Each Lima

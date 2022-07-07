@@ -31,20 +31,24 @@ const BluePrintSection = () => {
           style={borderWidth(visible)}
         ></animated.div>
       </div>
-      <div className={styles.sneakPeakImageContainer}>
-        <animated.div className={styles.imageContainer} ref={triggerRef} style={fadeIn(visible)}>
+      <animated.div
+        className={styles.sneakPeakImageContainer}
+        ref={triggerRef}
+        style={fadeIn(visible)}
+      >
+        <div className={styles.imageContainer}>
           <img src={'/BluePrint1.svg'} className={styles.img} alt="Blueprint 1 illustration" />
-        </animated.div>
-        <animated.div className={styles.imageContainer} ref={triggerRef} style={fadeIn(visible)}>
+        </div>
+        <div className={styles.imageContainer}>
           <img src={'/BluePrint2.svg'} className={styles.img} alt="BluePrint 2 illustration" />
-        </animated.div>
-        <animated.div className={styles.imageContainer} ref={triggerRef} style={fadeIn(visible)}>
+        </div>
+        <div className={styles.imageContainer}>
           <img src={'/BluePrint3.svg'} className={styles.img} alt="Blueprint 3 illustration" />
-        </animated.div>
-        <animated.div className={styles.imageContainer} ref={triggerRef} style={fadeIn(visible)}>
+        </div>
+        <div className={styles.imageContainer}>
           <img src={'/BluePrint4.svg'} className={styles.img} alt="Blueprint 4 illustration" />
-        </animated.div>
-      </div>
+        </div>
+      </animated.div>
     </div>
   );
 };

@@ -64,7 +64,8 @@
   padding: 16px;
   gap: 16px;
 
-  width: 154px;
+  min-width: 154px;
+  min-height: 130px;
 
   /* Hospitality-card */
 

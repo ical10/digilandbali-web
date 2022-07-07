@@ -19,16 +19,16 @@ const SmartSysSection = () => {
       <div className={styles.smartSystemDescContainer}>
         <div className={styles.smartSystemLeftDescContainer}>
           <div className={styles.descContainer}>
-            <h1>Connection</h1>
-            <div>Connect automation systems.</div>
+            <h1 className="text-[#E2E2E2]">Connection</h1>
+            <div className="text-[#E2E2E2]">Connect automation systems.</div>
           </div>
           <div className={styles.descContainer}>
-            <h1>User Friendly</h1>
-            <div>Easily connect and install.</div>
+            <h1 className="text-[#E2E2E2]">User Friendly</h1>
+            <div className="text-[#E2E2E2]">Easily connect and install.</div>
           </div>
           <div className={styles.descContainer}>
-            <h1>Functional</h1>
-            <div>Smart integrated functions.</div>
+            <h1 className="text-[#E2E2E2]">Functional</h1>
+            <div className="text-[#E2E2E2]">Smart integrated functions.</div>
           </div>
         </div>
         <div className={styles.smartSystemMidDescContainer}>
@@ -42,16 +42,16 @@ const SmartSysSection = () => {
         </div>
         <div className={styles.smartSystemRightDescContainer}>
           <div className={styles.descContainer}>
-            <h1>Smart</h1>
-            <div>Smart Control and experience</div>
+            <h1 className="text-[#E2E2E2]">Smart</h1>
+            <div className="text-[#E2E2E2]">Smart Control and experience</div>
           </div>
           <div className={styles.descContainer}>
-            <h1>Green</h1>
-            <div>Response to energy saving experience</div>
+            <h1 className="text-[#E2E2E2]">Green</h1>
+            <div className="text-[#E2E2E2]">Response to energy saving experience</div>
           </div>
           <div className={styles.descContainer}>
-            <h1>Safe</h1>
-            <div>Globally certified products and services</div>
+            <h1 className="text-[#E2E2E2]">Safe</h1>
+            <div className="text-[#E2E2E2]">Globally certified products and services</div>
           </div>
         </div>
       </div>
