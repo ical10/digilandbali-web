@@ -4,6 +4,8 @@
 
   max-width: 100%;
 
+  gap: 48px;
+
   flex: none;
   order: 12;
   align-self: stretch;

@@ -23,7 +23,7 @@ const MintSection = () => {
               style={fadeInUpText(visible)}
             >
               <div className={sharedStyles.sectionTitleBig}>
-                How to Mint<span className={sharedStyles.titleDot}>.</span>
+                How to Invest<span className={sharedStyles.titleDot}>.</span>
               </div>
             </animated.div>
             <div className="w-full inline-block">
@@ -47,12 +47,13 @@ const MintSection = () => {
             <div className={styles.detailContainer}>
               <div className={styles.stepHeaderContainer}>
                 <FirstIcon />
-                <h1 className={sharedStyles.titleSmall}>Prepare your wallet</h1>
+                <h1 className={sharedStyles.titleSmall}>Prepare your crypto wallet</h1>
               </div>
               <div className={styles.stepTextContainer}>
                 <div className={sharedStyles.description}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate nunc tortor
-                  proin adipiscing lacus augue gravida et.
+                  Pick a platform that you can trust. Set up an account. Specify your personal
+                  information and pick a strong password. Utilizing 2-step verification, also known
+                  as 2FA, adds an additional degree of protection and is advised.
                 </div>
               </div>
             </div>
@@ -63,20 +64,24 @@ const MintSection = () => {
               </div>
               <div className={styles.stepTextContainer}>
                 <div className={sharedStyles.description}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate nunc tortor
-                  proin adipiscing lacus augue gravida et.
+                  Ready to purchase USDC once you have selected the ideal exchange. Ensure to only
+                  deposit funds into your account that you will not need for daily expenses or
+                  emergencies. Enter the USDC amount you wish to purchase.Choose the order type
+                  (market, limit, etc.).Complete the trade.
                 </div>
               </div>
             </div>
             <div className={styles.detailContainer}>
               <div className={styles.stepHeaderContainer}>
                 <ThirdIcon />
-                <h1 className={sharedStyles.titleSmall}>Go To Minting Page</h1>
+                <h1 className={sharedStyles.titleSmall}>Go to our minting page</h1>
               </div>
               <div className={styles.stepTextContainer}>
                 <div className={sharedStyles.description}>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate nunc tortor
-                  proin adipiscing lacus augue gravida et.
+                  Preview and mint your NFT fragment, mint it, sign it, approve the gas fee, wait
+                  for your NFT fragment to be minted, and minting complete! Your minted NFT fragment
+                  will be visible on your profile once the transaction has been approved. After
+                  completing this process, you are now the rightful owner of the physical property!
                 </div>
               </div>
             </div>

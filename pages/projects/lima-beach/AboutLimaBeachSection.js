@@ -1,8 +1,7 @@
-import SectionBreak from '../../../src/components/SectionBreak';
-import styles from '../../../styles/limabeach/AboutLimaBeachSection.module.css';
-import sharedStyles from '../../../styles/limabeach/SharedStyles.module.css';
-
 import {Location} from 'iconsax-react';
+import SectionBreak from 'src/components/SectionBreak';
+import styles from 'styles/limabeach/AboutLimaBeachSection.module.css';
+import sharedStyles from 'styles/limabeach/SharedStyles.module.css';
 
 const AboutLimaBeachSection = () => {
   return (
@@ -25,16 +24,17 @@ const AboutLimaBeachSection = () => {
             </div>
           </div>
           <div className={styles.description}>
-            Lima Beach Signature is ProperBlock’s first decentralized property project. Each Lima
-            Beach Signature NFT represents the physical ownership of an apartment that leaseholders
-            can use for living in Pantai Lima, Canggu, Bali. Each physical apartment in Lima Beach
-            Signature is a luxury service smart apartment that uses IoT Technology.
+            The first decentralised property project from Digilandbali called Lima Beach Signature.
+            Each Lima Beach Signature NFT represents the physical ownership of an apartment that
+            leaseholders in Pantai Lima, Canggu, Bali, may use for occupancy. Each physical
+            apartment in Lima Beach Signature is a luxury, IoT Technology enabled smart condo with
+            premium services.
           </div>
           <div className={styles.description}>
-            The benefits of having affordable housing lie within the communities' development.
-            Communities with more affordable houses are more sustainable, and the neighborhood is
-            also more secure as the significant economic impacts increase local purchasing power and
-            job creation.
+            Having housing that is affordable is beneficial for the growth of communities. When
+            there are more affordable houses in a community, it becomes more sustainable, and the
+            neighbourhood becomes safer and more secure, since the significant economic effects
+            improve local purchasing power and career opportunities.
           </div>
         </div>
       </div>

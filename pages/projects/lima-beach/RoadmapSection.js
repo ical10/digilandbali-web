@@ -12,10 +12,9 @@ const RoadmapSection = () => {
         <h1 className={sharedStyles.sectionTitleBig}>
           Lima Beach Signature NFT Roadmap<span className={sharedStyles.titleDot}>.</span>
         </h1>
-        <div className={sharedStyles.description}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vulputate nunc tortor proin
-          adipiscing lacus augue gravida et. Vulputate nunc tortor proin adipiscing lacus augue
-          gravida et.
+        <div className="font-normal text-xs text-[#e2e2e2] text-center desktop:text-sm">
+          We are guided by a simple yet precise vision of Lima Beach Signature NFTs roadmap. We
+          Build together, We Own Together
         </div>
       </div>
       <div className={styles.imageContainer}>

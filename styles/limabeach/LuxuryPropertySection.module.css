@@ -107,10 +107,6 @@
 }
 
 @media screen and (max-width: 425px) {
-  .root {
-    gap: 2em;
-  }
-
   .imageDescContainer {
     flex-direction: column;
     justify-content: center;

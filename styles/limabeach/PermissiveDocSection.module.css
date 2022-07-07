@@ -45,14 +45,6 @@
   max-width: 100%;
 }
 
-.singleImageContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 16px;
-}
-
 .imageTitle {
   font-weight: 600;
   font-size: 24px;
@@ -62,12 +54,6 @@
   font-feature-settings: 'pnum' on, 'lnum' on;
 
   color: #ffffff;
-}
-
-.imageBorder {
-  border: 2px solid #5b5b5b;
-  margin: 24px 0;
-  width: 100%;
 }
 
 .imageText {
@@ -85,12 +71,6 @@
 
 .linkWrapperInvisible {
   display: none;
-}
-
-.responsiveImg {
-  max-width: 100%;
-  height: auto;
-  margin-inline: auto;
 }
 
 @media screen and (max-width: 920px) {

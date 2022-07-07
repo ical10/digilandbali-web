@@ -1,4 +1,3 @@
-import styles from '../../../styles/limabeach/SectionGroup.module.css';
 import AboutLimaBeachSection from './AboutLimaBeachSection';
 import BluePrintSection from './BluePrintSection';
 import FacilitySection from './FacilitySection';
@@ -12,6 +11,8 @@ import RoadmapSection from './RoadmapSection';
 import SmartSysSection from './SmartSysSection';
 import TokenDistSection from './TokenDistSection';
 import UtilityNFTSection from './UtilityNFTSection';
+
+import styles from 'styles/limabeach/SectionGroup.module.css';
 
 const SectionGroup = () => {
   return (

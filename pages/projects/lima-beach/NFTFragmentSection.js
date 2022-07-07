@@ -44,9 +44,8 @@ const NFTFragmentSection = () => {
             7 NFT fragments would equal 1 luxury service apartment with a 58-years leasehold.
           </h1>
           <div className={styles.descText}>
-            One NFT Fragment will represent a one-seventh (1/7) ownership of the apartment leasehold
-            that when collected can be fusioned. To get one whole leasehold, a leaseholder would
-            need to have seven NFT fragments to combine into one NFT Apartment or one NFT Skyvilla.
+            Each fragment will let the NFT holders stay in the apartment for up to 30 nights. The
+            quotas will be changed every year for the next 58 years on 31 December 23:59:59 (UTC+8).
           </div>
         </div>
       </div>

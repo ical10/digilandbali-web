@@ -30,10 +30,10 @@ const MintingStageSection = () => {
             <h1 className={styles.descTitle}>Physical Land Stage, with $10,000 each Fragment</h1>
             <div className={sharedStyles.titleBorder}></div>
             <div className={styles.descText}>
-              The first NFT auction will be to buy physical land to develop the property. Anyone who
-              participates in the first auction will mint an NFT fragment with a price of $10,000.
-              Each NFT apartment will cost $70,000 in this stage, and it is the cheapest stage to
-              get the best deal.
+              The first NFT auction will be to purchase physical land on which to build the
+              property. Anyone who participates in the first auction will mint an $US10,000 NFT
+              fragment. In this stage, each NFT apartment will cost $US70,000, and it is the lowest
+              stage to get the best price.
             </div>
           </div>
         </div>
@@ -51,10 +51,10 @@ const MintingStageSection = () => {
             </h1>
             <div className={sharedStyles.titleBorder}></div>
             <div className={styles.descText}>
-              The second stage will auction NFT fragments used to fund the construction of the
-              apartment foundation. It will last for six months, and participants of the auction
-              will have the chance to invest $13,500/Fragment with a total NFT apartment price of
-              $94,500. The auction price is 35% more than the previous one.
+              In the second stage, NFT fragments will be auctioned off to fund the development of
+              the apartment foundation. It will run six months, and participants will be able to
+              invest $US13,500/Fragment for a total NFT apartment price of $US94,500. The current
+              auction price is 35% more than the previous one.
             </div>
           </div>
         </div>
@@ -72,10 +72,10 @@ const MintingStageSection = () => {
             </h1>
             <div className={sharedStyles.titleBorder}></div>
             <div className={styles.descText}>
-              The third stage will auction NFT fragments used to fund the apartment’s topping off.
-              It will last for eight months, and participants of the auction will have the chance to
-              invest $17,500 with a total NFT apartment price of $122,500. The auction price is 29%
-              more than the previous one.
+              In the third stage, NFT fragments will be auctioned off to fund the apartment's
+              topping off. It will run eight months, and participants will be able to invest
+              $US17,500 with a total NFT apartment pricing of $US122,500. The current auction price
+              is 29% higher than the previous one.
             </div>
           </div>
         </div>
@@ -91,9 +91,9 @@ const MintingStageSection = () => {
             <h1 className={styles.descTitle}>Soft Opening Stage, with $22,500 each Fragment</h1>
             <div className={sharedStyles.titleBorder}></div>
             <div className={styles.descText}>
-              The fourth stage will auction NFT fragments for eight months, and participants of the
-              auction will have the chance to invest $22,500 with a total NFT apartment price of
-              $157,500. The auction price is 22% more than the previous one.
+              The fourth stage will auction off NFT fragments for eight months, with participants
+              able to invest $US22,500 for a total NFT apartment price of $US157,500. The current
+              auction price is 22% higher than the previous one.
             </div>
           </div>
         </div>

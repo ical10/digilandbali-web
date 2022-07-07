@@ -22,7 +22,7 @@
   min-width: 100%;
 
   display: flex;
-  gap: 0px;
+  gap: 1rem;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
@@ -74,7 +74,7 @@
     min-width: 100%;
 
     display: flex;
-    gap: 0px;
+    gap: 1rem;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;

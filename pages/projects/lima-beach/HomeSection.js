@@ -37,6 +37,7 @@ const Icons = ({dimension}) => {
 
 const HomeSection = () => {
   const isMobile = useMediaQuery('(max-width: 425px)', {noSsr: true});
+  const isDesktop = useMediaQuery('(min-width: 920px)', {noSsr: true});
 
   return (
     <div
@@ -44,13 +45,13 @@ const HomeSection = () => {
     >
       <div className="w-full flex flex-col gap-1 items-center tablet:items-center desktop:flex desktop:flex-row desktop:gap-14 desktop:justify-end">
         <div>
-          <div className="whitespace-prewrap text-bold text-2xl desktop:text-5xl text-center text-white">
-            LIMA BEACH
+          <div className="uppercase whitespace-prewrap text-bold text-2xl desktop:text-5xl desktop:whitespace-nowrap text-center text-white">
+            lima beach
             <br />
-            SIGNATURE NFT<span className={sharedStyles.titleDot}>.</span>
+            signature {isDesktop ? <br /> : ''}nft<span className={sharedStyles.titleDot}>.</span>
           </div>
         </div>
-        <div className={sharedStyles.description}>
+        <div className="font-normal text-xs text-[#E2E2E2] text-center tablet:text-sm desktop:text-base desktop:font-medium desktop:text-left">
           A limited-edition NFT represents the physical property certificate and physical property
           ownership built with the Internet of Things (IoT) Technology and Web 3.0.
         </div>
