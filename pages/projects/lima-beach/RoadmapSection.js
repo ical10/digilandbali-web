@@ -24,6 +24,9 @@ const RoadmapSection = () => {
           alt="Roadmap image"
         />
       </div>
+      <div>
+        <img src="/Union.svg" className={sharedStyles.responsive} alt="decorative image" />
+      </div>
     </div>
   );
 };

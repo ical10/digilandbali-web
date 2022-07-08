@@ -6,20 +6,12 @@
   gap: 0.625em;
 }
 
-.imageWidth {
-  max-width: 100%;
-}
-
 @media screen and (max-width: 677px) {
   .root {
     padding: 0px 99px 0px 80px;
     gap: 40px;
 
     max-width: 495px;
-  }
-
-  .imageWidth {
-    max-width: 100%;
   }
 }
 
@@ -29,9 +21,5 @@
     gap: 40px;
 
     max-width: 342px;
-  }
-
-  .imageWidth {
-    max-width: 77px;
   }
 }

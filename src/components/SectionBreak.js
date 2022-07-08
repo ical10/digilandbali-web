@@ -34,7 +34,7 @@ const SectionBreak = () => {
         style={fadeIn(visibleAnimation.sectionBreak)}
       >
         {images.map((image, i) => (
-          <div key={`${image.src}-${i}`}>
+          <div key={`${image.src}-${i}`} className="min-w-20 tablet:min-w-32 desktop:min-w-60">
             <img src={image.src} alt={`${image.src} logo`} />
           </div>
         ))}
