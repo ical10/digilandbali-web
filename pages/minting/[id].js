@@ -10,16 +10,3 @@ const MintPage = () => {
 };
 
 export default MintPage;
-
-export async function getStaticPaths() {
-  return {
-    paths: [{params: {id: 'lima-beach'}}],
-    fallback: false,
-  };
-}
-
-export async function getStaticProps() {
-  return {
-    props: {},
-  };
-}

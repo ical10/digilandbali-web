@@ -3,6 +3,139 @@ import {createAlchemyWeb3} from '@alch/alchemy-web3';
 const contractABI = require('../../contracts/LBSFragment.json');
 const usdcContractABI = require('../../contracts/USDC.json');
 
+export const getTokenToMintedQty = async () => {
+  const contractAddress = '0xed7e99e9ac159152DDcD6699F716482a2DAF5831';
+
+  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+  const web3 = createAlchemyWeb3(alchemyKey);
+
+  try {
+    const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+
+    const activeStage = await contract.methods.activeStage().call();
+    const mintedQty = await contract.methods.tokenToMintedQty(activeStage).call();
+
+    return mintedQty;
+  } catch (error) {
+    console.log({error});
+  }
+};
+
+export const getMaxSaleSupply = async () => {
+  const contractAddress = '0xed7e99e9ac159152DDcD6699F716482a2DAF5831';
+
+  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+  const web3 = createAlchemyWeb3(alchemyKey);
+
+  try {
+    const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+
+    const activeStage = await contract.methods.activeStage().call();
+    const maxSupply = await contract.methods.getMaxSaleSupply(activeStage).call();
+
+    return maxSupply;
+  } catch (error) {
+    console.log({error});
+  }
+};
+
+export const getUSDCBalance = async () => {
+  const usdcContractAddress = '0x4DBCdF9B62e891a7cec5A2568C3F4FAF9E8Abe2b';
+
+  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+  const web3 = createAlchemyWeb3(alchemyKey);
+
+  try {
+    const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
+
+    const currentAccount = await window.ethereum.selectedAddress;
+
+    const balance = await usdcContract.methods.balanceOf(currentAccount).call();
+    return balance;
+  } catch (error) {
+    console.log({error});
+  }
+};
+
+export const getUSDCDecimals = async () => {
+  const usdcContractAddress = '0x4DBCdF9B62e891a7cec5A2568C3F4FAF9E8Abe2b';
+
+  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+  const web3 = createAlchemyWeb3(alchemyKey);
+
+  try {
+    const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
+
+    const decimals = await usdcContract.methods.decimals().call();
+
+    return decimals;
+  } catch (error) {
+    console.log({error});
+  }
+};
+
+export const getActiveStage = async () => {
+  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+  const web3 = createAlchemyWeb3(alchemyKey);
+  const contractAddress = '0xed7e99e9ac159152DDcD6699F716482a2DAF5831';
+
+  try {
+    const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+
+    const activeStage = await contract.methods.activeStage().call();
+
+    return activeStage;
+  } catch (error) {
+    console.log({error});
+  }
+};
+
+export const getPrice = async stageNumber => {
+  try {
+    const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+    const web3 = createAlchemyWeb3(alchemyKey);
+    const contractAddress = '0xed7e99e9ac159152DDcD6699F716482a2DAF5831';
+
+    const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+
+    const price = await contract.methods.getPrice(web3.utils.toNumber(stageNumber)).call();
+
+    const decimals = await getUSDCDecimals();
+
+    return price / 10 ** decimals;
+  } catch (error) {
+    console.log({error});
+  }
+};
+
+export const checkAllowanceUSDC = async () => {
+  const contractAddress = '0xed7e99e9ac159152DDcD6699F716482a2DAF5831';
+  const usdcContractAddress = '0x4DBCdF9B62e891a7cec5A2568C3F4FAF9E8Abe2b';
+
+  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+  const web3 = createAlchemyWeb3(alchemyKey);
+
+  try {
+    const usdcContract = await new web3.eth.Contract(usdcContractABI, usdcContractAddress);
+    const currentAccount = await window.ethereum.selectedAddress;
+
+    const transactionParameters = {
+      owner: currentAccount,
+      spender: contractAddress,
+    };
+
+    const allowance = await usdcContract.methods
+      .allowance(transactionParameters.owner, transactionParameters.spender)
+      .call();
+
+    const usdcDecimals = await usdcContract.methods.decimals().call();
+
+    return web3.utils.toNumber(allowance / 10 ** usdcDecimals);
+  } catch (error) {
+    console.log({error});
+  }
+};
+
 export const approveUSDC = async amount => {
   const contractAddress = '0xed7e99e9ac159152DDcD6699F716482a2DAF5831';
   const usdcContractAddress = '0x4DBCdF9B62e891a7cec5A2568C3F4FAF9E8Abe2b';
@@ -12,11 +145,11 @@ export const approveUSDC = async amount => {
 
   if (window.ethereum) {
     try {
-      window.usdcContract = await new web3.eth.Contract(usdcContractABI, usdcContractAddress);
+      const usdcContract = await new web3.eth.Contract(usdcContractABI, usdcContractAddress);
 
       const currentAccount = await window.ethereum.selectedAddress;
 
-      const usdcDecimals = await window.usdcContract.methods.decimals().call();
+      const decimals = await getUSDCDecimals();
 
       const transactionParameters = {
         from: currentAccount,
@@ -25,8 +158,8 @@ export const approveUSDC = async amount => {
 
       let isSuccess = false;
 
-      await window.usdcContract.methods
-        .approve(contractAddress, web3.utils.toBN(amount * 10 ** usdcDecimals))
+      await usdcContract.methods
+        .approve(contractAddress, web3.utils.toBN(amount * 10 ** decimals))
         .send({from: currentAccount})
         .on('confirmation', (confirmationNumber, receipt) => {
           if (confirmationNumber === 0) {
@@ -111,7 +244,6 @@ export const mintDigilandNFT = async quantity => {
   window.contract = await new web3.eth.Contract(contractABI.abi, contractAddress); //loadContract();
 
   const currentAccount = await window.ethereum.selectedAddress;
-  const price = await window.contract.methods.getPrice('1').call();
 
   //set up your Ethereum transaction
   const transactionParameters = {

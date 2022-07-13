@@ -6,37 +6,101 @@ import {useState, useEffect} from 'react';
 import {MinusCirlce, AddCircle, TickCircle, InfoCircle} from 'iconsax-react';
 import FAQComponent from 'src/components/FAQComponent';
 import SocialHandles from 'src/components/SocialHandles';
-import {mintDigilandNFT, connectWallet, approveUSDC} from 'src/helpers/metamask-interact';
+import {
+  mintDigilandNFT,
+  connectWallet,
+  getCurrentWalletConnected,
+} from 'src/helpers/metamask-interact';
 import useMintHook from 'src/hooks/use-mint.hooks';
 import styles from 'styles/ContentComponent.module.css';
 
 const ContentComponent = () => {
-  const {allowUSDC, isUSDCApproved, loading} = useMintHook();
+  const {
+    verifyAllowance,
+    allowUSDC,
+    isUSDCApproved,
+    editAllowance,
+    fetchPrice,
+    price,
+    fetchBalance,
+    fetchActiveStage,
+    activeStage,
+    balance,
+    fetchMaxSupply,
+    maxSupply,
+    fetchMintedQty,
+    mintedQty,
+    loading,
+  } = useMintHook();
+
+  useEffect(() => {
+    verifyAllowance();
+    fetchPrice();
+    fetchBalance();
+    fetchActiveStage();
+    fetchMaxSupply();
+    fetchMintedQty();
+  }, []);
 
   //TODO: add selector here from state management to read walletAddress
-  const [walletAddress, setWalletAddress] = useState('');
+  const [walletAddress, setWallet] = useState('');
+  const [status, setStatus] = useState('');
+
+  //TODO: move this into a hook e.g. useWalletHooks
+  const fetchCurrentWallet = async () => {
+    const {address} = await getCurrentWalletConnected();
+    return {address};
+  };
+
+  // TODO: move this into a hook e.g. useWalletHooks
+  const addWalletListener = () => {
+    if (window.ethereum) {
+      window.ethereum.on('accountsChanged', accounts => {
+        if (accounts.length > 0) {
+          window.currentAccount = accounts[0];
+          setWallet(accounts[0]);
+        } else {
+          setWallet('');
+          setStatus('🦊 connect to metamask using the top right button.');
+        }
+      });
+    } else {
+      setStatus(
+        <p>
+          {' '}
+          🦊{' '}
+          <a target="_blank" rel="noopener noreferrer" href={`https://metamask.io/download.html`}>
+            you must install metamask, a virtual ethereum wallet, in your browser.
+          </a>
+        </p>,
+      );
+    }
+  };
+
+  useEffect(() => {
+    (async () => {
+      const {address} = await fetchCurrentWallet();
+      setWallet(address);
+
+      addWalletListener();
+    })();
+  }, []);
 
   const [referralCode, setReferralCode] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [mintedQuantity, setMintedQuantity] = useState(0);
 
   const [, setMintStatus] = useState('');
-
   const [isAgreed, setIsAgreed] = useState(false);
 
   //TODO: fetch USDC balance from metamask
-  const [balance] = useState(200_000);
-
-  //TODO: fetch NFT price from getPrice in SC
-  const [price] = useState(50_000);
+  // const [balance] = useState(200_000);
 
   //Constant state
   const [maxQuantity] = useState(80);
 
   const handleMintPressed = async () => {
     if (quantity <= maxQuantity - mintedQuantity) {
-      //call metamask here to mint
-      console.log(`minted ${quantity} NFTs!`);
       let tempMinted = mintedQuantity + quantity;
       setMintedQuantity(tempMinted);
 
@@ -69,13 +133,12 @@ const ContentComponent = () => {
     const walletResponse = await connectWallet();
 
     //TODO: set walletAddress to the state management instead
-    setWalletAddress(walletResponse.address);
+    setWallet(walletResponse.address);
   };
 
   const handleAllowUSDC = () => {
-    //TODO: change demoPrice to 10_000 USDC on mainnet version
-    const demoPrice = 10;
-    allowUSDC(quantity * demoPrice);
+    allowUSDC(quantity * price);
+    verifyAllowance();
   };
 
   const isUSDCEnough = () => {
@@ -85,6 +148,10 @@ const ContentComponent = () => {
 
   const handleChangeAgreement = () => {
     setIsAgreed(!isAgreed);
+  };
+
+  const handleEditAllowance = () => {
+    editAllowance();
   };
 
   return (
@@ -98,11 +165,13 @@ const ContentComponent = () => {
             </div>
             <div>
               <p className="font-bold">Mint Price</p>
-              <p className="font-normal">2000 USDC</p>
+              <p className="font-normal">{price.toLocaleString()} USDC</p>
             </div>
             <div>
-              <p className="font-bold">Stage 1 Supply</p>
-              <p className="font-normal">0/120</p>
+              <p className="font-bold">Stage {activeStage} Supply</p>
+              <p className="font-normal">
+                {mintedQty}/{maxSupply}
+              </p>
             </div>
             <div>
               <p className="font-bold">Total Supply</p>
@@ -155,8 +224,24 @@ const ContentComponent = () => {
               </div>
               <div className="flex items-center justify-center rounded-lg border border-[#d0d5dd] py-2 px-4">
                 <h4 className="font-bold text-sm whitespace-nowrap">
-                  {price.toLocaleString()} USDC
+                  {(price * quantity).toLocaleString()} USDC
                 </h4>
+              </div>
+            </div>
+
+            <div>
+              Allowed USDC to trade
+              <div className="border border-[EDF4F7] rounded flex justify-end items-center py-2 px-3">
+                <TickCircle size="16" color={isUSDCApproved ? '#76CE8A' : '#808080'} />
+                <div className="ml-2">{(quantity * price).toLocaleString()}</div>
+                <button
+                  onClick={handleEditAllowance}
+                  className={`ml-auto bg-transparent shadow-none rounded-none p-0 font-medium text-xs ${
+                    isUSDCApproved ? 'text-[#436CFF]' : 'text-[#FF1E59]'
+                  }`}
+                >
+                  {isUSDCApproved ? 'Edit Allowance' : 'Cancel'}
+                </button>
               </div>
             </div>
 
