@@ -1,8 +1,8 @@
 import {createAlchemyWeb3} from '@alch/alchemy-web3';
 
-import contractABI from 'contracts/LBSFragment.json';
 import ContentComponent from 'src/components/ContentComponent';
 import Layout from 'src/components/Layout';
+import contractABI from 'src/contracts/LBSFragment.json';
 import {
   getActiveStage,
   getMaxSaleSupply,
