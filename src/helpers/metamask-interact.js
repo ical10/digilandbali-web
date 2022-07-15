@@ -22,6 +22,7 @@ export const getNFTImage = async (web3, contractAddress, contractABI) => {
     return image;
   } catch (error) {
     console.log({error});
+    return null;
   }
 };
 
@@ -63,6 +64,7 @@ export const getTokenToMintedQty = async (web3, contractAddress, contractABI) =>
     return mintedQty;
   } catch (error) {
     console.log({error});
+    return null;
   }
 };
 
@@ -76,6 +78,7 @@ export const getMaxSaleSupply = async (web3, contractAddress, contractABI) => {
     return maxSupply;
   } catch (error) {
     console.log({error});
+    return null;
   }
 };
 
@@ -131,6 +134,7 @@ export const getActiveStage = async (web3, contractAddress, contractABI) => {
     return activeStage;
   } catch (error) {
     console.log({error});
+    return null;
   }
 };
 
@@ -147,6 +151,7 @@ export const getPrice = async (web3, contractAddress, contractABI) => {
     return price / 10 ** decimals;
   } catch (error) {
     console.log({error});
+    return null;
   }
 };
 
