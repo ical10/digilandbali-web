@@ -1,8 +1,8 @@
 import {createAlchemyWeb3} from '@alch/alchemy-web3';
 
+import contractABI from 'public/contracts/LBSFragment.json';
 import ContentComponent from 'src/components/ContentComponent';
 import Layout from 'src/components/Layout';
-import contractABI from 'src/contracts/LBSFragment.json';
 import {
   getActiveStage,
   getMaxSaleSupply,
@@ -35,7 +35,7 @@ export async function getStaticPaths() {
 export async function getStaticProps() {
   const contractAddress = '0x38843520A521c72FD35DFAf0E0595553fe7ed0D9';
 
-  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+  const alchemyKey = process.env.REACT_APP_ALCHEMY_KEY;
 
   const web3 = createAlchemyWeb3(alchemyKey);
 
