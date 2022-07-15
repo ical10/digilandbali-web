@@ -1,6 +1,3 @@
-import {createAlchemyWeb3} from '@alch/alchemy-web3';
-
-import contractABI from 'public/contracts/LBSFragment.json';
 import ContentComponent from 'src/components/ContentComponent';
 import Layout from 'src/components/Layout';
 import {
@@ -26,6 +23,10 @@ const MintPage = ({price, activeStage, maxSupply, mintedQty, image}) => {
 };
 
 export async function getStaticProps() {
+  const {createAlchemyWeb3} = require('@alch/alchemy-web3');
+
+  const contractABI = require('../../public/contracts/LBSFragment.json');
+
   const contractAddress = '0x38843520A521c72FD35DFAf0E0595553fe7ed0D9';
 
   const alchemyKey = process.env.REACT_APP_ALCHEMY_KEY;
