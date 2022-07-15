@@ -13,7 +13,7 @@ import {
 import useMintHook from 'src/hooks/use-mint.hooks';
 import styles from 'styles/ContentComponent.module.css';
 
-const ContentComponent = ({price, activeStage, maxSupply, mintedQty, image}) => {
+const ContentComponent = () => {
   const {
     allowUSDC,
     verifyAllowance,
@@ -22,6 +22,16 @@ const ContentComponent = ({price, activeStage, maxSupply, mintedQty, image}) => 
     balance,
     fetchMintedByUserQty,
     mintedNFT,
+    fetchPrice,
+    price,
+    fetchActiveStage,
+    activeStage,
+    fetchMaxSupply,
+    maxSupply,
+    fetchMintedQty,
+    mintedQty,
+    fetchNFTImage,
+    image,
     loading,
   } = useMintHook();
 
@@ -29,6 +39,11 @@ const ContentComponent = ({price, activeStage, maxSupply, mintedQty, image}) => 
     verifyAllowance();
     fetchBalance();
     fetchMintedByUserQty();
+    fetchPrice();
+    fetchActiveStage();
+    fetchMaxSupply();
+    fetchMintedQty();
+    fetchNFTImage();
   }, []);
 
   const [walletAddress, setWallet] = useState('');

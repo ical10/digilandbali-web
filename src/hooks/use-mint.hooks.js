@@ -10,7 +10,7 @@ import {
   getMaxSaleSupply,
   getTokenToMintedQty,
   getMintedNFTQty,
-  getURI,
+  getNFTImage,
 } from 'src/helpers/metamask-interact';
 
 const useMintHook = () => {
@@ -19,17 +19,26 @@ const useMintHook = () => {
   const [allowance, setAllowance] = useState(0);
   const [activeStage, setActiveStage] = useState(0);
   const [maxSupply, setMaxSupply] = useState(0);
-  const [uriJson, setUriJson] = useState({
-    name: '',
-    description: '',
-    image: '',
-    external_link: '',
-  });
+  const [image, setImage] = useState('');
   const [price, setPrice] = useState(0);
   const [usdcDecimals, setDecimals] = useState(0);
   const [balance, setBalance] = useState(0);
   const [mintedQty, setMintedQty] = useState(0);
   const [mintedNFT, setMintedNFT] = useState(0);
+
+  const fetchNFTImage = async () => {
+    setLoading(true);
+
+    try {
+      const image = await getNFTImage();
+
+      setImage(image);
+    } catch (error) {
+      console.log({error});
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const fetchMintedByUserQty = async () => {
     setLoading(true);
@@ -177,6 +186,8 @@ const useMintHook = () => {
     mintedQty,
     fetchMintedByUserQty,
     mintedNFT,
+    fetchNFTImage,
+    image,
   };
 };
 

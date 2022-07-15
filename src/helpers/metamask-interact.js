@@ -1,10 +1,14 @@
-import {createAlchemyWeb3} from '@alch/alchemy-web3';
+const {createAlchemyWeb3} = require('@alch/alchemy-web3');
 
 const contractABI = require('../../public/contracts/LBSFragment.json');
 const usdcContractABI = require('../../public/contracts/USDC.json');
 
-export const getNFTImage = async (web3, contractAddress, contractABI) => {
+export const getNFTImage = async () => {
   try {
+    const contractAddress = '0x38843520A521c72FD35DFAf0E0595553fe7ed0D9';
+    const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+    const web3 = createAlchemyWeb3(alchemyKey);
+
     const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
 
     const activeStage = await contract.methods.activeStage().call();
@@ -54,7 +58,12 @@ export const getMintedNFTQty = async () => {
   }
 };
 
-export const getTokenToMintedQty = async (web3, contractAddress, contractABI) => {
+export const getTokenToMintedQty = async () => {
+  const contractAddress = '0x38843520A521c72FD35DFAf0E0595553fe7ed0D9';
+
+  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+  const web3 = createAlchemyWeb3(alchemyKey);
+
   try {
     const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
 
@@ -68,7 +77,12 @@ export const getTokenToMintedQty = async (web3, contractAddress, contractABI) =>
   }
 };
 
-export const getMaxSaleSupply = async (web3, contractAddress, contractABI) => {
+export const getMaxSaleSupply = async () => {
+  const contractAddress = '0x38843520A521c72FD35DFAf0E0595553fe7ed0D9';
+
+  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+  const web3 = createAlchemyWeb3(alchemyKey);
+
   try {
     const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
 
@@ -125,7 +139,11 @@ export const getUSDCDecimals = async () => {
   }
 };
 
-export const getActiveStage = async (web3, contractAddress, contractABI) => {
+export const getActiveStage = async () => {
+  const contractAddress = '0x38843520A521c72FD35DFAf0E0595553fe7ed0D9';
+
+  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+  const web3 = createAlchemyWeb3(alchemyKey);
   try {
     const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
 
@@ -138,7 +156,12 @@ export const getActiveStage = async (web3, contractAddress, contractABI) => {
   }
 };
 
-export const getPrice = async (web3, contractAddress, contractABI) => {
+export const getPrice = async () => {
+  const contractAddress = '0x38843520A521c72FD35DFAf0E0595553fe7ed0D9';
+
+  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+  const web3 = createAlchemyWeb3(alchemyKey);
+
   try {
     const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
 
