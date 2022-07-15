@@ -1,7 +1,7 @@
 import {createAlchemyWeb3} from '@alch/alchemy-web3';
 
-import contractABI from 'public/contracts/LBSFragment.json';
-import usdcContractABI from 'public/contracts/USDC.json';
+const contractABI = require('public/contracts/LBSFragment.json');
+const usdcContractABI = require('public/contracts/USDC.json');
 
 export const getNFTImage = async (web3, contractAddress, contractABI) => {
   try {
@@ -190,12 +190,12 @@ export const checkAllowanceUSDC = async () => {
 };
 
 export const approveUSDC = async amount => {
-  const usdcContractAddress = '0x4DBCdF9B62e891a7cec5A2568C3F4FAF9E8Abe2b';
-
-  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
-  const web3 = createAlchemyWeb3(alchemyKey);
-
   if (window.ethereum) {
+    const contractAddress = '0x38843520A521c72FD35DFAf0E0595553fe7ed0D9';
+    const usdcContractAddress = '0x4DBCdF9B62e891a7cec5A2568C3F4FAF9E8Abe2b';
+
+    const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
+    const web3 = createAlchemyWeb3(alchemyKey);
     try {
       const usdcContract = await new web3.eth.Contract(usdcContractABI, usdcContractAddress);
 
