@@ -25,13 +25,6 @@ const MintPage = ({price, activeStage, maxSupply, mintedQty, image}) => {
   );
 };
 
-export async function getStaticPaths() {
-  return {
-    paths: [{params: {id: 'lima-beach'}}],
-    fallback: false,
-  };
-}
-
 export async function getStaticProps() {
   const contractAddress = '0x38843520A521c72FD35DFAf0E0595553fe7ed0D9';
 

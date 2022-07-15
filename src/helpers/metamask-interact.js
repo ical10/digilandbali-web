@@ -1,7 +1,7 @@
 import {createAlchemyWeb3} from '@alch/alchemy-web3';
 
-const contractABI = require('public/contracts/LBSFragment.json');
-const usdcContractABI = require('public/contracts/USDC.json');
+const contractABI = require('../../public/contracts/LBSFragment.json');
+const usdcContractABI = require('../../public/contracts/USDC.json');
 
 export const getNFTImage = async (web3, contractAddress, contractABI) => {
   try {
