@@ -1,4 +1,4 @@
-import {cloneElement, useState, useEffect} from 'react';
+import {useState, useEffect} from 'react';
 
 import {connectWallet, getCurrentWalletConnected} from '../helpers/metamask-interact';
 import FooterComponent from './FooterComponent';
@@ -64,7 +64,7 @@ const Layout = ({children}) => {
         isOpenNav={setIsOpenNavbar}
       />
       <div className={`content ${isOpenNavbar ? 'overflow-hidden' : ''}`}>
-        {cloneElement(children, {walletAddress: walletAddress})}
+        {children}
 
         <FooterComponent />
       </div>

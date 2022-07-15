@@ -9,6 +9,8 @@ import {
   getUSDCBalance,
   getMaxSaleSupply,
   getTokenToMintedQty,
+  getMintedNFTQty,
+  getURI,
 } from 'src/helpers/metamask-interact';
 
 const useMintHook = () => {
@@ -17,11 +19,30 @@ const useMintHook = () => {
   const [allowance, setAllowance] = useState(0);
   const [activeStage, setActiveStage] = useState(0);
   const [maxSupply, setMaxSupply] = useState(0);
-  const [uri, setUri] = useState('');
+  const [uriJson, setUriJson] = useState({
+    name: '',
+    description: '',
+    image: '',
+    external_link: '',
+  });
   const [price, setPrice] = useState(0);
   const [usdcDecimals, setDecimals] = useState(0);
   const [balance, setBalance] = useState(0);
   const [mintedQty, setMintedQty] = useState(0);
+  const [mintedNFT, setMintedNFT] = useState(0);
+
+  const fetchMintedByUserQty = async () => {
+    setLoading(true);
+
+    try {
+      const mintedNFT = await getMintedNFTQty();
+      setMintedNFT(mintedNFT);
+    } catch (error) {
+      console.log({error});
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const fetchMintedQty = async () => {
     setLoading(true);
@@ -63,10 +84,6 @@ const useMintHook = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const editAllowance = () => {
-    setIsUSDCApproved(!isUSDCApproved);
   };
 
   const fetchDecimals = async () => {
@@ -129,6 +146,9 @@ const useMintHook = () => {
     try {
       const isSuccess = await approveUSDC(amount);
 
+      const allowance = await checkAllowanceUSDC();
+      setAllowance(allowance);
+
       setIsUSDCApproved(isSuccess);
     } catch (error) {
       console.log({error});
@@ -141,7 +161,6 @@ const useMintHook = () => {
     loading,
     allowUSDC,
     isUSDCApproved,
-    editAllowance,
     verifyAllowance,
     allowance,
     fetchPrice,
@@ -156,6 +175,8 @@ const useMintHook = () => {
     maxSupply,
     fetchMintedQty,
     mintedQty,
+    fetchMintedByUserQty,
+    mintedNFT,
   };
 };
 
