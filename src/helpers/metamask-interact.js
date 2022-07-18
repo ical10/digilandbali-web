@@ -4,7 +4,7 @@ const contractABI = require('../../public/contracts/LBSFragment.json');
 const usdcContractABI = require('../../public/contracts/USDC.json');
 const contractAddress = process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS;
 const usdcContractAddress = process.env.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS;
-const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_KEY;
+const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_URL;
 
 export const getNFTImage = async () => {
   try {
