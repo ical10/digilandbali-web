@@ -4,10 +4,10 @@ const contractABI = require('../../public/contracts/LBSFragment.json');
 const usdcContractABI = require('../../public/contracts/USDC.json');
 const contractAddress = process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS;
 const usdcContractAddress = process.env.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS;
+const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_KEY;
 
 export const getNFTImage = async () => {
   try {
-    const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
     const web3 = createAlchemyWeb3(alchemyKey);
 
     const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
@@ -33,8 +33,6 @@ export const getNFTImage = async () => {
 
 export const getMintedNFTQty = async () => {
   if (window.ethereum) {
-    const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
-
     const web3 = createAlchemyWeb3(alchemyKey);
 
     try {
@@ -58,7 +56,6 @@ export const getMintedNFTQty = async () => {
 };
 
 export const getTokenToMintedQty = async () => {
-  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
   const web3 = createAlchemyWeb3(alchemyKey);
 
   try {
@@ -75,7 +72,6 @@ export const getTokenToMintedQty = async () => {
 };
 
 export const getMaxSaleSupply = async () => {
-  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
   const web3 = createAlchemyWeb3(alchemyKey);
 
   try {
@@ -94,8 +90,6 @@ export const getMaxSaleSupply = async () => {
 export const getUSDCBalance = async () => {
   if (window.ethereum) {
     try {
-      const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
-
       const web3 = createAlchemyWeb3(alchemyKey);
 
       const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
@@ -116,7 +110,6 @@ export const getUSDCBalance = async () => {
 };
 
 export const getUSDCDecimals = async () => {
-  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
   const web3 = createAlchemyWeb3(alchemyKey);
 
   try {
@@ -131,7 +124,6 @@ export const getUSDCDecimals = async () => {
 };
 
 export const getActiveStage = async () => {
-  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
   const web3 = createAlchemyWeb3(alchemyKey);
   try {
     const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
@@ -146,7 +138,6 @@ export const getActiveStage = async () => {
 };
 
 export const getPrice = async () => {
-  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
   const web3 = createAlchemyWeb3(alchemyKey);
 
   try {
@@ -167,7 +158,6 @@ export const getPrice = async () => {
 
 export const checkAllowanceUSDC = async () => {
   if (window.ethereum) {
-    const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
     const web3 = createAlchemyWeb3(alchemyKey);
     try {
       const usdcContract = await new web3.eth.Contract(usdcContractABI, usdcContractAddress);
@@ -198,7 +188,6 @@ export const checkAllowanceUSDC = async () => {
 
 export const approveUSDC = async amount => {
   if (window.ethereum) {
-    const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
     const web3 = createAlchemyWeb3(alchemyKey);
     try {
       const usdcContract = await new web3.eth.Contract(usdcContractABI, usdcContractAddress);
@@ -289,7 +278,6 @@ export const getCurrentWalletConnected = async () => {
 };
 
 export const mintDigilandNFT = async quantity => {
-  const alchemyKey = process.env.NEXT_PUBLIC_REACT_APP_ALCHEMY_KEY;
   const web3 = createAlchemyWeb3(alchemyKey);
 
   const tokenId = 1; // Active stage
