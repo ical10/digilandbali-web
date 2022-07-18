@@ -42,8 +42,21 @@ const ContentComponent = () => {
     fetchPrice();
     fetchActiveStage();
     fetchMaxSupply();
-    fetchMintedQty();
     fetchNFTImage();
+    fetchMintedQty();
+  }, []);
+
+  useEffect(() => {
+    let temp = '';
+    async function getAddress() {
+      const address = await fetchCurrentWallet();
+      temp = address;
+    }
+    getAddress();
+
+    setWallet(temp);
+
+    addWalletListener();
   }, []);
 
   const [walletAddress, setWallet] = useState('');
@@ -52,7 +65,7 @@ const ContentComponent = () => {
   //TODO: move this into a hook e.g. useWalletHooks
   const fetchCurrentWallet = async () => {
     const {address} = await getCurrentWalletConnected();
-    return {address};
+    return address;
   };
 
   // TODO: move this into a hook e.g. useWalletHooks
@@ -79,15 +92,6 @@ const ContentComponent = () => {
       );
     }
   };
-
-  useEffect(() => {
-    (async () => {
-      const {address} = await fetchCurrentWallet();
-      setWallet(address);
-
-      addWalletListener();
-    })();
-  }, []);
 
   const [referralCode, setReferralCode] = useState('');
   const [quantity, setQuantity] = useState(0);
