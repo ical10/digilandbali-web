@@ -1,6 +1,9 @@
 import React, {useState} from 'react';
 
 import {
+  addWalletListener,
+  getCurrentWalletConnected,
+  connectWallet,
   approveUSDC,
   checkAllowanceUSDC,
   getPrice,
@@ -15,6 +18,7 @@ import {
 
 const useMintHook = () => {
   const [loading, setLoading] = useState(false);
+  const [currentWallet, setWallet] = useState('');
   const [isUSDCApproved, setIsUSDCApproved] = useState(false);
   const [allowance, setAllowance] = useState(0);
   const [activeStage, setActiveStage] = useState(0);
@@ -25,6 +29,41 @@ const useMintHook = () => {
   const [balance, setBalance] = useState(0);
   const [mintedQty, setMintedQty] = useState(0);
   const [mintedNFT, setMintedNFT] = useState(0);
+
+  const fetchCurrentWallet = async () => {
+    setLoading(true);
+
+    try {
+      const respObj = await getCurrentWalletConnected();
+      const {address} = respObj;
+      setWallet(address);
+    } catch (error) {
+      console.log({error});
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const linkWallet = async () => {
+    setLoading(true);
+
+    try {
+      const address = await connectWallet();
+
+      console.log({address});
+      setWallet(address);
+    } catch (error) {
+      console.log({error});
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const listenToWalletChanges = () => {
+    const account = addWalletListener();
+
+    setWallet(account);
+  };
 
   const fetchNFTImage = async () => {
     setLoading(true);
@@ -168,6 +207,10 @@ const useMintHook = () => {
 
   return {
     loading,
+    fetchCurrentWallet,
+    currentWallet,
+    listenToWalletChanges,
+    linkWallet,
     allowUSDC,
     isUSDCApproved,
     verifyAllowance,

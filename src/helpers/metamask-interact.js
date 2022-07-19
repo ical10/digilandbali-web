@@ -1,3 +1,5 @@
+import detectEthereumProvider from '@metamask/detect-provider';
+
 const {createAlchemyWeb3} = require('@alch/alchemy-web3');
 
 const contractABI = require('../../public/contracts/LBSFragment.json');
@@ -32,26 +34,33 @@ export const getNFTImage = async () => {
 };
 
 export const getMintedNFTQty = async () => {
-  if (window.ethereum) {
-    const web3 = createAlchemyWeb3(alchemyKey);
+  const web3 = createAlchemyWeb3(alchemyKey);
 
-    try {
+  try {
+    const provider = await detectEthereumProvider({timeout: 2000});
+    if (provider) {
       const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
 
       const activeStage = await contract.methods.activeStage().call();
-      const currentAccount = await window.ethereum.selectedAddress;
+      const addressArray = await window.ethereum.request({
+        method: 'eth_requestAccounts',
+      });
 
-      const mintedNFT = await contract.methods.balanceOf(currentAccount, activeStage).call();
+      let mintedNFT = 0;
 
-      return mintedNFT;
-    } catch (error) {
-      console.log({error});
+      if (addressArray.length > 0) {
+        const currentAccount = addressArray[0];
+        mintedNFT = await contract.methods.balanceOf(currentAccount, activeStage).call();
+
+        return mintedNFT;
+      } else {
+        return mintedNFT;
+      }
+    } else {
+      console.log('please install metamask!');
     }
-  } else {
-    return {
-      address: '',
-      status: 'please install metamask',
-    };
+  } catch (error) {
+    console.log({error});
   }
 };
 
@@ -94,18 +103,21 @@ export const getUSDCBalance = async () => {
 
       const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
 
-      const currentAccount = await window.ethereum.selectedAddress;
+      const addressArray = await window.ethereum.request({
+        method: 'eth_requestAccounts',
+      });
 
-      const balance = await usdcContract.methods.balanceOf(currentAccount).call();
+      let balance = 0;
+
+      if (addressArray.length > 0) {
+        const currentAccount = await addressArray[0];
+
+        balance = await usdcContract.methods.balanceOf(currentAccount).call();
+      }
       return balance;
     } catch (error) {
       console.log({error});
     }
-  } else {
-    return {
-      address: '',
-      status: 'please install metamask',
-    };
   }
 };
 
@@ -160,29 +172,35 @@ export const checkAllowanceUSDC = async () => {
   if (window.ethereum) {
     const web3 = createAlchemyWeb3(alchemyKey);
     try {
-      const usdcContract = await new web3.eth.Contract(usdcContractABI, usdcContractAddress);
-      const currentAccount = await window.ethereum.selectedAddress;
+      const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
 
-      const transactionParameters = {
-        owner: currentAccount,
-        spender: contractAddress,
-      };
+      const addressArray = await window.ethereum.request({
+        method: 'eth_requestAccounts',
+      });
 
-      const allowance = await usdcContract.methods
-        .allowance(transactionParameters.owner, transactionParameters.spender)
-        .call();
+      let allowance = 0;
 
-      const usdcDecimals = await usdcContract.methods.decimals().call();
+      if (addressArray.length > 0) {
+        const currentAccount = addressArray[0];
 
-      return web3.utils.toNumber(allowance / 10 ** usdcDecimals);
+        const transactionParameters = {
+          owner: currentAccount,
+          spender: contractAddress,
+        };
+
+        allowance = await usdcContract.methods
+          .allowance(transactionParameters.owner, transactionParameters.spender)
+          .call();
+
+        const usdcDecimals = await usdcContract.methods.decimals().call();
+
+        return web3.utils.toNumber(allowance / 10 ** usdcDecimals);
+      }
+
+      return allowance;
     } catch (error) {
       console.log({error});
     }
-  } else {
-    return {
-      address: '',
-      status: 'please install metamask',
-    };
   }
 };
 
@@ -213,105 +231,122 @@ export const approveUSDC = async amount => {
       console.log({error});
       return false;
     }
-  } else {
-    return {
-      address: '',
-      status: 'please install metamask',
-    };
   }
 };
 
 export const connectWallet = async () => {
-  if (window.ethereum) {
-    try {
+  let address = '';
+  try {
+    const provider = await detectEthereumProvider({timeout: 2000});
+
+    if (provider) {
       const addressArray = await window.ethereum.request({
         method: 'eth_requestAccounts',
       });
-      const obj = {
-        status: '🦊 Metamask connected.',
-        address: addressArray[0],
-      };
-      return obj;
-    } catch (err) {
-      return {
-        status: 'an error occured',
-        address: '',
-      };
+
+      address = addressArray[0];
+    } else {
+      console.log('please install metamask!');
     }
-  } else {
-    return {
-      address: '',
-      status: 'please install metamask',
-    };
+  } catch (err) {
+    console.log({err});
   }
+  return address;
 };
 
 export const getCurrentWalletConnected = async () => {
-  if (window.ethereum) {
-    try {
+  const respObj = {
+    address: '',
+    status: '',
+  };
+
+  try {
+    const provider = await detectEthereumProvider({timeout: 2000});
+
+    if (provider) {
       const addressArray = await window.ethereum.request({
         method: 'eth_accounts',
       });
       if (addressArray.length > 0) {
-        return {
-          address: addressArray[0],
-          status: '🦊 Metamask connected.',
-        };
+        respObj.address = addressArray[0];
+        respObj.status = '🦊 Metamask connected.';
       } else {
-        return {
-          address: '',
-          status: '🦊 Connect to Metamask using the top right button.',
-        };
+        respObj.address = '';
+        respObj.status = '🦊 Connect to Metamask using the top right button.';
       }
-    } catch (err) {
-      return {
-        address: '',
-        status: '😥 an error occured',
-      };
+      return respObj;
+    } else {
+      console.log('please install metamask');
     }
+  } catch (err) {
+    respObj.address = '';
+    respObj.status = '😥 an error occured';
+
+    return respObj;
+  }
+};
+
+export const addWalletListener = () => {
+  let currentAccount = '';
+  if (window.ethereum) {
+    window.ethereum.on('accountsChanged', accounts => {
+      if (accounts.length > 0) {
+        window.currentAccount = accounts[0];
+        currentAccount = accounts[0];
+        return currentAccount;
+      } else {
+        return currentAccount;
+      }
+    });
   } else {
-    return {
-      address: '',
-      status: 'please install metamask',
-    };
+    console.log('please install metamask!');
   }
 };
 
 export const mintDigilandNFT = async quantity => {
   const web3 = createAlchemyWeb3(alchemyKey);
 
-  const tokenId = 1; // Active stage
+  const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
 
-  //load smart contract
-  window.contract = await new web3.eth.Contract(contractABI.abi, contractAddress); //loadContract();
+  const tokenId = await contract.methods.activeStage().call();
 
-  const currentAccount = await window.ethereum.selectedAddress;
+  window.contract = new web3.eth.Contract(contractABI.abi, contractAddress);
 
-  //set up your Ethereum transaction
-  const transactionParameters = {
-    to: contractAddress, // Required except during contract publications.
-    from: currentAccount, // must match user's active address.
-    data: window.contract.methods.mint(tokenId, quantity, '0x00').encodeABI(), //make call to NFT smart contract
-  };
+  const addressArray = await window.ethereum.request({
+    method: 'eth_requestAccounts',
+  });
 
-  //sign transaction via Metamask
-  try {
-    const txHash = await window.ethereum.request({
-      method: 'eth_sendTransaction',
-      params: [transactionParameters],
-    });
-    return {
-      success: true,
-      status: (
-        <a href={`https://rinkeby.etherscan.io/tx/${txHash}`}>
-          ✅ Check out your transaction on Etherscan: https://rinkeby.etherscan.io/tx/${txHash}
-        </a>
-      ),
+  if (addressArray.length > 0) {
+    const currentAccount = addressArray[0];
+
+    const transactionParameters = {
+      to: contractAddress,
+      from: currentAccount,
+      data: window.contract.methods.mint(tokenId, quantity, '0x00').encodeABI(),
     };
-  } catch (error) {
-    return {
-      success: false,
-      status: '😥 Something went wrong: ' + error.message,
-    };
+
+    try {
+      const txHash = await window.ethereum
+        .request({
+          method: 'eth_sendTransaction',
+          params: [transactionParameters],
+        })
+        .on('confirmation', (confirmationNumber, receipt) => {
+          if (confirmationNumber === 0) {
+            return {
+              success: receipt.status,
+              status: 'success!',
+            };
+          }
+        })
+        .on('error', console.error);
+    } catch (error) {
+      return {
+        success: false,
+        status: '😥 Something went wrong: ' + error.message,
+      };
+    }
+  } else {
+    console.log('please install/connect metamask!');
   }
 };

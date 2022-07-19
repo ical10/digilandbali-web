@@ -4,55 +4,24 @@ import {connectWallet, getCurrentWalletConnected} from '../helpers/metamask-inte
 import FooterComponent from './FooterComponent';
 import NavbarComponent from './NavbarComponent';
 
+import useMintHook from 'src/hooks/use-mint.hooks';
+
 const Layout = ({children}) => {
+  const {fetchCurrentWallet, listenToWalletChanges} = useMintHook();
+
   const [walletAddress, setWallet] = useState('');
   const [status, setStatus] = useState('');
   const [isOpenNavbar, setIsOpenNavbar] = useState(false);
 
-  const fetchCurrentWallet = async () => {
-    const {address, status} = await getCurrentWalletConnected();
-    return {address, status};
-  };
-
-  const addWalletListener = () => {
-    if (window.ethereum) {
-      window.ethereum.on('accountsChanged', accounts => {
-        if (accounts.length > 0) {
-          window.currentAccount = accounts[0];
-          setWallet(accounts[0]);
-          setStatus('👆🏽 write a message in the text-field above.');
-        } else {
-          setWallet('');
-          setStatus('🦊 connect to metamask using the top right button.');
-        }
-      });
-    } else {
-      setStatus(
-        <p>
-          {' '}
-          🦊{' '}
-          <a target="_blank" rel="noopener noreferrer" href={`https://metamask.io/download.html`}>
-            you must install metamask, a virtual ethereum wallet, in your browser.
-          </a>
-        </p>,
-      );
-    }
-  };
-
   useEffect(() => {
-    (async () => {
-      const {address, status} = await fetchCurrentWallet();
-      setWallet(address);
-      setStatus(status);
-
-      addWalletListener();
-    })();
+    listenToWalletChanges();
+    fetchCurrentWallet();
   }, []);
 
   const handleConnect = async () => {
-    const walletResponse = await connectWallet();
-    setStatus(walletResponse.status);
-    setWallet(walletResponse.address);
+    const {status, address} = await connectWallet();
+    setStatus(status);
+    setWallet(address);
   };
 
   return (

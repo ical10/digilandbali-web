@@ -5,16 +5,16 @@ import {useState, useEffect} from 'react';
 import {MinusCirlce, AddCircle, TickCircle, ExportSquare} from 'iconsax-react';
 import FAQComponent from 'src/components/FAQComponent';
 import SocialHandles from 'src/components/SocialHandles';
-import {
-  mintDigilandNFT,
-  connectWallet,
-  getCurrentWalletConnected,
-} from 'src/helpers/metamask-interact';
+import {mintDigilandNFT} from 'src/helpers/metamask-interact';
 import useMintHook from 'src/hooks/use-mint.hooks';
 import styles from 'styles/ContentComponent.module.css';
 
 const ContentComponent = () => {
   const {
+    fetchCurrentWallet,
+    currentWallet,
+    listenToWalletChanges,
+    linkWallet,
     allowUSDC,
     verifyAllowance,
     allowance,
@@ -36,6 +36,7 @@ const ContentComponent = () => {
   } = useMintHook();
 
   useEffect(() => {
+    listenToWalletChanges();
     verifyAllowance();
     fetchBalance();
     fetchMintedByUserQty();
@@ -44,76 +45,28 @@ const ContentComponent = () => {
     fetchMaxSupply();
     fetchNFTImage();
     fetchMintedQty();
+    fetchCurrentWallet();
   }, []);
+
+  const [isMintSuccess, setIsMintSuccess] = useState(false);
 
   useEffect(() => {
-    let temp = '';
-    async function getAddress() {
-      const address = await fetchCurrentWallet();
-      temp = address;
+    if (isMintSuccess) {
+      fetchMintedByUserQty();
     }
-    getAddress();
-
-    setWallet(temp);
-
-    addWalletListener();
-  }, []);
-
-  const [walletAddress, setWallet] = useState('');
-  const [status, setStatus] = useState('');
-
-  //TODO: move this into a hook e.g. useWalletHooks
-  const fetchCurrentWallet = async () => {
-    const {address} = await getCurrentWalletConnected();
-    return address;
-  };
-
-  // TODO: move this into a hook e.g. useWalletHooks
-  const addWalletListener = () => {
-    if (window.ethereum) {
-      window.ethereum.on('accountsChanged', accounts => {
-        if (accounts.length > 0) {
-          window.currentAccount = accounts[0];
-          setWallet(accounts[0]);
-        } else {
-          setWallet('');
-          setStatus('🦊 connect to metamask using the top right button.');
-        }
-      });
-    } else {
-      setStatus(
-        <p>
-          {' '}
-          🦊{' '}
-          <a target="_blank" rel="noopener noreferrer" href={`https://metamask.io/download.html`}>
-            you must install metamask, a virtual ethereum wallet, in your browser.
-          </a>
-        </p>,
-      );
-    }
-  };
+  }, [isMintSuccess]);
 
   const [referralCode, setReferralCode] = useState('');
   const [quantity, setQuantity] = useState(0);
-  const [mintedQuantity, setMintedQuantity] = useState(0);
 
-  const [, setMintStatus] = useState('');
   const [isAgreed, setIsAgreed] = useState(false);
 
-  //TODO: fetch USDC balance from metamask
-  // const [balance] = useState(200_000);
-
-  //Constant state
-  const [maxQuantity] = useState(80);
-
   const handleMintPressed = async () => {
-    if (quantity <= maxQuantity - mintedQuantity) {
-      let tempMinted = mintedQuantity + quantity;
-      setMintedQuantity(tempMinted);
+    setIsMintSuccess(false);
 
-      const {status} = await mintDigilandNFT(quantity);
-      setMintStatus(status);
-    }
+    const {success} = await mintDigilandNFT(quantity);
+
+    if (success) setIsMintSuccess(true);
   };
 
   const handleDecrement = () => {
@@ -136,11 +89,8 @@ const ContentComponent = () => {
     setReferralCode(e.target.value);
   };
 
-  const handleConnectWallet = async () => {
-    const walletResponse = await connectWallet();
-
-    //TODO: set walletAddress to the state management instead
-    setWallet(walletResponse.address);
+  const handleConnectWallet = () => {
+    linkWallet();
   };
 
   const isUSDCEnough = () => {
@@ -283,7 +233,7 @@ const ContentComponent = () => {
           </div>
 
           <div className="flex flex-col gap-4 desktop:grid desktop:grid-cols-[1fr_1fr]">
-            {walletAddress.length > 0 ? (
+            {currentWallet && currentWallet.length > 0 ? (
               <button
                 className="w-full"
                 onClick={handleMintPressed}
