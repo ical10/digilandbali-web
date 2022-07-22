@@ -1,13 +1,41 @@
+import CloseIcon from '@mui/icons-material/Close';
+import Alert from '@mui/material/Alert';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import ClickAwayListener from '@mui/material/ClickAwayListener';
 import IconButton from '@mui/material/IconButton';
+import Modal from '@mui/material/Modal';
+import Skeleton from '@mui/material/Skeleton';
+import Snackbar from '@mui/material/Snackbar';
+import Tooltip from '@mui/material/Tooltip';
 
 import {useState, useEffect} from 'react';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
-import {MinusCirlce, AddCircle, TickCircle, ExportSquare} from 'iconsax-react';
+import {
+  MinusCirlce,
+  AddCircle,
+  TickCircle,
+  ExportSquare,
+  Building4,
+  Copy,
+  ArrowSwapHorizontal,
+} from 'iconsax-react';
 import FAQComponent from 'src/components/FAQComponent';
 import SocialHandles from 'src/components/SocialHandles';
 import {mintDigilandNFT} from 'src/helpers/metamask-interact';
 import useMintHook from 'src/hooks/use-mint.hooks';
 import styles from 'styles/ContentComponent.module.css';
+
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  background: '#FFFFFF',
+  boxShadow: 24,
+  borderRadius: '4px',
+};
 
 const ContentComponent = () => {
   const {
@@ -61,6 +89,24 @@ const ContentComponent = () => {
 
   const [isAgreed, setIsAgreed] = useState(false);
 
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => setOpenModal(false);
+
+  const [copy, setCopy] = useState(false);
+
+  const handleTooltipClose = () => {
+    setCopy(false);
+  };
+
+  const handleTooltipOpen = () => {
+    setCopy(true);
+  };
+
   const handleMintPressed = async () => {
     setIsMintSuccess(false);
 
@@ -106,21 +152,31 @@ const ContentComponent = () => {
     allowUSDC(quantity * price);
   };
 
+  const allowedSupply = maxSupply - mintedQty;
+
   return (
     <div id="content">
       <div className="flex flex-col content-center justify-center min-w-fit tablet:grid tablet:grid-flow-col">
         <div className="flex flex-col items-center p-6 gap-4 text-center bg-[#edf4f7] rounded-t-lg tablet:rounded-tr-none tablet:rounded-l-lg tablet:max-w-max tablet:gap-8 desktop:px-20 desktop:py-14">
-          <img src={image} alt="NFT image illustration" className="w-45 h-45" />
+          {image ? (
+            <img src={image} alt="NFT image illustration" className="w-45 h-45" />
+          ) : (
+            <Skeleton variant="rectangular" width={210} height={118} />
+          )}
           <div className="flex flex-col gap-4 tablet:gap-4">
             <div>
               <h3 className="font-bold text-xl tablet:text-base">5 DAYS LEFT!</h3>
             </div>
             <div>
               <p className="font-bold">Mint Price</p>
-              <p className="font-normal">1 NFT : {price.toLocaleString()} USDC</p>
+              <p className="font-normal">
+                {price ? `1 NFT : ${price.toLocaleString()} USDC` : <Skeleton />}
+              </p>
             </div>
             <div>
-              <p className="font-bold">Stage {activeStage} Supply</p>
+              <p className="font-bold">
+                {activeStage ? `Stage ${activeStage} Supply` : <Skeleton />}
+              </p>
               <p className="font-normal">
                 {mintedQty}/{maxSupply}
               </p>
@@ -132,9 +188,11 @@ const ContentComponent = () => {
             <div>
               <div className="flex flex-row items-center justify-center gap-1">
                 <p className="font-bold">Minted</p>
-                <ExportSquare size="16" color="#344054" />
+                <IconButton onClick={handleOpenModal}>
+                  <ExportSquare size="16" color="#344054" />
+                </IconButton>
               </div>
-              <p className="font-normal">{mintedNFT}</p>
+              <p className="font-normal">{mintedNFT ? `${mintedNFT}` : <Skeleton />}</p>
             </div>
           </div>
           <div className="flex flex-row gap-2 tablet:my-auto">
@@ -144,7 +202,12 @@ const ContentComponent = () => {
         <div className="bg-[#fff] rounded-b-lg p-6 tablet:rounded-bl-none tablet:rounded-r-lg tablet:min-w-fit desktop:px-20 desktop:py-14">
           <div className="flex flex-col gap-2 mb-8 tablet:mb-12">
             <h1 className="font-bold text-2xl uppercase desktop:text-3xl">
-              Stage 0{activeStage}: Physical Land
+              {activeStage ? (
+                `Stage 0${activeStage}: Physical Land
+`
+              ) : (
+                <Skeleton />
+              )}
             </h1>
             <h3 className="font-semibold text-lg uppercase desktop:text-2xl">
               lima beach signature nft
@@ -178,7 +241,10 @@ const ContentComponent = () => {
                   onChange={handleChangeQuantity}
                 ></input>
                 <div>
-                  <IconButton disabled={!(quantity * price < balance)} onClick={handleIncrement}>
+                  <IconButton
+                    disabled={!(quantity * price < balance) || quantity >= allowedSupply}
+                    onClick={handleIncrement}
+                  >
                     <AddCircle
                       size="20"
                       color={!(quantity * price < balance) ? '#808080' : '#8f98aa'}
@@ -186,12 +252,17 @@ const ContentComponent = () => {
                   </IconButton>
                 </div>
               </div>
-              <div className="flex items-center justify-center rounded-lg border border-[#d0d5dd] py-2 px-4">
+              <ArrowSwapHorizontal size="16" color="#8F98AA" />
+              <div className="flex items-center justify-center py-2 px-4">
                 <h4 className="font-bold text-sm whitespace-nowrap">
                   {(price * quantity).toLocaleString()} USDC
                 </h4>
               </div>
             </div>
+
+            <p className="font-normal text-lg text-[#ff4b7b]">
+              {quantity >= allowedSupply ? `Max supply reached` : ''}
+            </p>
 
             <div>
               Allowed USDC to trade
@@ -202,7 +273,12 @@ const ContentComponent = () => {
                 />
                 <div className="ml-2">{(quantity * price).toLocaleString()}</div>
                 <button
-                  disabled={loading || quantity * price > balance || quantity * price === allowance}
+                  disabled={
+                    loading ||
+                    quantity * price > balance ||
+                    quantity * price === allowance ||
+                    quantity > allowedSupply
+                  }
                   onClick={handleSetAllowance}
                   className="ml-auto disabled:bg-transparent bg-transparent shadow-none rounded-none p-0 font-medium text-xs text-[#406AFF]"
                 >
@@ -210,9 +286,13 @@ const ContentComponent = () => {
                 </button>
               </div>
               {allowance > 0 ? (
-                <div className="mt-1 text-[#76CE8A]">
-                  Congratulations ! Now you can trade your {allowance} USDC
-                </div>
+                <p className="mt-1 text-[#76CE8A]">
+                  {allowance ? (
+                    `Congratulations ! Now you can trade your ${allowance} USDC`
+                  ) : (
+                    <Skeleton />
+                  )}
+                </p>
               ) : (
                 <></>
               )}
@@ -255,6 +335,99 @@ const ContentComponent = () => {
       <div className="relative w-full h-[120px] my-12 tablet:my-32">
         <img src="/Union.svg" layout="fill" className="w-full h-full relative" alt="tes" />
       </div>
+
+      <Modal
+        open={openModal}
+        onClose={handleCloseModal}
+        aria-labelledby="Minted NFT Modal"
+        aria-describedby="Description of your Minted NFT"
+      >
+        <Box sx={style}>
+          <div className="max-w-[310px] tablet:max-w-[540px]">
+            <IconButton
+              className="absolute shadow-none hover:bg-transparent left-[82%] top-[2%] tablet:left-[88%] desktop:left-[92%] desktop:top-[2%]"
+              onClick={handleCloseModal}
+            >
+              <CloseIcon />
+            </IconButton>
+            <div className="bg-[#EDF4F7] px-8 py-8 desktop:px-16 desktop:py-8 rounded flex flex-row content-center items-center gap-4">
+              <div className="w-14 h-14">
+                <img src={'/NFTmintedicon.svg'} className="max-w-full w-full object-cover" alt="" />
+              </div>
+              <h1 className="text-2xl font-bold">NFT Minted</h1>
+            </div>
+            <div className="flex flex-col gap-6 px-6 py-8 desktop:px-16 desktop:py-8">
+              <div className="flex flex-col">
+                <h3 className="text-xs font-semibold mb-2">Wallet Address</h3>
+                <div className="flex flex-row gap-4">
+                  <p className="text-base font-semibold break-all">
+                    {currentWallet ?? 'Not yet connected!'}
+                  </p>
+                  <CopyToClipboard text={currentWallet ?? ''} onCopy={handleTooltipOpen}>
+                    <ClickAwayListener onClickAway={handleTooltipClose}>
+                      <div>
+                        <Tooltip
+                          PopperProps={{
+                            disablePortal: true,
+                          }}
+                          onOpen={handleTooltipOpen}
+                          open={copy}
+                          onClose={handleTooltipClose}
+                          disableFocusListener
+                          disableHoverListener
+                          disableTouchListener
+                          title="Address copied!"
+                          leaveDelay={200}
+                        >
+                          <IconButton
+                            className="shadow-none hover:bg-transparent"
+                            onClick={handleTooltipOpen}
+                          >
+                            <Copy size="16" color="#8F98AA" />
+                          </IconButton>
+                        </Tooltip>
+                      </div>
+                    </ClickAwayListener>
+                  </CopyToClipboard>
+                </div>
+              </div>
+              <div>
+                <h3 className="text-xs font-semibold mb-2">Minted NFT Fragment</h3>
+                <div className="flex flex-col gap-2">
+                  <div className="flex flex-row">
+                    <div className="mr-2">
+                      <Building4 size="24" color="#344054" />
+                    </div>
+                    <p className="mr-4">Stage 1</p>
+                    <p>{mintedNFT ? `${mintedNFT}` : <Skeleton />} NFT</p>
+                  </div>
+                  <div className="flex flex-row">
+                    <div className="mr-2">
+                      <Building4 size="24" color="#344054" />
+                    </div>
+                    <p className="mr-4">Stage 2</p>
+                    <p>0 NFT</p>
+                  </div>
+                  <div className="flex flex-row">
+                    <div className="mr-2">
+                      <Building4 size="24" color="#344054" />
+                    </div>
+                    <p className="mr-4">Stage 3</p>
+                    <p>0 NFT</p>
+                  </div>
+                  <div className="flex flex-row">
+                    <div className="mr-2">
+                      <Building4 size="24" color="#344054" />
+                    </div>
+                    <p className="mr-4">Stage 4</p>
+                    <p>0 NFT</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Box>
+      </Modal>
     </div>
   );
 };
