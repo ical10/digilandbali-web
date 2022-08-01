@@ -251,6 +251,7 @@ const useMintHook = () => {
             const {status} = receipt;
             if (status) {
               setMinting(false);
+              setAllowance(0);
             }
           })
 
