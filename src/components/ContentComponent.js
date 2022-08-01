@@ -1,12 +1,9 @@
 import CloseIcon from '@mui/icons-material/Close';
-import Alert from '@mui/material/Alert';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
 import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 import Skeleton from '@mui/material/Skeleton';
-import Snackbar from '@mui/material/Snackbar';
 import Tooltip from '@mui/material/Tooltip';
 
 import {useState, useEffect} from 'react';
@@ -23,7 +20,6 @@ import {
 } from 'iconsax-react';
 import FAQComponent from 'src/components/FAQComponent';
 import SocialHandles from 'src/components/SocialHandles';
-import {mintDigilandNFT} from 'src/helpers/metamask-interact';
 import useMintHook from 'src/hooks/use-mint.hooks';
 import styles from 'styles/ContentComponent.module.css';
 
@@ -43,6 +39,9 @@ const ContentComponent = () => {
     currentWallet,
     listenToWalletChanges,
     linkWallet,
+    mintNFT,
+    minting,
+    isMintSuccess,
     allowUSDC,
     verifyAllowance,
     allowance,
@@ -76,13 +75,13 @@ const ContentComponent = () => {
     fetchCurrentWallet();
   }, []);
 
-  const [isMintSuccess, setIsMintSuccess] = useState(false);
-
   useEffect(() => {
     if (isMintSuccess) {
       fetchMintedByUserQty();
     }
   }, [isMintSuccess]);
+
+  const disableMint = minting;
 
   const [referralCode, setReferralCode] = useState('');
   const [quantity, setQuantity] = useState(0);
@@ -99,20 +98,14 @@ const ContentComponent = () => {
 
   const [copy, setCopy] = useState(false);
 
+  const [enableMint, setEnableMint] = useState(false);
+
   const handleTooltipClose = () => {
     setCopy(false);
   };
 
   const handleTooltipOpen = () => {
     setCopy(true);
-  };
-
-  const handleMintPressed = async () => {
-    setIsMintSuccess(false);
-
-    const {success} = await mintDigilandNFT(quantity);
-
-    if (success) setIsMintSuccess(true);
   };
 
   const handleDecrement = () => {
@@ -152,11 +145,15 @@ const ContentComponent = () => {
     allowUSDC(quantity * price);
   };
 
+  const handleMintPressed = () => {
+    mintNFT(quantity);
+  };
+
   const allowedSupply = maxSupply - mintedQty;
 
   return (
     <div id="content">
-      <div className="flex flex-col content-center justify-center min-w-fit tablet:grid tablet:grid-flow-col">
+      <div className="flex flex-col content-center justify-center tablet:grid tablet:grid-flow-col">
         <div className="flex flex-col items-center p-6 gap-4 text-center bg-[#edf4f7] rounded-t-lg tablet:rounded-tr-none tablet:rounded-l-lg tablet:max-w-max tablet:gap-8 desktop:px-20 desktop:py-14">
           {image ? (
             <img src={image} alt="NFT image illustration" className="w-45 h-45" />
@@ -229,7 +226,7 @@ const ContentComponent = () => {
             <div className={styles.container}>
               <div className="flex py-1 px-2 rounded-lg border border-[#d0d5dd] justify-around">
                 <div>
-                  <IconButton onClick={handleDecrement}>
+                  <IconButton disabled={allowedSupply === 0} onClick={handleDecrement}>
                     <MinusCirlce size="20" color="#8f98aa" />
                   </IconButton>
                 </div>
@@ -261,7 +258,8 @@ const ContentComponent = () => {
             </div>
 
             <p className="font-normal text-lg text-[#ff4b7b]">
-              {quantity >= allowedSupply ? `Max supply reached` : ''}
+              {quantity > 0 && quantity >= allowedSupply ? `Max supply reached` : ''}
+              {allowedSupply === 0 ? `Sold out!` : ''}
             </p>
 
             <div>
@@ -316,8 +314,17 @@ const ContentComponent = () => {
             {currentWallet && currentWallet.length > 0 ? (
               <button
                 className="w-full"
-                onClick={handleMintPressed}
-                disabled={quantity > 0 && isAgreed && allowance === quantity * price ? false : true}
+                onClick={() => handleMintPressed()}
+                disabled={
+                  !(
+                    allowedSupply > 0 &&
+                    quantity > 0 &&
+                    isAgreed &&
+                    allowance === quantity * price
+                  ) || disableMint
+                    ? true
+                    : false
+                }
               >
                 <span>Mint Now</span>
               </button>

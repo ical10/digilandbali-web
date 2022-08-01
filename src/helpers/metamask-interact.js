@@ -208,7 +208,7 @@ export const approveUSDC = async amount => {
   if (window.ethereum) {
     const web3 = createAlchemyWeb3(alchemyKey);
     try {
-      const usdcContract = await new web3.eth.Contract(usdcContractABI, usdcContractAddress);
+      const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
 
       const currentAccount = await window.ethereum.selectedAddress;
 
@@ -224,7 +224,10 @@ export const approveUSDC = async amount => {
             isSuccess = receipt.status;
           }
         })
-        .on('error', console.error);
+        .on('error', error => {
+          console.log({error});
+          return false;
+        });
 
       return isSuccess;
     } catch (error) {
@@ -300,53 +303,5 @@ export const addWalletListener = () => {
     });
   } else {
     console.log('please install metamask!');
-  }
-};
-
-export const mintDigilandNFT = async quantity => {
-  const web3 = createAlchemyWeb3(alchemyKey);
-
-  const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
-
-  const tokenId = await contract.methods.activeStage().call();
-
-  window.contract = new web3.eth.Contract(contractABI.abi, contractAddress);
-
-  const addressArray = await window.ethereum.request({
-    method: 'eth_requestAccounts',
-  });
-
-  if (addressArray.length > 0) {
-    const currentAccount = addressArray[0];
-
-    const transactionParameters = {
-      to: contractAddress,
-      from: currentAccount,
-      data: window.contract.methods.mint(tokenId, quantity, '0x00').encodeABI(),
-    };
-
-    try {
-      const txHash = await window.ethereum
-        .request({
-          method: 'eth_sendTransaction',
-          params: [transactionParameters],
-        })
-        .on('confirmation', (confirmationNumber, receipt) => {
-          if (confirmationNumber === 0) {
-            return {
-              success: receipt.status,
-              status: 'success!',
-            };
-          }
-        })
-        .on('error', console.error);
-    } catch (error) {
-      return {
-        success: false,
-        status: '😥 Something went wrong: ' + error.message,
-      };
-    }
-  } else {
-    console.log('please install/connect metamask!');
   }
 };

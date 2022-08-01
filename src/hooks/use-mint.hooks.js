@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import detectEthereumProvider from '@metamask/detect-provider';
+
+import {useState} from 'react';
 
 import {
   addWalletListener,
@@ -16,8 +18,16 @@ import {
   getNFTImage,
 } from 'src/helpers/metamask-interact';
 
+const {createAlchemyWeb3} = require('@alch/alchemy-web3');
+
+const contractABI = require('../../public/contracts/LBSFragment.json');
+const contractAddress = process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS;
+const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_URL;
+
 const useMintHook = () => {
   const [loading, setLoading] = useState(false);
+  const [minting, setMinting] = useState(false);
+  const [isMintSuccess, setIsMintSuccess] = useState(false);
   const [currentWallet, setWallet] = useState('');
   const [isUSDCApproved, setIsUSDCApproved] = useState(false);
   const [allowance, setAllowance] = useState(0);
@@ -205,12 +215,65 @@ const useMintHook = () => {
     }
   };
 
+  const mintNFT = async quantity => {
+    const web3 = createAlchemyWeb3(alchemyKey);
+
+    const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+
+    window.contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+
+    setMinting(true);
+
+    try {
+      const provider = await detectEthereumProvider({timeout: 2000});
+
+      if (provider) {
+        const addressArray = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        });
+
+        if (addressArray.length === 0) throw Error('Please connect an account!');
+
+        const currentAccount = addressArray[0];
+
+        const tokenId = await contract.methods.activeStage().call();
+
+        const transactionParameters = {
+          to: contractAddress,
+          from: currentAccount,
+          data: window.contract.methods.mint(tokenId, quantity, '0x00').encodeABI(),
+        };
+
+        const txHash = await web3.eth
+          .sendTransaction(transactionParameters)
+
+          .on('confirmation', (confNumber, receipt) => {
+            const {status} = receipt;
+            if (status) {
+              setMinting(false);
+            }
+          })
+
+          .on('error', console.error);
+      } else {
+        console.log('please install metamask!');
+      }
+    } catch (error) {
+      console.log({error});
+    } finally {
+      setMinting(false);
+    }
+  };
+
   return {
     loading,
     fetchCurrentWallet,
     currentWallet,
     listenToWalletChanges,
     linkWallet,
+    mintNFT,
+    minting,
+    isMintSuccess,
     allowUSDC,
     isUSDCApproved,
     verifyAllowance,
