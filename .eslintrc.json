@@ -1,5 +1,12 @@
 {
-  "extends": ["next/core-web-vitals", "prettier"],
+  "extends": [
+    "next/core-web-vitals",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "root": true,
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
     "no-useless-escape": ["warn"],
@@ -11,6 +18,7 @@
     "react/display-name": ["warn"],
     "react/no-unescaped-entities": ["warn"],
     "react/prop-types": ["off"],
-    "@next/next/no-img-element": ["off"]
+    "@next/next/no-img-element": ["off"],
+    "import/no-unused-modules": [1]
   }
 }
