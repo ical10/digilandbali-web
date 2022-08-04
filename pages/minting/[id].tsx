@@ -1,12 +1,15 @@
 import ContentComponent from 'src/components/ContentComponent';
 import Layout from 'src/components/Layout';
 import Meta from 'src/components/Meta';
+import SafeHydrate from 'src/components/SafeHydrate';
 
 const MintPage = () => {
   return (
     <Layout>
       <Meta title="DigilandBali | Mint Lima Beach NFT" />
-      <ContentComponent />
+      <SafeHydrate>
+        <ContentComponent />
+      </SafeHydrate>
     </Layout>
   );
 };
