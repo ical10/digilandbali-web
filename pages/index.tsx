@@ -24,7 +24,7 @@ export default function Home() {
         <RevealSection />
         <AdvisorSection />
         <div className="relative w-full h-[120px] mb-12 tablet:mb-32">
-          <img src="/Union.svg" layout="fill" className="w-full h-full relative" alt="tes" />
+          <img src="/Union.svg" className="w-full h-full relative" alt="tes" />
         </div>
       </div>
     </Layout>

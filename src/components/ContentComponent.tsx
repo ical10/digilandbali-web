@@ -107,13 +107,13 @@ const ContentComponent = () => {
 
   const handleDecrement = () => {
     if (quantity !== 0) {
-      let decreasedQuantity = quantity - 1;
+      const decreasedQuantity = quantity - 1;
       setQuantity(decreasedQuantity);
     }
   };
 
   const handleIncrement = () => {
-    let increasedQuantity = quantity + 1;
+    const increasedQuantity = quantity + 1;
     setQuantity(increasedQuantity);
   };
 
@@ -348,7 +348,7 @@ const ContentComponent = () => {
         <FAQComponent />
       </div>
       <div className="relative w-full h-[120px] my-12 tablet:my-32">
-        <img src="/Union.svg" layout="fill" className="w-full h-full relative" alt="tes" />
+        <img src="/Union.svg" className="w-full h-full relative" alt="tes" />
       </div>
 
       <Modal
