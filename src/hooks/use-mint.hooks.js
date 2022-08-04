@@ -1,6 +1,9 @@
+import {createAlchemyWeb3} from '@alch/alchemy-web3';
 import detectEthereumProvider from '@metamask/detect-provider';
 
 import {useState} from 'react';
+
+import contractABI from '../../public/contracts/LBSFragment.json';
 
 import {
   addWalletListener,
@@ -18,9 +21,6 @@ import {
   getNFTImage,
 } from 'src/helpers/metamask-interact';
 
-const {createAlchemyWeb3} = require('@alch/alchemy-web3');
-
-const contractABI = require('../../public/contracts/LBSFragment.json');
 const contractAddress = process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS;
 const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_URL;
 
