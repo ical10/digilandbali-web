@@ -9,7 +9,7 @@ const {publicRuntimeConfig} = getConfig();
 export const initialize = (): AxiosInstance => {
   if (!API) {
     API = axios.create({
-      baseURL: publicRuntimeConfig.appAuthURL + '/api',
+      baseURL: publicRuntimeConfig.apiURL,
     });
 
     API.interceptors.response.use(

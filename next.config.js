@@ -13,6 +13,7 @@ const nextConfig = {
   },
   publicRuntimeConfig: {
     appAuthURL: process.env.NEXTAUTH_URL ?? 'http://localhost:3000',
+    apiURL: process.env.DIGILANDAPI_API_URL ?? 'http://localhost:3001',
   },
   webpack(config) {
     config.module.rules.push({

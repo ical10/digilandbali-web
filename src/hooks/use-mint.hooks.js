@@ -266,6 +266,27 @@ const useMintHook = () => {
     }
   };
 
+  const signWallet = async (nonce, address) => {
+    try {
+      const msgHash = `0x${Buffer.from(nonce, 'utf8').toString('hex')}`;
+
+      const provider = await detectEthereumProvider({timeout: 2000});
+
+      if (provider) {
+        const msg = await window.ethereum.request({
+          method: 'personal_sign',
+          params: [msgHash, address, ''],
+        });
+
+        return msg;
+      } else {
+        console.log('please install metamask!');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return {
     loading,
     fetchCurrentWallet,
@@ -295,6 +316,7 @@ const useMintHook = () => {
     mintedNFT,
     fetchNFTImage,
     image,
+    signWallet,
   };
 };
 

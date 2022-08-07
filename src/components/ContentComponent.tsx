@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import Modal from '@mui/material/Modal';
 import Skeleton from '@mui/material/Skeleton';
 import Tooltip from '@mui/material/Tooltip';
+import {InjectedConnector} from '@wagmi/core';
 
 import {useState, useEffect} from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
@@ -21,6 +22,7 @@ import {
 import FAQComponent from 'src/components/FAQComponent';
 import SocialHandles from 'src/components/SocialHandles.js';
 import useMintHook from 'src/hooks/use-mint.hooks';
+import * as AuthAPI from 'src/lib/api/auth';
 import styles from 'styles/ContentComponent.module.css';
 import {useConnect, useAccount} from 'wagmi';
 
@@ -57,10 +59,11 @@ const ContentComponent = () => {
     mintedQty,
     fetchNFTImage,
     image,
+    signWallet,
     loading,
   } = useMintHook();
 
-  const {isConnected} = useAccount();
+  const {address, isConnected} = useAccount();
   const {connect, connectors, error, isLoading, pendingConnector} = useConnect();
 
   useEffect(() => {
@@ -74,11 +77,56 @@ const ContentComponent = () => {
     fetchMintedQty();
   }, []);
 
+  const [status, setStatus] = useState<{
+    loading: boolean;
+    nonce: string | undefined;
+    isAuthorized: boolean;
+  }>({
+    loading: false,
+    nonce: undefined,
+    isAuthorized: false,
+  });
+
+  const fetchNonce = async (id: string) => {
+    try {
+      const {nonce} = await AuthAPI.getChallenge({
+        id,
+      });
+
+      setStatus(x => ({...x, nonce}));
+    } catch (error) {
+      setStatus(x => ({...x, error: error as Error}));
+    }
+  };
+
+  const signIn = async () => {
+    try {
+      const {nonce} = status;
+      setStatus(x => ({...x, loading: true}));
+
+      const msg = await signWallet(nonce, address);
+
+      const {token} = await AuthAPI.login({id: address, signature: msg});
+
+      if (token) {
+        setStatus(x => ({...x, isAuthorized: true}));
+      } else {
+        console.log('Authorization failed!');
+      }
+    } catch (error) {
+      setStatus(x => ({...x, loading: false, nonce: undefined, error: error as Error}));
+    }
+  };
+
   useEffect(() => {
     if (isMintSuccess) {
       fetchMintedByUserQty();
     }
   }, [isMintSuccess]);
+
+  useEffect(() => {
+    fetchNonce(address);
+  }, [address]);
 
   const disableMint = minting;
 
@@ -136,6 +184,10 @@ const ContentComponent = () => {
 
   const handleSetAllowance = () => {
     allowUSDC(quantity * price);
+  };
+
+  const handleConnectWallet = (connector: InjectedConnector) => {
+    connect({connector});
   };
 
   const handleMintPressed = () => {
@@ -305,22 +357,28 @@ const ContentComponent = () => {
 
           <div className="flex flex-col gap-4 desktop:grid desktop:grid-cols-[1fr_1fr]">
             {isConnected ? (
-              <button
-                className="w-full"
-                onClick={() => handleMintPressed()}
-                disabled={
-                  !(
-                    allowedSupply > 0 &&
-                    quantity > 0 &&
-                    isAgreed &&
-                    allowance === quantity * price
-                  ) || disableMint
-                    ? true
-                    : false
-                }
-              >
-                <span>Mint Now</span>
-              </button>
+              status.isAuthorized ? (
+                <button
+                  className="w-full"
+                  onClick={() => handleMintPressed()}
+                  disabled={
+                    !(
+                      allowedSupply > 0 &&
+                      quantity > 0 &&
+                      isAgreed &&
+                      allowance === quantity * price
+                    ) || disableMint
+                      ? true
+                      : false
+                  }
+                >
+                  <span>Mint Now</span>
+                </button>
+              ) : (
+                <button className="w-full" onClick={signIn}>
+                  <span>Sign in to Digilandbali</span>
+                </button>
+              )
             ) : (
               <>
                 {connectors.map(connector => (
@@ -328,10 +386,10 @@ const ContentComponent = () => {
                     className="w-full"
                     disabled={!connector.ready || isLoading}
                     key={connector.id}
-                    onClick={() => connect({connector})}
+                    onClick={() => handleConnectWallet(connector)}
                   >
                     <span>
-                      {'Connect Wallet'}
+                      {`Connect ${connector.name}`}
                       {isLoading && connector.id === pendingConnector?.id && ' (connecting)'}
                     </span>
                   </button>
