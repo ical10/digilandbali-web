@@ -20,15 +20,16 @@ import {
   getMintedNFTQty,
   getNFTImage,
 } from 'src/helpers/metamask-interact';
+import useStore from 'src/store';
 
 const contractAddress = process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS;
 const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_URL;
 
 const useMintHook = () => {
+  //TODO: move some of the states to store level
   const [loading, setLoading] = useState(false);
   const [minting, setMinting] = useState(false);
   const [isMintSuccess, setIsMintSuccess] = useState(false);
-  const [currentWallet, setWallet] = useState('');
   const [isUSDCApproved, setIsUSDCApproved] = useState(false);
   const [allowance, setAllowance] = useState(0);
   const [activeStage, setActiveStage] = useState(0);
@@ -40,13 +41,18 @@ const useMintHook = () => {
   const [mintedQty, setMintedQty] = useState(0);
   const [mintedNFT, setMintedNFT] = useState(0);
 
+  const currentWallet = useStore(state => state.currentWallet);
+  const updateWallet = useStore(state => state.updateWallet);
+
   const fetchCurrentWallet = async () => {
     setLoading(true);
 
     try {
-      const respObj = await getCurrentWalletConnected();
-      const {address} = respObj;
-      setWallet(address);
+      if (currentWallet === '') {
+        const respObj = await getCurrentWalletConnected();
+        const {address} = respObj;
+        updateWallet(address);
+      }
     } catch (error) {
       console.log({error});
     } finally {
@@ -60,8 +66,7 @@ const useMintHook = () => {
     try {
       const address = await connectWallet();
 
-      console.log({address});
-      setWallet(address);
+      updateWallet(address);
     } catch (error) {
       console.log({error});
     } finally {
@@ -72,7 +77,7 @@ const useMintHook = () => {
   const listenToWalletChanges = () => {
     const account = addWalletListener();
 
-    setWallet(account);
+    updateWallet(account);
   };
 
   const fetchNFTImage = async () => {
@@ -290,7 +295,6 @@ const useMintHook = () => {
   return {
     loading,
     fetchCurrentWallet,
-    currentWallet,
     listenToWalletChanges,
     linkWallet,
     mintNFT,

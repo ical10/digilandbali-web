@@ -23,6 +23,7 @@ import FAQComponent from 'src/components/FAQComponent';
 import SocialHandles from 'src/components/SocialHandles.js';
 import useMintHook from 'src/hooks/use-mint.hooks';
 import * as AuthAPI from 'src/lib/api/auth';
+import useStore from 'src/store';
 import styles from 'styles/ContentComponent.module.css';
 import {useConnect, useAccount} from 'wagmi';
 
@@ -38,7 +39,6 @@ const style = {
 
 const ContentComponent = () => {
   const {
-    currentWallet,
     mintNFT,
     minting,
     isMintSuccess,
@@ -66,6 +66,9 @@ const ContentComponent = () => {
   const {address, isConnected} = useAccount();
   const {connect, connectors, error, isLoading, pendingConnector} = useConnect();
 
+  const currentWallet = useStore(state => state.currentWallet);
+  const updateWallet = useStore(state => state.updateWallet);
+
   useEffect(() => {
     verifyAllowance();
     fetchBalance();
@@ -86,6 +89,10 @@ const ContentComponent = () => {
     nonce: undefined,
     isAuthorized: false,
   });
+
+  useEffect(() => {
+    updateWallet(address);
+  }, [address]);
 
   const fetchNonce = async (id: string) => {
     try {
