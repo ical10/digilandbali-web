@@ -2,11 +2,17 @@ import {useEffect, useState} from 'react';
 
 import Link from 'next/link';
 
-import {connectWallet, getCurrentWalletConnected} from '../helpers/metamask-interact';
-
 import {ArrowDown2} from 'iconsax-react';
+import {useConnect, useAccount} from 'wagmi';
 
-const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
+const NavbarComponent = ({isOpenNav}) => {
+  const {address} = useAccount();
+  const {connect, connectors} = useConnect();
+
+  const handleConnect = connector => {
+    connect({connector});
+  };
+
   const language = ['ENGLISH', 'MANDARIN', 'RUSSIA', 'VIETNAM'];
   const [openNavbar, setOpenNavbar] = useState(false);
   const [stickyClass, setStickyClass] = useState('');
@@ -105,9 +111,13 @@ const NavbarComponent = ({onConnect, walletAddress, isOpenNav}) => {
               </button>
             </Link>
           ) : (
-            <button onClick={onConnect}>
-              <span>{!walletAddress ? 'connect wallet' : 'connected'}</span>
-            </button>
+            <>
+              {connectors.map(connector => (
+                <button key={connector.id} onClick={() => handleConnect(connector)}>
+                  <span>{!address ? 'connect wallet' : 'connected'}</span>
+                </button>
+              ))}
+            </>
           )}
         </div>
       </nav>
