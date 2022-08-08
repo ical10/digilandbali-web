@@ -205,11 +205,13 @@ export const checkAllowanceUSDC = async () => {
 };
 
 export const approveUSDC = async amount => {
-  if (window.ethereum) {
-    const web3 = createAlchemyWeb3(alchemyKey);
-    try {
-      const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
+  const web3 = createAlchemyWeb3(alchemyKey);
+  try {
+    const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
 
+    const provider = await detectEthereumProvider({timeout: 2000});
+
+    if (provider) {
       const currentAccount = await window.ethereum.selectedAddress;
 
       const decimals = await getUSDCDecimals();
@@ -230,10 +232,12 @@ export const approveUSDC = async amount => {
         });
 
       return isSuccess;
-    } catch (error) {
-      console.log({error});
-      return false;
+    } else {
+      console.log('please install metamask!');
     }
+  } catch (error) {
+    console.log({error});
+    return false;
   }
 };
 
