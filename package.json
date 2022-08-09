@@ -22,7 +22,6 @@
     "iconsax-react": "^0.0.8",
     "js-cookie": "^3.0.1",
     "next": "12.1.6",
-    "next-auth": "^4.10.3",
     "react": "18.1.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.1.0",
