@@ -94,11 +94,19 @@ const useMintHook = () => {
     }
   };
 
-  const fetchMintedByUserQty = async () => {
+  const fetchMintedByUserQty = async currentAddress => {
     setLoading(true);
 
+    let tempAddress = '';
+
+    if (currentWallet.length > 0) {
+      tempAddress = currentWallet;
+    } else {
+      tempAddress = currentAddress;
+    }
+
     try {
-      const mintedNFT = await getMintedNFTQty();
+      const mintedNFT = await getMintedNFTQty(tempAddress);
       setMintedNFT(mintedNFT);
     } catch (error) {
       console.log({error});
@@ -134,12 +142,12 @@ const useMintHook = () => {
     }
   };
 
-  const fetchBalance = async () => {
+  const fetchBalance = async address => {
     setLoading(true);
 
     try {
       const decimals = await getUSDCDecimals();
-      const balance = await getUSDCBalance();
+      const balance = await getUSDCBalance(address);
 
       setBalance(balance / 10 ** decimals);
     } catch (error) {

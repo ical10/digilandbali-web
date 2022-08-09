@@ -33,7 +33,7 @@ export const getNFTImage = async () => {
   }
 };
 
-export const getMintedNFTQty = async () => {
+export const getMintedNFTQty = async currentAddress => {
   const web3 = createAlchemyWeb3(alchemyKey);
 
   try {
@@ -42,20 +42,12 @@ export const getMintedNFTQty = async () => {
       const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
 
       const activeStage = await contract.methods.activeStage().call();
-      const addressArray = await window.ethereum.request({
-        method: 'eth_requestAccounts',
-      });
 
       let mintedNFT = 0;
 
-      if (addressArray.length > 0) {
-        const currentAccount = addressArray[0];
-        mintedNFT = await contract.methods.balanceOf(currentAccount, activeStage).call();
+      mintedNFT = await contract.methods.balanceOf(currentAddress, activeStage).call();
 
-        return mintedNFT;
-      } else {
-        return mintedNFT;
-      }
+      return mintedNFT;
     } else {
       console.log('please install metamask!');
     }
@@ -96,28 +88,18 @@ export const getMaxSaleSupply = async () => {
   }
 };
 
-export const getUSDCBalance = async () => {
-  if (window.ethereum) {
-    try {
-      const web3 = createAlchemyWeb3(alchemyKey);
+export const getUSDCBalance = async currentAddress => {
+  try {
+    const web3 = createAlchemyWeb3(alchemyKey);
 
-      const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
+    const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
 
-      const addressArray = await window.ethereum.request({
-        method: 'eth_requestAccounts',
-      });
+    let balance = 0;
 
-      let balance = 0;
-
-      if (addressArray.length > 0) {
-        const currentAccount = await addressArray[0];
-
-        balance = await usdcContract.methods.balanceOf(currentAccount).call();
-      }
-      return balance;
-    } catch (error) {
-      console.log({error});
-    }
+    balance = await usdcContract.methods.balanceOf(currentAddress).call();
+    return balance;
+  } catch (error) {
+    console.log({error});
   }
 };
 
@@ -259,6 +241,29 @@ export const connectWallet = async () => {
     console.log({err});
   }
   return address;
+};
+
+export const createSignature = async ({nonce, address}) => {
+  try {
+    const msgHash = `0x${Buffer.from(nonce, 'utf8').toString('hex')}`;
+
+    const provider = await detectEthereumProvider({timeout: 2000});
+
+    console.log({nonce, address, provider});
+
+    if (provider) {
+      const msg = await window.ethereum.request({
+        method: 'personal_sign',
+        params: [msgHash, address, ''],
+      });
+
+      return msg;
+    } else {
+      console.log('please install metamask!');
+    }
+  } catch (err) {
+    console.error(err);
+  }
 };
 
 export const getCurrentWalletConnected = async () => {

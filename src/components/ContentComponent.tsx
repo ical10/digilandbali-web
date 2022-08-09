@@ -19,10 +19,11 @@ import {
   Copy,
   ArrowSwapHorizontal,
 } from 'iconsax-react';
+import Cookies from 'js-cookie';
 import FAQComponent from 'src/components/FAQComponent';
 import SocialHandles from 'src/components/SocialHandles.js';
-import useMintHook from 'src/hooks/use-mint.hooks';
-import * as AuthAPI from 'src/lib/api/auth';
+import useAuthHook from 'src/hooks/use-auth.hooks';
+import useMintHook from 'src/hooks/use-mint.hooks.js';
 import useStore from 'src/store';
 import styles from 'styles/ContentComponent.module.css';
 import {useConnect, useAccount} from 'wagmi';
@@ -59,81 +60,53 @@ const ContentComponent = () => {
     mintedQty,
     fetchNFTImage,
     image,
-    signWallet,
     loading,
   } = useMintHook();
 
-  const {address, isConnected} = useAccount();
+  const {login, isAuthenticated} = useAuthHook();
+
+  const {address, isConnected, isDisconnected} = useAccount();
   const {connect, connectors, error, isLoading, pendingConnector} = useConnect();
+
+  const [connectClicked, setConnectClicked] = useState(false);
 
   const currentWallet = useStore(state => state.currentWallet);
   const updateWallet = useStore(state => state.updateWallet);
 
+  if (isDisconnected) {
+    Cookies.remove('access_token');
+    Cookies.remove('user');
+  }
   useEffect(() => {
     verifyAllowance();
-    fetchBalance();
-    fetchMintedByUserQty();
+    fetchMintedQty();
     fetchPrice();
     fetchActiveStage();
     fetchMaxSupply();
     fetchNFTImage();
-    fetchMintedQty();
+    setConnectClicked(false);
   }, []);
 
-  const [status, setStatus] = useState<{
-    loading: boolean;
-    nonce: string | undefined;
-    isAuthorized: boolean;
-  }>({
-    loading: false,
-    nonce: undefined,
-    isAuthorized: false,
-  });
+  useEffect(() => {
+    if (isConnected && address) {
+      updateWallet(address);
+      fetchMintedByUserQty(address);
+      fetchBalance(address);
+    }
+  }, [isConnected, address]);
 
   useEffect(() => {
-    updateWallet(address);
-  }, [address]);
-
-  const fetchNonce = async (id: string) => {
-    try {
-      const {nonce} = await AuthAPI.getChallenge({
-        id,
-      });
-
-      setStatus(x => ({...x, nonce}));
-    } catch (error) {
-      setStatus(x => ({...x, error: error as Error}));
+    const token = Cookies.get('access_token');
+    if (!token && connectClicked && address) {
+      login(address);
     }
-  };
-
-  const signIn = async () => {
-    try {
-      const {nonce} = status;
-      setStatus(x => ({...x, loading: true}));
-
-      const msg = await signWallet(nonce, address);
-
-      const {token} = await AuthAPI.login({id: address, signature: msg});
-
-      if (token) {
-        setStatus(x => ({...x, isAuthorized: true}));
-      } else {
-        console.log('Authorization failed!');
-      }
-    } catch (error) {
-      setStatus(x => ({...x, loading: false, nonce: undefined, error: error as Error}));
-    }
-  };
+  }, [address, connectClicked]);
 
   useEffect(() => {
     if (isMintSuccess) {
       fetchMintedByUserQty();
     }
   }, [isMintSuccess]);
-
-  useEffect(() => {
-    fetchNonce(address);
-  }, [address]);
 
   const disableMint = minting;
 
@@ -195,6 +168,7 @@ const ContentComponent = () => {
 
   const handleConnectWallet = (connector: InjectedConnector) => {
     connect({connector});
+    setConnectClicked(true);
   };
 
   const handleMintPressed = () => {
@@ -202,6 +176,10 @@ const ContentComponent = () => {
   };
 
   const allowedSupply = maxSupply - mintedQty;
+
+  const formDisabled = !isAuthenticated;
+
+  console.log({balance});
 
   return (
     <div id="content">
@@ -263,6 +241,7 @@ const ContentComponent = () => {
             </h3>
           </div>
 
+          {/*FORMS*/}
           <div className="flex flex-col gap-4 mb-8 tablet:mb-28">
             <input
               className="rounded-lg border border-[#d0d5dd] p-2 shadow-[0px_1px_2px_rgba(16,24,40,0.05)]"
@@ -273,12 +252,16 @@ const ContentComponent = () => {
               alt="Input Referral Code (Optional)"
               value={referralCode}
               onChange={handleChangeReferralCode}
+              disabled={formDisabled}
             />
 
             <div className={styles.container}>
               <div className="flex py-1 px-2 rounded-lg border border-[#d0d5dd] justify-around">
                 <div>
-                  <IconButton disabled={allowedSupply === 0} onClick={handleDecrement}>
+                  <IconButton
+                    disabled={allowedSupply === 0 || formDisabled}
+                    onClick={handleDecrement}
+                  >
                     <MinusCirlce size="20" color="#8f98aa" />
                   </IconButton>
                 </div>
@@ -287,11 +270,14 @@ const ContentComponent = () => {
                   name="input-mint-quantity"
                   className={styles.inputQuantity}
                   value={quantity}
+                  disabled={formDisabled}
                   onChange={handleChangeQuantity}
                 ></input>
                 <div>
                   <IconButton
-                    disabled={!(quantity * price < balance) || quantity >= allowedSupply}
+                    disabled={
+                      !(quantity * price < balance) || quantity >= allowedSupply || formDisabled
+                    }
                     onClick={handleIncrement}
                   >
                     <AddCircle
@@ -327,7 +313,8 @@ const ContentComponent = () => {
                     loading ||
                     quantity * price > balance ||
                     quantity * price === allowance ||
-                    quantity > allowedSupply
+                    quantity > allowedSupply ||
+                    formDisabled
                   }
                   onClick={handleSetAllowance}
                   className="ml-auto disabled:bg-transparent bg-transparent shadow-none rounded-none p-0 font-medium text-xs text-[#406AFF]"
@@ -349,7 +336,13 @@ const ContentComponent = () => {
             </div>
 
             <div className="flex flex-row gap-1">
-              <input type="checkbox" id="tnc" name="tnc" onChange={handleChangeAgreement} />
+              <input
+                type="checkbox"
+                id="tnc"
+                name="tnc"
+                onChange={handleChangeAgreement}
+                disabled={formDisabled}
+              />
               <label htmlFor="tos">
                 I agree with{' '}
                 <a href="https://google.com" style={{color: '#406aff'}}>
@@ -364,31 +357,25 @@ const ContentComponent = () => {
 
           <div className="flex flex-col gap-4 desktop:grid desktop:grid-cols-[1fr_1fr]">
             {isConnected ? (
-              status.isAuthorized ? (
-                <button
-                  className="w-full"
-                  onClick={() => handleMintPressed()}
-                  disabled={
-                    !(
-                      allowedSupply > 0 &&
-                      quantity > 0 &&
-                      isAgreed &&
-                      allowance === quantity * price
-                    ) || disableMint
-                      ? true
-                      : false
-                  }
-                >
-                  <span>Mint Now</span>
-                </button>
-              ) : (
-                <button className="w-full" onClick={signIn}>
-                  <span>Sign in to Digilandbali</span>
-                </button>
-              )
+              <button
+                className="w-full"
+                onClick={() => handleMintPressed()}
+                disabled={
+                  !(
+                    allowedSupply > 0 &&
+                    quantity > 0 &&
+                    isAgreed &&
+                    allowance === quantity * price
+                  ) || disableMint
+                    ? true
+                    : false
+                }
+              >
+                <span>Mint Now</span>
+              </button>
             ) : (
               <>
-                {connectors.map(connector => (
+                {connectors.map((connector: InjectedConnector) => (
                   <button
                     className="w-full"
                     disabled={!connector.ready || isLoading}
