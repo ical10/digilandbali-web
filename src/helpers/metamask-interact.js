@@ -249,8 +249,6 @@ export const createSignature = async ({nonce, address}) => {
 
     const provider = await detectEthereumProvider({timeout: 2000});
 
-    console.log({nonce, address, provider});
-
     if (provider) {
       const msg = await window.ethereum.request({
         method: 'personal_sign',

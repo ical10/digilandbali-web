@@ -20,9 +20,11 @@ import {
   getMintedNFTQty,
   getNFTImage,
 } from 'src/helpers/metamask-interact';
+import {mintNFTWithRefCode} from 'src/lib/api/referral';
 import useStore from 'src/store';
 
 const contractAddress = process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS;
+const usdcContractAddress = process.env.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS;
 const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_URL;
 
 const useMintHook = () => {
@@ -228,7 +230,7 @@ const useMintHook = () => {
     }
   };
 
-  const mintNFT = async quantity => {
+  const mintNFT = async (quantity, referralCode = '') => {
     const web3 = createAlchemyWeb3(alchemyKey);
 
     const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
@@ -269,6 +271,23 @@ const useMintHook = () => {
           })
 
           .on('error', console.error);
+
+        if (txHash) {
+          const data = await mintNFTWithRefCode({
+            projectId: 'lima-beach-signature',
+            nftId: contractAddress,
+            walletAddress: currentAccount,
+            tokenId,
+            quantity,
+            currencyId: usdcContractAddress,
+            amount: quantity,
+            referralCode,
+          });
+
+          return data;
+        } else {
+          console.log('refCode not recorded!');
+        }
       } else {
         console.log('please install metamask!');
       }
