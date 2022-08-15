@@ -3,6 +3,8 @@ import detectEthereumProvider from '@metamask/detect-provider';
 
 import {useState} from 'react';
 
+import getConfig from 'next/config';
+
 import contractABI from '../../public/contracts/LBSFragment.json';
 
 import {
@@ -23,9 +25,10 @@ import {
 import {mintNFTWithRefCode} from 'src/lib/api/referral';
 import useStore from 'src/store';
 
-const contractAddress = process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS;
-const usdcContractAddress = process.env.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS;
-const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_URL;
+const {publicRuntimeConfig} = getConfig();
+const contractAddress = publicRuntimeConfig.contractAddress;
+const usdcContractAddress = publicRuntimeConfig.usdcContractAddress;
+const providerURL = publicRuntimeConfig.providerURL;
 
 const useMintHook = () => {
   //TODO: move some of the states to store level
@@ -231,7 +234,7 @@ const useMintHook = () => {
   };
 
   const mintNFT = async (quantity, referralCode = '') => {
-    const web3 = createAlchemyWeb3(alchemyKey);
+    const web3 = createAlchemyWeb3(providerURL);
 
     const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
 

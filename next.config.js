@@ -12,8 +12,11 @@ const nextConfig = {
   },
   publicRuntimeConfig: {
     appAuthURL: process.env.NEXTAUTH_URL ?? 'http://localhost:3000',
-    apiURL: process.env.DIGILAND_API_URL ?? 'http://localhost:3001',
+    apiURL: process.env.DIGILANDBALI_API_URL ?? 'http://localhost:3001',
+    providerKey: process.env.NEXT_PUBLIC_PROVIDER_KEY,
+    providerURL: process.env.NEXT_PUBLIC_ALCHEMY_URL,
     contractAddress: process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS,
+    usdcContractAddress: process.env.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS,
   },
   webpack(config) {
     config.module.rules.push({
