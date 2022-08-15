@@ -1,6 +1,7 @@
 import DigilandAPI from '.';
 
 type refCodePayloadProps = {
+  id: string;
   projectId: string;
   nftId: string;
   walletAddress: string;
@@ -26,10 +27,20 @@ export const checkRefCode = async (code: string) => {
 
 export const mintNFTWithRefCode = async (payload: refCodePayloadProps) => {
   try {
-    const {projectId, nftId, walletAddress, tokenId, quantity, currencyId, amount, referralCode} =
-      payload;
+    const {
+      id,
+      projectId,
+      nftId,
+      walletAddress,
+      tokenId,
+      quantity,
+      currencyId,
+      amount,
+      referralCode,
+    } = payload;
 
     const values = {
+      id,
       walletAddress,
       tokenId,
       quantity,
@@ -37,6 +48,7 @@ export const mintNFTWithRefCode = async (payload: refCodePayloadProps) => {
       amount,
       referralCode,
     };
+
     const {data} = await DigilandAPI().request({
       url: `projects/${projectId}/nfts/${nftId}/mintings`,
       method: 'POST',

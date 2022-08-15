@@ -273,7 +273,10 @@ const useMintHook = () => {
           .on('error', console.error);
 
         if (txHash) {
+          const {blockHash} = txHash;
+
           const data = await mintNFTWithRefCode({
+            id: blockHash,
             projectId: 'lima-beach-signature',
             nftId: contractAddress,
             walletAddress: currentAccount,
@@ -284,7 +287,11 @@ const useMintHook = () => {
             referralCode,
           });
 
-          return data;
+          if (data) {
+            return data;
+          } else {
+            throw new Error('minting data not logged!');
+          }
         } else {
           console.log('refCode not recorded!');
         }
