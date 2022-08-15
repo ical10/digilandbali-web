@@ -11,8 +11,6 @@ import {InjectedConnector} from '@wagmi/core';
 import {useState, useEffect} from 'react';
 import {CopyToClipboard} from 'react-copy-to-clipboard';
 
-import getConfig from 'next/config';
-
 import {
   MinusCirlce,
   AddCircle,
@@ -42,8 +40,6 @@ const style = {
   boxShadow: 24,
   borderRadius: '4px',
 };
-
-const {publicRuntimeConfig} = getConfig();
 
 const ContentComponent = () => {
   const {
@@ -76,8 +72,6 @@ const ContentComponent = () => {
 
   const {address, isConnected, isDisconnected} = useAccount();
   const {connect, connectors, error, isLoading, pendingConnector} = useConnect();
-
-  const NFTContractAddress = publicRuntimeConfig.contractAddress;
 
   const [connectClicked, setConnectClicked] = useState(false);
 
