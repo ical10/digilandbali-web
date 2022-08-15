@@ -8,7 +8,7 @@ const nextConfig = {
   },
   publicRuntimeConfig: {
     appAuthURL: process.env.NEXTAUTH_URL ?? 'http://localhost:3000',
-    apiURL: process.env.API_URL ?? 'http://localhost:3001',
+    apiURL: process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:3001',
     web3ProviderKey: process.env.NEXT_PUBLIC_WEB3_PROVIDER_KEY,
     web3ProviderURL: process.env.NEXT_PUBLIC_WEB3_PROVIDER_URL,
     lbsfContractAddress: process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS,
