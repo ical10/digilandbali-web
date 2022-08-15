@@ -8,8 +8,7 @@ const nextConfig = {
   },
   serverRuntimeConfig: {
     appSecret: process.env.APP_SECRET,
-    apiURL: process.env.DIGILAND_API_URL,
-    jwtSecret: process.env.JWT_SECRET,
+    apiURL: process.env.DIGILANDBALI_API_URL,
   },
   publicRuntimeConfig: {
     appAuthURL: process.env.NEXTAUTH_URL ?? 'http://localhost:3000',
