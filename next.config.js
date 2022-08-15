@@ -6,10 +6,6 @@ const nextConfig = {
       layoutRaw: true,
     },
   },
-  serverRuntimeConfig: {
-    appSecret: process.env.APP_SECRET,
-    apiURL: process.env.API_URL,
-  },
   publicRuntimeConfig: {
     appAuthURL: process.env.NEXTAUTH_URL ?? 'http://localhost:3000',
     apiURL: process.env.API_URL ?? 'http://localhost:3001',
