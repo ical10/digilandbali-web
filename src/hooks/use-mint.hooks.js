@@ -26,9 +26,9 @@ import {mintNFTWithRefCode} from 'src/lib/api/referral';
 import useStore from 'src/store';
 
 const {publicRuntimeConfig} = getConfig();
-const contractAddress = publicRuntimeConfig.contractAddress;
+const lbsfContractAddress = publicRuntimeConfig.lbsfContractAddress;
 const usdcContractAddress = publicRuntimeConfig.usdcContractAddress;
-const providerURL = publicRuntimeConfig.providerURL;
+const web3ProviderURL = publicRuntimeConfig.web3ProviderURL;
 
 const useMintHook = () => {
   //TODO: move some of the states to store level
@@ -234,11 +234,11 @@ const useMintHook = () => {
   };
 
   const mintNFT = async (quantity, referralCode = '') => {
-    const web3 = createAlchemyWeb3(providerURL);
+    const web3 = createAlchemyWeb3(web3ProviderURL);
 
-    const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+    const contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
 
-    window.contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+    window.contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
 
     setMinting(true);
 
@@ -257,7 +257,7 @@ const useMintHook = () => {
         const tokenId = await contract.methods.activeStage().call();
 
         const transactionParameters = {
-          to: contractAddress,
+          to: lbsfContractAddress,
           from: currentAccount,
           data: window.contract.methods.mint(tokenId, quantity, '0x00').encodeABI(),
         };
@@ -281,7 +281,7 @@ const useMintHook = () => {
           const data = await mintNFTWithRefCode({
             id: blockHash,
             projectId: 'lima-beach-signature',
-            nftId: contractAddress,
+            nftId: lbsfContractAddress,
             walletAddress: currentAccount,
             tokenId,
             quantity,

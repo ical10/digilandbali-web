@@ -9,7 +9,7 @@ const {publicRuntimeConfig} = getConfig();
 
 const {chains, provider, webSocketProvider} = configureChains(
   [chain.mainnet, chain.rinkeby],
-  [alchemyProvider({apiKey: publicRuntimeConfig.providerKey}), publicProvider()],
+  [alchemyProvider({apiKey: publicRuntimeConfig.web3ProviderKey}), publicProvider()],
 );
 
 const client = createClient({

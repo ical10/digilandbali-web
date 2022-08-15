@@ -1,18 +1,22 @@
 import {createAlchemyWeb3} from '@alch/alchemy-web3';
 import detectEthereumProvider from '@metamask/detect-provider';
 
+import getConfig from 'next/config';
+
 import contractABI from '../../public/contracts/LBSFragment.json';
 import usdcContractABI from '../../public/contracts/USDC.json';
 
-const contractAddress = process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS;
-const usdcContractAddress = process.env.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS;
-const alchemyKey = process.env.NEXT_PUBLIC_ALCHEMY_URL;
+const {publicRuntimeConfig} = getConfig();
+
+const lbsfContractAddress = publicRuntimeConfig.lbsfContractAddress;
+const usdcContractAddress = publicRuntimeConfig.usdcContractAddress;
+const web3ProviderURL = publicRuntimeConfig.web3ProviderURL;
 
 export const getNFTImage = async () => {
   try {
-    const web3 = createAlchemyWeb3(alchemyKey);
+    const web3 = createAlchemyWeb3(web3ProviderURL);
 
-    const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+    const contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
 
     const activeStage = await contract.methods.activeStage().call();
 
@@ -34,12 +38,12 @@ export const getNFTImage = async () => {
 };
 
 export const getMintedNFTQty = async currentAddress => {
-  const web3 = createAlchemyWeb3(alchemyKey);
+  const web3 = createAlchemyWeb3(web3ProviderURL);
 
   try {
     const provider = await detectEthereumProvider({timeout: 2000});
     if (provider) {
-      const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+      const contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
 
       const activeStage = await contract.methods.activeStage().call();
 
@@ -57,10 +61,10 @@ export const getMintedNFTQty = async currentAddress => {
 };
 
 export const getTokenToMintedQty = async () => {
-  const web3 = createAlchemyWeb3(alchemyKey);
+  const web3 = createAlchemyWeb3(web3ProviderURL);
 
   try {
-    const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+    const contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
 
     const activeStage = await contract.methods.activeStage().call();
     const mintedQty = await contract.methods.tokenToMintedQty(activeStage).call();
@@ -73,10 +77,10 @@ export const getTokenToMintedQty = async () => {
 };
 
 export const getMaxSaleSupply = async () => {
-  const web3 = createAlchemyWeb3(alchemyKey);
+  const web3 = createAlchemyWeb3(web3ProviderURL);
 
   try {
-    const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+    const contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
 
     const activeStage = await contract.methods.activeStage().call();
     const maxSupply = await contract.methods.getMaxSaleSupply(activeStage).call();
@@ -90,7 +94,7 @@ export const getMaxSaleSupply = async () => {
 
 export const getUSDCBalance = async currentAddress => {
   try {
-    const web3 = createAlchemyWeb3(alchemyKey);
+    const web3 = createAlchemyWeb3(web3ProviderURL);
 
     const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
 
@@ -104,7 +108,7 @@ export const getUSDCBalance = async currentAddress => {
 };
 
 export const getUSDCDecimals = async () => {
-  const web3 = createAlchemyWeb3(alchemyKey);
+  const web3 = createAlchemyWeb3(web3ProviderURL);
 
   try {
     const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
@@ -118,9 +122,9 @@ export const getUSDCDecimals = async () => {
 };
 
 export const getActiveStage = async () => {
-  const web3 = createAlchemyWeb3(alchemyKey);
+  const web3 = createAlchemyWeb3(web3ProviderURL);
   try {
-    const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+    const contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
 
     const activeStage = await contract.methods.activeStage().call();
 
@@ -132,10 +136,10 @@ export const getActiveStage = async () => {
 };
 
 export const getPrice = async () => {
-  const web3 = createAlchemyWeb3(alchemyKey);
+  const web3 = createAlchemyWeb3(web3ProviderURL);
 
   try {
-    const contract = new web3.eth.Contract(contractABI.abi, contractAddress);
+    const contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
 
     const activeStage = await contract.methods.activeStage().call();
 
@@ -152,7 +156,7 @@ export const getPrice = async () => {
 
 export const checkAllowanceUSDC = async () => {
   if (window.ethereum) {
-    const web3 = createAlchemyWeb3(alchemyKey);
+    const web3 = createAlchemyWeb3(web3ProviderURL);
     try {
       const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
 
@@ -167,7 +171,7 @@ export const checkAllowanceUSDC = async () => {
 
         const transactionParameters = {
           owner: currentAccount,
-          spender: contractAddress,
+          spender: lbsfContractAddress,
         };
 
         allowance = await usdcContract.methods
@@ -187,7 +191,7 @@ export const checkAllowanceUSDC = async () => {
 };
 
 export const approveUSDC = async amount => {
-  const web3 = createAlchemyWeb3(alchemyKey);
+  const web3 = createAlchemyWeb3(web3ProviderURL);
   try {
     const usdcContract = new web3.eth.Contract(usdcContractABI, usdcContractAddress);
 
@@ -201,7 +205,7 @@ export const approveUSDC = async amount => {
       let isSuccess = false;
 
       await usdcContract.methods
-        .approve(contractAddress, web3.utils.toBN(amount * 10 ** decimals))
+        .approve(lbsfContractAddress, web3.utils.toBN(amount * 10 ** decimals))
         .send({from: currentAccount})
         .on('confirmation', (confirmationNumber, receipt) => {
           if (confirmationNumber === 0) {

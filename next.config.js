@@ -8,14 +8,14 @@ const nextConfig = {
   },
   serverRuntimeConfig: {
     appSecret: process.env.APP_SECRET,
-    apiURL: process.env.DIGILANDBALI_API_URL,
+    apiURL: process.env.API_URL,
   },
   publicRuntimeConfig: {
     appAuthURL: process.env.NEXTAUTH_URL ?? 'http://localhost:3000',
-    apiURL: process.env.DIGILANDBALI_API_URL ?? 'http://localhost:3001',
-    providerKey: process.env.NEXT_PUBLIC_PROVIDER_KEY,
-    providerURL: process.env.NEXT_PUBLIC_ALCHEMY_URL,
-    contractAddress: process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS,
+    apiURL: process.env.API_URL ?? 'http://localhost:3001',
+    web3ProviderKey: process.env.NEXT_PUBLIC_WEB3_PROVIDER_KEY,
+    web3ProviderURL: process.env.NEXT_PUBLIC_WEB3_PROVIDER_URL,
+    lbsfContractAddress: process.env.NEXT_PUBLIC_LBSF_CONTRACT_ADDRESS,
     usdcContractAddress: process.env.NEXT_PUBLIC_USDC_CONTRACT_ADDRESS,
   },
   webpack(config) {
