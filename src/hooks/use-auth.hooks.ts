@@ -6,9 +6,9 @@ import {getChallengeAndSignIn} from 'src/lib/api/auth';
 const useAuthHook = () => {
   useEffect(() => {
     async function loadUserFromCookies() {
-      const token = Cookies.get('access_token');
+      const cookieToken = Cookies.get('access_token');
       const user = Cookies.get('user');
-      if (token) {
+      if (cookieToken) {
         setUser(user);
         setIsLoading(false);
       } else {

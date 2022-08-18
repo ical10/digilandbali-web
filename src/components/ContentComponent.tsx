@@ -68,6 +68,8 @@ const ContentComponent = () => {
 
   const {login, isAuthenticated} = useAuthHook();
 
+  const cookieToken = Cookies.get('access_token');
+
   const {verifyRefCode, isLoading: isLoadingForm} = useFormHook();
 
   const {address, isConnected, isDisconnected} = useAccount();
@@ -128,7 +130,7 @@ const ContentComponent = () => {
   useEffect(() => {
     async function check() {
       if (isValidCode) {
-        const refCodeValidity = await verifyRefCode(referralCode);
+        const refCodeValidity = await verifyRefCode(cookieToken, referralCode);
 
         if (refCodeValidity) {
           setCodeValidity(true);
@@ -139,7 +141,7 @@ const ContentComponent = () => {
     }
 
     check();
-  }, [isValidCode, referralCode]);
+  }, [isValidCode, referralCode, cookieToken]);
 
   const [quantity, setQuantity] = useState(0);
 

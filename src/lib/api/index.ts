@@ -8,16 +8,19 @@ let API: AxiosInstance;
 
 const {publicRuntimeConfig} = getConfig();
 
-const axiosInstance = (): AxiosInstance => {
+const cookieToken = Cookies.get('access_token');
+
+const axiosInstance = (token = cookieToken): AxiosInstance => {
   if (!API) {
     API = axios.create({
       baseURL: publicRuntimeConfig.apiURL,
-      headers: {'Content-Type': 'application/json'},
+      headers: {'Content-Type': 'application/json', Authorization: `Bearer ${token}`},
     });
 
     API.interceptors.request.use(request => {
-      const token = Cookies.get('access_token');
       if (token) {
+        API.defaults.headers.Authorization = `Bearer ${token}`;
+      } else {
         API.defaults.headers.Authorization = `Bearer ${token}`;
       }
       return request;
@@ -45,7 +48,6 @@ const axiosInstance = (): AxiosInstance => {
       },
     );
   }
-
   return API;
 };
 

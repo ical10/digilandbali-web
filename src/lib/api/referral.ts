@@ -12,9 +12,9 @@ type refCodePayloadProps = {
   referralCode: string;
 };
 
-export const checkRefCode = async (code: string) => {
+export const checkRefCode = async (token: string, code: string) => {
   try {
-    const {data} = await DigilandAPI().request({
+    const {data} = await DigilandAPI(token).request({
       url: `/users/${code}`,
       method: 'GET',
     });
