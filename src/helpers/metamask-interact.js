@@ -12,6 +12,29 @@ const lbsfContractAddress = publicRuntimeConfig.lbsfContractAddress;
 const usdcContractAddress = publicRuntimeConfig.usdcContractAddress;
 const web3ProviderURL = publicRuntimeConfig.web3ProviderURL;
 
+export const getNFTImageByTokenId = async tokenId => {
+  try {
+    const web3 = createAlchemyWeb3(web3ProviderURL);
+
+    const contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
+
+    const uri = await contract.methods.uri(tokenId).call();
+
+    const resp = await fetch(uri);
+
+    if (!resp.ok) throw new Error(resp.statusText);
+
+    const json = await resp.json();
+
+    const image = json.image;
+
+    return image;
+  } catch (error) {
+    console.log({error});
+    return null;
+  }
+};
+
 export const getNFTImage = async () => {
   try {
     const web3 = createAlchemyWeb3(web3ProviderURL);

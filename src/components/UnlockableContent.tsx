@@ -1,5 +1,8 @@
 import {Tabs, TabList, TabPanels, Tab, TabPanel, Text, Grid, Center} from '@chakra-ui/react';
+import useMintHook from '@hooks/use-mint.hooks';
 import {useMediaQuery} from '@mui/material';
+
+import {useEffect} from 'react';
 
 import getConfig from 'next/config';
 
@@ -88,9 +91,19 @@ const UnlockableContent = () => {
     args: [address, tokenId],
   });
 
-  if (!address || !data) {
+  const {fetchNFTImageByTokenId, ownedImage, loading} = useMintHook();
+
+  useEffect(() => {
+    if (data && Number(data.toString()) > 0) {
+      fetchNFTImageByTokenId(tokenId);
+    }
+  }, [data]);
+
+  if (!address || !data || Number(data.toString()) === 0) {
     return <EmptyNFTContent />;
   }
+
+  console.log({loading});
 
   return (
     <div className="flex">
@@ -107,7 +120,7 @@ const UnlockableContent = () => {
               <TabPanels>
                 <TabPanel>
                   <Grid templateColumns="repeat(2, 1fr)" gap={5}>
-                    <NFTCard imageUrl={'/Unlockables/apart1.svg'} qty={data.toString()} />
+                    <NFTCard isLoading={loading} imageUrl={ownedImage} qty={data.toString()} />
                   </Grid>
                 </TabPanel>
                 <TabPanel>
@@ -133,7 +146,7 @@ const UnlockableContent = () => {
             <TabPanels>
               <TabPanel>
                 <Grid templateColumns="repeat(2, 1fr)" gap={5}>
-                  <NFTCard imageUrl={'/Unlockables/apart1.svg'} qty={data.toString()} />
+                  <NFTCard isLoading={loading} imageUrl={ownedImage} qty={data.toString()} />
                 </Grid>
               </TabPanel>
               <TabPanel>

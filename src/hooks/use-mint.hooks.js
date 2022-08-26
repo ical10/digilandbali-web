@@ -21,6 +21,7 @@ import {
   getTokenToMintedQty,
   getMintedNFTQty,
   getNFTImage,
+  getNFTImageByTokenId,
 } from 'src/helpers/metamask-interact';
 import {mintNFTWithRefCode} from 'src/lib/api/referral';
 import useStore from 'src/store';
@@ -45,6 +46,8 @@ const useMintHook = () => {
   const [balance, setBalance] = useState(0);
   const [mintedQty, setMintedQty] = useState(0);
   const [mintedNFT, setMintedNFT] = useState(0);
+
+  const [ownedImage, setOwnedImage] = useState('');
 
   const currentWallet = useStore(state => state.currentWallet);
   const updateWallet = useStore(state => state.updateWallet);
@@ -92,6 +95,20 @@ const useMintHook = () => {
       const image = await getNFTImage();
 
       setImage(image);
+    } catch (error) {
+      console.log({error});
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const fetchNFTImageByTokenId = async tokenId => {
+    setLoading(true);
+
+    try {
+      const image = await getNFTImageByTokenId(tokenId);
+
+      setOwnedImage(image);
     } catch (error) {
       console.log({error});
     } finally {
@@ -358,6 +375,8 @@ const useMintHook = () => {
     fetchNFTImage,
     image,
     signWallet,
+    fetchNFTImageByTokenId,
+    ownedImage,
   };
 };
 
