@@ -27,6 +27,10 @@ export const getChallengeAndSignIn = async (id: string) => {
 
     const msg = await createSignature({nonce, address: id});
 
+    if (!msg) {
+      throw new Error('Please sign to authenticate!');
+    }
+
     const {token} = await login({id, signature: msg});
 
     if (token) {

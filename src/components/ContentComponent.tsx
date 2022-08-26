@@ -99,8 +99,12 @@ const ContentComponent = () => {
       updateWallet(address);
       fetchMintedByUserQty(address);
       fetchBalance(address);
+
+      if (!isAuthenticated) {
+        login(address);
+      }
     }
-  }, [isConnected, address]);
+  }, [isConnected, address, isAuthenticated]);
 
   useEffect(() => {
     const token = Cookies.get('access_token');
