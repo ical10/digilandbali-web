@@ -355,7 +355,7 @@ const ContentComponent = () => {
                     formDisabled
                   }
                   onClick={handleSetAllowance}
-                  className="ml-auto disabled:bg-transparent bg-transparent shadow-none rounded-none p-0 font-medium text-xs text-[#406AFF]"
+                  className="ml-auto disabled:bg-transparent bg-transparent shadow-none rounded-none py-[8px] px-[14px] font-medium text-xs text-[#406AFF]"
                 >
                   {quantity > 0 ? 'Set New Allowance' : ''}
                 </button>
@@ -395,7 +395,7 @@ const ContentComponent = () => {
           <div className="flex flex-col gap-4 desktop:grid desktop:grid-cols-[1fr_1fr]">
             {isConnected ? (
               <button
-                className="w-full"
+                className="w-full bg-[#406aff] py-[8px] px-[14px]"
                 onClick={() => handleMintPressed()}
                 disabled={
                   !(
