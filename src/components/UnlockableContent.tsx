@@ -23,13 +23,13 @@ const EmptyNFTContent = () => {
           <TabPanels>
             <TabPanel>
               <div className="flex flex-col justify-center">
-                <img src="/Unlockables/EmptyNFT.svg" alt="" />
+                <img src="/Unlockables/EmptyNFT.svg" alt="empty-nft" />
                 <Center>There is no eligible NFT</Center>
               </div>
             </TabPanel>
             <TabPanel>
-              <div className="flex flex-col ustify-center">
-                <img src="/Unlockables/EmptyNFT.svg" alt="" />
+              <div className="flex flex-col justify-center">
+                <img src="/Unlockables/EmptyNFT.svg" alt="empty" />
                 <Center>There is no eligible NFT</Center>
               </div>
             </TabPanel>
@@ -111,7 +111,10 @@ const UnlockableContent = () => {
                   </Grid>
                 </TabPanel>
                 <TabPanel>
-                  <p>Only Apartments!</p>
+                  <div className="flex flex-col justify-center">
+                    <img src="/Unlockables/EmptyNFT.svg" alt="empty" />
+                    <Center>There is no eligible NFT</Center>
+                  </div>
                 </TabPanel>
               </TabPanels>
             </Tabs>
@@ -134,7 +137,10 @@ const UnlockableContent = () => {
                 </Grid>
               </TabPanel>
               <TabPanel>
-                <p>Only Apartments!</p>
+                <div className="flex flex-col justify-center">
+                  <img src="/Unlockables/EmptyNFT.svg" alt="empty-nft" />
+                  <Center>There is no eligible NFT</Center>
+                </div>
               </TabPanel>
             </TabPanels>
           </Tabs>
