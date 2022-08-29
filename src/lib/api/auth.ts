@@ -64,13 +64,14 @@ export const getChallenge = async (
 export const login = async (values: LoginProps): Promise<LoginRespProps | null> => {
   try {
     const {data} = await DigilandAPI().request({
-      url: '/auth/login/',
+      url: '/auth/login',
       method: 'POST',
       data: values,
     });
 
     return data;
   } catch (error) {
+    console.log('login error: ', error);
     console.log('[login][error]', {error});
     return null;
   }

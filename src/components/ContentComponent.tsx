@@ -84,6 +84,7 @@ const ContentComponent = () => {
     Cookies.remove('access_token');
     Cookies.remove('user');
   }
+
   useEffect(() => {
     verifyAllowance();
     fetchMintedQty();
@@ -97,6 +98,7 @@ const ContentComponent = () => {
   useEffect(() => {
     if (isConnected && address) {
       updateWallet(address);
+      Cookies.set('user', JSON.stringify(address));
       fetchMintedByUserQty(address);
       fetchBalance(address);
 
@@ -133,7 +135,7 @@ const ContentComponent = () => {
 
   useEffect(() => {
     async function check() {
-      if (isValidCode) {
+      if (isValidCode && cookieToken) {
         const refCodeValidity = await verifyRefCode(cookieToken, referralCode);
 
         if (refCodeValidity) {
