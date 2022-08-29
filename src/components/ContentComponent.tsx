@@ -70,6 +70,8 @@ const ContentComponent = () => {
 
   const cookieToken = Cookies.get('access_token');
 
+  const user = Cookies.get('user');
+
   const {verifyRefCode, isLoading: isLoadingForm} = useFormHook();
 
   const {address, isConnected, isDisconnected} = useAccount();
@@ -102,7 +104,7 @@ const ContentComponent = () => {
       fetchMintedByUserQty(address);
       fetchBalance(address);
 
-      if (!isAuthenticated) {
+      if (!user) {
         login(address);
       }
     }
