@@ -8,7 +8,7 @@ let API: AxiosInstance;
 
 const {publicRuntimeConfig} = getConfig();
 
-const axiosInstance = (token): AxiosInstance => {
+const axiosInstance = (token?: string): AxiosInstance => {
   API = axios.create({
     baseURL: publicRuntimeConfig.apiURL,
     headers: {'Content-Type': 'application/json', Authorization: token ? `Bearer ${token}` : ''},
