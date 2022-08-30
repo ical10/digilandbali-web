@@ -74,7 +74,7 @@ const NavbarComponent = ({isOpenNav}) => {
               </div>
             </div>
             <div className="dropdown-item">
-              <Link href="/projects/lima-beach" passHref>
+              <Link href="/projects/lima-beach-signature" passHref>
                 <div className="hover:opacity-100 opacity-50 cursor-pointer">
                   lima beach signature nft
                 </div>
