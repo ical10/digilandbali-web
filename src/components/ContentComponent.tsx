@@ -418,7 +418,7 @@ const ContentComponent = () => {
               <>
                 {connectors.map((connector: InjectedConnector) => (
                   <button
-                    className="w-full"
+                    className="w-full p-2 bg-[#406aff]"
                     disabled={!connector.ready || isLoading}
                     key={connector.id}
                     onClick={() => handleConnectWallet(connector)}

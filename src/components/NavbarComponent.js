@@ -113,7 +113,11 @@ const NavbarComponent = ({isOpenNav}) => {
           ) : (
             <>
               {connectors.map(connector => (
-                <button key={connector.id} onClick={() => handleConnect(connector)}>
+                <button
+                  className="p-2 bg-[#406aff]"
+                  key={connector.id}
+                  onClick={() => handleConnect(connector)}
+                >
                   <span>{!address ? 'connect wallet' : 'connected'}</span>
                 </button>
               ))}
