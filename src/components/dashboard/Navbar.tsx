@@ -58,7 +58,9 @@ const Navbar = ({title, isOpenSidebar, setIsOpenSidebar}) => {
       className={`px-2 desktop:px-10 py-5 flex justify-between items-center fixed desktop:w-[calc(100%-112px)] w-full bg-[#FFF] z-[999] top-0 right-0 drop-shadow transition-all ease-in-out`}
     >
       <div className="desktop:block hidden">
-        <div className="text-[32px] text-[#101828] font-semibold capitalize">{title}</div>
+        <div className="text-[32px] text-[#101828] font-semibold capitalize whitespace-nowrap">
+          {title}
+        </div>
       </div>
       {address ? (
         <div className="flex desktop:justify-end justify-between items-center w-full gap-2 tablet:gap-4">
