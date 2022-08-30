@@ -17,6 +17,12 @@ const theme = extendTheme({
     heading: `'Syne', sans-serif`,
     body: `'Syne', sans-serif`,
   },
+
+  colors: {
+    darkBlue: {
+      100: '#284071',
+    },
+  },
 });
 
 const customTheme = createTheme({});
