@@ -1,3 +1,6 @@
+import CustomizedMenus from '@components/UserMenuButton';
+import textMiddleEllipsis from '@utils/textMiddleEllipsis';
+
 import {useEffect, useState} from 'react';
 
 import Link from 'next/link';
@@ -113,13 +116,28 @@ const NavbarComponent = ({isOpenNav}) => {
           ) : (
             <>
               {connectors.map(connector => (
-                <button
-                  className="p-2 bg-[#406aff]"
-                  key={connector.id}
-                  onClick={() => handleConnect(connector)}
-                >
-                  <span>{!address ? 'connect wallet' : 'connected'}</span>
-                </button>
+                <>
+                  {!address ? (
+                    <button
+                      className="p-2 bg-[#406aff] rounded"
+                      key={connector.id}
+                      onClick={() => handleConnect(connector)}
+                    >
+                      <span>connect wallet</span>
+                    </button>
+                  ) : (
+                    <div className="bg-[#191B1F] border border-[#344054] rounded flex flex-row justify-center items-center">
+                      <CustomizedMenus truncatedAddress={textMiddleEllipsis({text: address})} />
+                      <button
+                        className="p-2 bg-[#406aff] rounded"
+                        key={connector.id}
+                        onClick={console.log('disconnected!')}
+                      >
+                        <span>connected</span>
+                      </button>
+                    </div>
+                  )}
+                </>
               ))}
             </>
           )}
