@@ -2,7 +2,7 @@ import SectionGroup from './lima-beach/SectionGroup';
 
 import Layout from 'src/components/Layout';
 
-const LimaBeachPage = () => {
+const LimaBeachPage = props => {
   return (
     <Layout>
       <div>
@@ -16,13 +16,11 @@ export default LimaBeachPage;
 
 export async function getStaticPaths() {
   return {
-    paths: [{params: {id: 'lima-beach'}}],
+    paths: [{params: {id: 'lima-beach-signature'}}],
     fallback: false,
   };
 }
 
 export async function getStaticProps() {
-  return {
-    props: {},
-  };
+  return {props: {isDark: true}};
 }
