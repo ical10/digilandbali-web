@@ -1,10 +1,11 @@
-import {Menu, MenuButton, MenuList, MenuItem, Button} from '@chakra-ui/react';
+import {Divider, Menu, MenuButton, MenuList, MenuItem, MenuDivider, Button} from '@chakra-ui/react';
 import {Icon} from '@chakra-ui/react';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 import Link from 'next/link';
 
-import {ArrowDown2} from 'iconsax-react';
-import {useNetwork, useAccount} from 'wagmi';
+import {ArrowDown2, Logout} from 'iconsax-react';
+import {useNetwork, useAccount, useDisconnect} from 'wagmi';
 
 type CustomizedMenuProps = {
   truncatedAddress: string;
@@ -16,13 +17,16 @@ const ArrowDownIcon = () => {
 
 const CustomizedMenu = ({truncatedAddress}: CustomizedMenuProps) => {
   const {chain} = useNetwork();
-
   const {address} = useAccount();
+  const {disconnect} = useDisconnect();
+
+  const isTablet = useMediaQuery('(max-width: 920px)', {noSsr: true});
 
   return (
     <div className="dropdown-menu">
       <Menu>
         <MenuButton
+          p={isTablet ? 0 : 'initial'}
           rightIcon={
             <div className="menu-arrow">
               <ArrowDownIcon />
@@ -34,9 +38,13 @@ const CustomizedMenu = ({truncatedAddress}: CustomizedMenuProps) => {
           as={Button}
         >
           <div className="flex flex-row items-center gap-2">
-            <div className="w-[24px] h-[24px] tablet:w-[30px] tablet:h-[30px] rounded-[25px]">
-              <img src="/icon/user.svg" alt="user-icon" />
-            </div>
+            {isTablet ? (
+              <></>
+            ) : (
+              <div className="w-[24px] h-[24px] tablet:w-[30px] tablet:h-[30px] rounded-[25px]">
+                <img src="/icon/user.svg" alt="user-icon" />
+              </div>
+            )}
             {truncatedAddress}
           </div>
         </MenuButton>
@@ -67,6 +75,25 @@ const CustomizedMenu = ({truncatedAddress}: CustomizedMenuProps) => {
             >
               View On Etherscan
             </MenuItem>
+            {isTablet ? (
+              <>
+                <MenuDivider />
+                <MenuItem
+                  boxShadow="none"
+                  _focus={{
+                    color: 'red',
+                  }}
+                  onClick={() => disconnect()}
+                >
+                  <>
+                    <Logout />
+                    DISCONNECT
+                  </>
+                </MenuItem>
+              </>
+            ) : (
+              <></>
+            )}
           </a>
         </MenuList>
       </Menu>

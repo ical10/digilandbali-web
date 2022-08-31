@@ -1,4 +1,6 @@
-import CustomizedMenus from '@components/UserMenuButton';
+import {ConnectButton, ButtonAction} from '@components/ConnectButton';
+import CustomizedMenu from '@components/UserMenuButton';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import textMiddleEllipsis from '@utils/textMiddleEllipsis';
 
 import {useEffect, useState} from 'react';
@@ -6,16 +8,13 @@ import {useEffect, useState} from 'react';
 import Link from 'next/link';
 
 import {ArrowDown2} from 'iconsax-react';
-import {useConnect, useDisconnect, useAccount} from 'wagmi';
+import {useConnect, useAccount} from 'wagmi';
 
 const NavbarComponent = ({isOpenNav}) => {
   const {address} = useAccount();
-  const {connect, connectors} = useConnect();
-  const {disconnect} = useDisconnect();
+  const {connectors} = useConnect();
 
-  const handleConnect = connector => {
-    connect({connector});
-  };
+  const isTablet = useMediaQuery('(max-width: 920px)', {noSsr: true});
 
   const language = ['ENGLISH', 'MANDARIN', 'RUSSIA', 'VIETNAM'];
   const [openNavbar, setOpenNavbar] = useState(false);
@@ -61,34 +60,38 @@ const NavbarComponent = ({isOpenNav}) => {
           </Link>
         </div>
 
-        <div className="link flex gap-9 justify-center w-[50%]">
-          <Link href="/#home">home</Link>
-          <a
-            target="_blank"
-            href="https://drive.google.com/file/d/1TCMsMaM9lTXmywLc_rCW01XHw8R6OJms/view?usp=sharin"
-            rel="noopener noreferrer"
-          >
-            whitepaper
-          </a>
-          <div className="dropdown-menu relative cursor-pointer">
-            <div className="flex items-center gap-2">
-              project
-              <div className="arrow">
-                <ArrowDown2 size="20" color="#FFF" />
+        {pathname[1] === 'minting' ? (
+          <></>
+        ) : (
+          <div className="link flex gap-9 justify-center w-[50%]">
+            <Link href="/#home">home</Link>
+            <a
+              target="_blank"
+              href="https://drive.google.com/file/d/1TCMsMaM9lTXmywLc_rCW01XHw8R6OJms/view?usp=sharin"
+              rel="noopener noreferrer"
+            >
+              whitepaper
+            </a>
+            <div className="dropdown-menu relative cursor-pointer">
+              <div className="flex items-center gap-2">
+                project
+                <div className="arrow">
+                  <ArrowDown2 size="20" color="#FFF" />
+                </div>
+              </div>
+              <div className="dropdown-item">
+                <Link href="/projects/lima-beach-signature" passHref>
+                  <div className="hover:opacity-100 opacity-50 cursor-pointer">
+                    lima beach signature nft
+                  </div>
+                </Link>
+                <Link href="" passHref>
+                  <div className="opacity-50 cursor-pointer">coming soon</div>
+                </Link>
               </div>
             </div>
-            <div className="dropdown-item">
-              <Link href="/projects/lima-beach-signature" passHref>
-                <div className="hover:opacity-100 opacity-50 cursor-pointer">
-                  lima beach signature nft
-                </div>
-              </Link>
-              <Link href="" passHref>
-                <div className="opacity-50 cursor-pointer">coming soon</div>
-              </Link>
-            </div>
           </div>
-        </div>
+        )}
 
         <div className="w-[25%] flex justify-end items-center gap-4">
           {/* <div className="link dropdown-menu relative cursor-pointer mr-0">
@@ -119,23 +122,15 @@ const NavbarComponent = ({isOpenNav}) => {
               {connectors.map(connector => (
                 <>
                   {!address ? (
-                    <button
-                      className="p-2 bg-[#406aff] rounded"
-                      key={connector.id}
-                      onClick={() => handleConnect(connector)}
-                    >
-                      <span>connect wallet</span>
-                    </button>
+                    <ConnectButton connector={connector} action={ButtonAction.CONNECT} />
                   ) : (
                     <div className="bg-[#191B1F] border border-[#344054] rounded flex flex-row justify-center items-center">
-                      <CustomizedMenus truncatedAddress={textMiddleEllipsis({text: address})} />
-                      <button
-                        className="p-2 bg-[#406aff] rounded"
-                        key={connector.id}
-                        onClick={() => disconnect()}
-                      >
-                        <span>disconnect</span>
-                      </button>
+                      <CustomizedMenu truncatedAddress={textMiddleEllipsis({text: address})} />
+                      {isTablet ? (
+                        <></>
+                      ) : (
+                        <ConnectButton connector={connector} action={ButtonAction.DISCONNECT} />
+                      )}
                     </div>
                   )}
                 </>
@@ -162,64 +157,85 @@ const NavbarComponent = ({isOpenNav}) => {
             </div>
           </Link>
         </div>
-        <div>
-          <button
-            className="bg-transparent border-0"
-            onClick={() => {
-              setOpenNavbar(!openNavbar);
-              if (!openNavbar) {
-                setTimeout(() => {
-                  isOpenNav(!openNavbar);
-                }, 200);
-              } else {
-                isOpenNav(!openNavbar);
-              }
-            }}
-          >
-            <img
-              src={`${openNavbar ? '/close-icon.svg' : '/hamburger-icon.svg'}`}
-              className="w-[18px] tablet:w-[32px]"
-              alt="logo"
-            />
-          </button>
-        </div>
-        <div
-          className={`mobile-inner link text-[16px] tablet:text-[24px] tracking-wide gap-10 right-0 flex flex-col bg-[#050910] w-[100%] h-screen top-[60px] tablet:top-[90px] z-[999] overflow-y-auto ${
-            openNavbar ? 'open' : ''
-          }`}
-        >
-          <Link href="/#home" passHref>
-            <div onClick={() => closeNavbar()}>home</div>
-          </Link>
-          <a
-            target="_blank"
-            href="https://drive.google.com/file/d/1TCMsMaM9lTXmywLc_rCW01XHw8R6OJms/view?usp=sharin"
-            rel="noopener noreferrer"
-          >
-            <div onClick={() => closeNavbar()}>whitepaper</div>
-          </a>
-          <div>
-            <div>projects</div>
-            <div>
-              <Link href="/projects/lima-beach" passHref>
-                <div
-                  onClick={() => closeNavbar()}
-                  className="hover:text[#FFF] text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6"
-                >
-                  lima beach signature nft
-                </div>
-              </Link>
-              <Link href="" passHref>
-                <div
-                  onClick={() => closeNavbar()}
-                  className="text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6"
-                >
-                  coming soon
-                </div>
-              </Link>
+        {pathname[1] === 'minting' ? (
+          <>
+            {connectors.map(connector => (
+              <>
+                {!address ? (
+                  <ConnectButton connector={connector} action={ButtonAction.CONNECT} />
+                ) : (
+                  <div className="bg-[#191B1F] border border-[#344054] rounded flex flex-row justify-center items-center">
+                    <CustomizedMenu truncatedAddress={textMiddleEllipsis({text: address})} />
+                    {isTablet ? (
+                      <></>
+                    ) : (
+                      <ConnectButton connector={connector} action={ButtonAction.DISCONNECT} />
+                    )}
+                  </div>
+                )}
+              </>
+            ))}
+          </>
+        ) : (
+          <>
+            <div id="three-lines-menu">
+              <button
+                className="bg-transparent border-0"
+                onClick={() => {
+                  setOpenNavbar(!openNavbar);
+                  if (!openNavbar) {
+                    setTimeout(() => {
+                      isOpenNav(!openNavbar);
+                    }, 200);
+                  } else {
+                    isOpenNav(!openNavbar);
+                  }
+                }}
+              >
+                <img
+                  src={`${openNavbar ? '/close-icon.svg' : '/hamburger-icon.svg'}`}
+                  className="w-[18px] tablet:w-[32px]"
+                  alt="logo"
+                />
+              </button>
             </div>
-          </div>
-          {/* <div>
+            <div
+              className={`mobile-inner link text-[16px] tablet:text-[24px] tracking-wide gap-10 right-0 flex flex-col bg-[#050910] w-[100%] h-screen top-[60px] tablet:top-[90px] z-[999] overflow-y-auto ${
+                openNavbar ? 'open' : ''
+              }`}
+            >
+              <Link href="/#home" passHref>
+                <div onClick={() => closeNavbar()}>home</div>
+              </Link>
+              <a
+                target="_blank"
+                href="https://drive.google.com/file/d/1TCMsMaM9lTXmywLc_rCW01XHw8R6OJms/view?usp=sharin"
+                rel="noopener noreferrer"
+              >
+                <div onClick={() => closeNavbar()}>whitepaper</div>
+              </a>
+              <div>
+                <div>projects</div>
+                <div>
+                  <Link href="/projects/lima-beach" passHref>
+                    <div
+                      onClick={() => closeNavbar()}
+                      className="hover:text[#FFF] text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6"
+                    >
+                      lima beach signature nft
+                    </div>
+                  </Link>
+                  <Link href="" passHref>
+                    <div
+                      onClick={() => closeNavbar()}
+                      className="text-[#E2E2E2] font-medium cursor-pointer mt-[26px] px-6"
+                    >
+                      coming soon
+                    </div>
+                  </Link>
+                </div>
+              </div>
+              {/* <div>
             <div>language</div>
             <div>
               {language.map((v, i) => {
@@ -236,8 +252,10 @@ const NavbarComponent = ({isOpenNav}) => {
               })}
             </div>
           </div> */}
-          <Link href="/minting/lima-beach-signature">go to mint page</Link>
-        </div>
+              <Link href="/minting/lima-beach-signature">go to mint page</Link>
+            </div>
+          </>
+        )}
       </nav>
     </div>
   );
