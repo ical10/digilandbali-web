@@ -6,11 +6,12 @@ import {useEffect, useState} from 'react';
 import Link from 'next/link';
 
 import {ArrowDown2} from 'iconsax-react';
-import {useConnect, useAccount} from 'wagmi';
+import {useConnect, useDisconnect, useAccount} from 'wagmi';
 
 const NavbarComponent = ({isOpenNav}) => {
   const {address} = useAccount();
   const {connect, connectors} = useConnect();
+  const {disconnect} = useDisconnect();
 
   const handleConnect = connector => {
     connect({connector});
@@ -131,9 +132,9 @@ const NavbarComponent = ({isOpenNav}) => {
                       <button
                         className="p-2 bg-[#406aff] rounded"
                         key={connector.id}
-                        onClick={console.log('disconnected!')}
+                        onClick={() => disconnect()}
                       >
-                        <span>connected</span>
+                        <span>disconnect</span>
                       </button>
                     </div>
                   )}
@@ -235,11 +236,7 @@ const NavbarComponent = ({isOpenNav}) => {
               })}
             </div>
           </div> */}
-          <Link href="/minting/lima-beach" passHref>
-            <div onClick={e => e.preventDefault()} disabled>
-              go to mint page
-            </div>
-          </Link>
+          <Link href="/minting/lima-beach-signature">go to mint page</Link>
         </div>
       </nav>
     </div>
