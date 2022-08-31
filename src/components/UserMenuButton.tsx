@@ -1,17 +1,24 @@
 import {Menu, MenuButton, MenuList, MenuItem, Button} from '@chakra-ui/react';
 import {Icon} from '@chakra-ui/react';
 
+import Link from 'next/link';
+
 import {ArrowDown2} from 'iconsax-react';
+import {useNetwork, useAccount} from 'wagmi';
 
 type CustomizedMenuProps = {
   truncatedAddress: string;
 };
 
-function ArrowDownIcon() {
+const ArrowDownIcon = () => {
   return <Icon as={ArrowDown2} />;
-}
+};
 
 const CustomizedMenu = ({truncatedAddress}: CustomizedMenuProps) => {
+  const {chain} = useNetwork();
+
+  const {address} = useAccount();
+
   return (
     <div className="dropdown-menu">
       <Menu>
@@ -34,24 +41,33 @@ const CustomizedMenu = ({truncatedAddress}: CustomizedMenuProps) => {
           </div>
         </MenuButton>
         <MenuList bg={'blackAlpha.700'} boxShadow="none">
-          <MenuItem
-            boxShadow="none"
-            color={'gray.400'}
-            _focus={{
-              color: 'white',
-            }}
+          <Link href="/dashboard" passHref>
+            <MenuItem
+              boxShadow="none"
+              color={'gray.400'}
+              _focus={{
+                color: 'white',
+              }}
+              as={'a'}
+            >
+              View My NFT Legal Document
+            </MenuItem>
+          </Link>
+          <a
+            href={`${chain.blockExplorers.etherscan.url}/address/${address}`}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            View My NFT Legal Document
-          </MenuItem>
-          <MenuItem
-            boxShadow="none"
-            color={'gray.400'}
-            _focus={{
-              color: 'white',
-            }}
-          >
-            View On Explorer
-          </MenuItem>
+            <MenuItem
+              boxShadow="none"
+              color={'gray.400'}
+              _focus={{
+                color: 'white',
+              }}
+            >
+              View On Etherscan
+            </MenuItem>
+          </a>
         </MenuList>
       </Menu>
     </div>
