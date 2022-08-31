@@ -28,7 +28,7 @@ const CustomizedMenu = ({truncatedAddress}: CustomizedMenuProps) => {
               <ArrowDownIcon />
             </div>
           }
-          _hover={{background: 'darkBlue.100'}}
+          _hover={{background: 'darkBlue.100', borderRadius: '0px'}}
           _active={{background: 'transparent'}}
           bg={'transparent'}
           as={Button}
