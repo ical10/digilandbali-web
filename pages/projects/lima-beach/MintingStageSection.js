@@ -3,6 +3,8 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import {useRef} from 'react';
 import {animated} from 'react-spring';
 
+import Link from 'next/link';
+
 import {fadeIn, fadeInUpText} from 'src/animation';
 import MintingStage from 'src/components/MintingStage';
 import useIntersectionObserver from 'src/hooks/useIntersectionObserver';
@@ -79,9 +81,9 @@ const MintingStageSection = () => {
         <h1 className="text-white text-[16px] tablet:text-[24px] desktop:text-[32px]">
           Are you interested? {isDesktop ? '' : <br />}Mint Now!
         </h1>
-        <button className="min-w-max text-white uppercase px-6 py-4" disabled>
-          Go to minting page
-        </button>
+        <Link href="/minting/lima-beach-signature" passHref>
+          <button className="min-w-max text-white uppercase px-6 py-4">Go to minting page</button>
+        </Link>
       </div>
     </div>
   );
