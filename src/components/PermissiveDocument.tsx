@@ -86,8 +86,8 @@ const PermissiveDocument = ({tabId, document}: {tabId: string; document: string}
           <Page height="600" pageNumber={pageNumber} />
         </Document>
         {successRender && (
-          <div className="absolute left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]">
-            Property Of Digiland
+          <div className="text-5xl font-normal whitespace-nowrap text-[#afafaf66] absolute -rotate-45 left-1/2 top-1/2 translate-x-[-50%] translate-y-[-50%]">
+            Digilandbali Copyright
           </div>
         )}
       </div>
