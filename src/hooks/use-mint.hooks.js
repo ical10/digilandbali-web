@@ -250,7 +250,7 @@ const useMintHook = () => {
     }
   };
 
-  const mintNFT = async (quantity, referralCode = '') => {
+  const mintNFT = async (token, quantity, referralCode = '') => {
     const web3 = createAlchemyWeb3(web3ProviderURL);
 
     const contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
@@ -293,10 +293,10 @@ const useMintHook = () => {
           .on('error', console.error);
 
         if (txHash) {
-          const {blockHash} = txHash;
+          const {transactionHash} = txHash;
 
-          const data = await mintNFTWithRefCode({
-            id: blockHash,
+          const data = await mintNFTWithRefCode(token, {
+            id: transactionHash,
             projectId: 'lima-beach-signature',
             nftId: lbsfContractAddress,
             walletAddress: currentAccount,

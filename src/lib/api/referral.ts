@@ -25,7 +25,7 @@ export const checkRefCode = async (token: string, code: string) => {
   }
 };
 
-export const mintNFTWithRefCode = async (payload: refCodePayloadProps) => {
+export const mintNFTWithRefCode = async (token, payload: refCodePayloadProps) => {
   try {
     const {
       id,
@@ -49,7 +49,7 @@ export const mintNFTWithRefCode = async (payload: refCodePayloadProps) => {
       referralCode,
     };
 
-    const {data} = await DigilandAPI().request({
+    const {data} = await DigilandAPI(token).request({
       url: `projects/${projectId}/nfts/${nftId}/mintings`,
       method: 'POST',
       data: values,
