@@ -70,8 +70,6 @@ const ContentComponent = () => {
 
   const cookieToken = Cookies.get('access_token');
 
-  const user = Cookies.get('user');
-
   const {verifyRefCode, isLoading: isLoadingForm} = useFormHook();
 
   const {address, isConnected, isDisconnected} = useAccount();
@@ -98,24 +96,19 @@ const ContentComponent = () => {
   }, []);
 
   useEffect(() => {
+    if (address && !cookieToken) {
+      login(address);
+    }
+  }, [address, cookieToken]);
+
+  useEffect(() => {
     if (isConnected && address) {
       updateWallet(address);
       Cookies.set('user', JSON.stringify(address));
       fetchMintedByUserQty(address);
       fetchBalance(address);
-
-      if (!user) {
-        login(address);
-      }
     }
   }, [isConnected, address, isAuthenticated]);
-
-  useEffect(() => {
-    const token = Cookies.get('access_token');
-    if (!token && connectClicked && address) {
-      login(address);
-    }
-  }, [address, connectClicked]);
 
   useEffect(() => {
     if (isMintSuccess) {
@@ -212,7 +205,7 @@ const ContentComponent = () => {
   };
 
   const handleMintPressed = () => {
-    mintNFT(quantity, referralCode);
+    mintNFT(cookieToken, quantity, referralCode);
   };
 
   const allowedSupply = maxSupply - mintedQty;
