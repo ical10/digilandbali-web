@@ -18,7 +18,7 @@ const SocialHandles = ({iconSize = 24}) => {
     {
       src: '/Opensea.svg',
       alt: 'Digilandbali Opensea social handle',
-      href: '',
+      href: 'https://testnets.opensea.io/collection/lima-beach-signature-fragment',
     },
   ];
 
