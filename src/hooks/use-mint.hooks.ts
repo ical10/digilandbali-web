@@ -24,6 +24,7 @@ import {
 } from 'src/helpers/metamask-interact';
 import {mintNFTWithRefCode} from 'src/lib/api/referral';
 import useWeb3Store from 'src/store';
+import {AbiItem} from 'web3-utils';
 
 const {publicRuntimeConfig} = getConfig();
 const lbsfContractAddress = publicRuntimeConfig.lbsfContractAddress;
@@ -247,9 +248,7 @@ const useMintHook = () => {
   const mintNFT = async (token, quantity, referralCode = '') => {
     const web3 = createAlchemyWeb3(web3ProviderURL);
 
-    const contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
-
-    window.contract = new web3.eth.Contract(contractABI.abi, lbsfContractAddress);
+    const contract = new web3.eth.Contract(contractABI.abi as AbiItem[], lbsfContractAddress);
 
     setMinting(true);
 
@@ -270,7 +269,7 @@ const useMintHook = () => {
         const transactionParameters = {
           to: lbsfContractAddress,
           from: currentAccount,
-          data: window.contract.methods.mint(tokenId, quantity, '0x00').encodeABI(),
+          data: contract.methods.mint(tokenId, quantity, '0x00').encodeABI(),
         };
 
         const txHash = await web3.eth
@@ -321,27 +320,6 @@ const useMintHook = () => {
     }
   };
 
-  const signWallet = async (nonce, address) => {
-    try {
-      const msgHash = `0x${Buffer.from(nonce, 'utf8').toString('hex')}`;
-
-      const provider = await detectEthereumProvider({timeout: 2000});
-
-      if (provider) {
-        const msg = await window.ethereum.request({
-          method: 'personal_sign',
-          params: [msgHash, address, ''],
-        });
-
-        return msg;
-      } else {
-        console.log('please install metamask!');
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
   return {
     loading,
     fetchCurrentWallet,
@@ -369,7 +347,6 @@ const useMintHook = () => {
     mintedNFT,
     fetchNFTImage,
     image,
-    signWallet,
     fetchNFTImageByTokenId,
     ownedImage,
   };
