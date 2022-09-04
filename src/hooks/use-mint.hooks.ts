@@ -8,7 +8,6 @@ import getConfig from 'next/config';
 import contractABI from '../../public/contracts/LBSFragment.json';
 
 import {
-  addWalletListener,
   getCurrentWalletConnected,
   connectWallet,
   approveUSDC,
@@ -24,7 +23,7 @@ import {
   getNFTImageByTokenId,
 } from 'src/helpers/metamask-interact';
 import {mintNFTWithRefCode} from 'src/lib/api/referral';
-import useStore from 'src/store';
+import useWeb3Store from 'src/store';
 
 const {publicRuntimeConfig} = getConfig();
 const lbsfContractAddress = publicRuntimeConfig.lbsfContractAddress;
@@ -49,8 +48,10 @@ const useMintHook = () => {
 
   const [ownedImage, setOwnedImage] = useState('');
 
-  const currentWallet = useStore(state => state.currentWallet);
-  const updateWallet = useStore(state => state.updateWallet);
+  const currentWallet = useWeb3Store(state => state.currentWallet);
+  const updateWallet = useWeb3Store(state => state.updateWallet);
+
+  const updateMintedTxHash = useWeb3Store(state => state.updateMintedTxHash);
 
   const fetchCurrentWallet = async () => {
     setLoading(true);
@@ -80,12 +81,6 @@ const useMintHook = () => {
     } finally {
       setLoading(false);
     }
-  };
-
-  const listenToWalletChanges = () => {
-    const account = addWalletListener();
-
-    updateWallet(account);
   };
 
   const fetchNFTImage = async () => {
@@ -209,8 +204,7 @@ const useMintHook = () => {
     setLoading(true);
 
     try {
-      const activeStage = await getActiveStage();
-      const price = await getPrice(activeStage);
+      const price = await getPrice();
 
       setPrice(price);
     } catch (error) {
@@ -295,6 +289,8 @@ const useMintHook = () => {
         if (txHash) {
           const {transactionHash} = txHash;
 
+          updateMintedTxHash(transactionHash);
+
           const data = await mintNFTWithRefCode(token, {
             id: transactionHash,
             projectId: 'lima-beach-signature',
@@ -349,7 +345,6 @@ const useMintHook = () => {
   return {
     loading,
     fetchCurrentWallet,
-    listenToWalletChanges,
     linkWallet,
     mintNFT,
     minting,

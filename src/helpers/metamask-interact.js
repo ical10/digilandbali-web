@@ -322,20 +322,3 @@ export const getCurrentWalletConnected = async () => {
     return respObj;
   }
 };
-
-export const addWalletListener = () => {
-  let currentAccount = '';
-  if (window.ethereum) {
-    window.ethereum.on('accountsChanged', accounts => {
-      if (accounts.length > 0) {
-        window.currentAccount = accounts[0];
-        currentAccount = accounts[0];
-        return currentAccount;
-      } else {
-        return currentAccount;
-      }
-    });
-  } else {
-    console.log('please install metamask!');
-  }
-};

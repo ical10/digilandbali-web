@@ -1,3 +1,4 @@
+import NotificationModal from '@components/NotificationModal';
 import CloseIcon from '@mui/icons-material/Close';
 import Box from '@mui/material/Box';
 import ClickAwayListener from '@mui/material/ClickAwayListener';
@@ -25,7 +26,7 @@ import FAQComponent from 'src/components/FAQComponent';
 import SocialHandles from 'src/components/SocialHandles.js';
 import useAuthHook from 'src/hooks/use-auth.hooks';
 import useFormHook from 'src/hooks/use-form.hooks';
-import useMintHook from 'src/hooks/use-mint.hooks.js';
+import useMintHook from 'src/hooks/use-mint.hooks';
 import useStore from 'src/store';
 import styles from 'styles/ContentComponent.module.css';
 import {useDebounce} from 'use-debounce';
@@ -111,10 +112,10 @@ const ContentComponent = () => {
   }, [isConnected, address, isAuthenticated]);
 
   useEffect(() => {
-    if (isMintSuccess) {
-      fetchMintedByUserQty();
+    if (isMintSuccess && address) {
+      fetchMintedByUserQty(address);
     }
-  }, [isMintSuccess]);
+  }, [isMintSuccess, address]);
 
   const [temp, setTemp] = useState('');
   const [referralCode] = useDebounce(temp, 1000);
@@ -428,6 +429,11 @@ const ContentComponent = () => {
             )}
           </div>
         </div>
+
+        <NotificationModal
+          title={'Mint Successful'}
+          subtitle={`Congratulations! You have minted ${quantity} Lima Beach Signature NFT Fragments`}
+        />
       </div>
 
       <div className="mt-32">
