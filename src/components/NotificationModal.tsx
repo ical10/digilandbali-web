@@ -25,15 +25,14 @@ const NotificationModal = ({title, subtitle}: NotificationModalProps) => {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open Modal</Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 bg-white rounded-lg flex flex-col justify-center items-center gap-6">
-          <Text id="modal-title" className="font-semibold text-2xl">
+        <Box className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 p-6 mobile:max-w-[250px] max-w-[320px] bg-white rounded-lg flex flex-col justify-center items-center gap-6">
+          <Text id="modal-title" className="font-semibold text-2xl text-center">
             {title}
           </Text>
           <img src="/success-logo.svg" alt="" />
