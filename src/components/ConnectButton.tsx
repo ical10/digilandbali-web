@@ -1,5 +1,8 @@
 import {InjectedConnector} from '@wagmi/core';
 
+import {useEffect} from 'react';
+
+import useWeb3Store from 'src/store';
 import {useConnect, useDisconnect} from 'wagmi';
 
 enum ButtonAction {
@@ -13,11 +16,19 @@ type ConnectButtonProps = {
 };
 
 const ConnectButton = ({connector, action}: ConnectButtonProps) => {
-  const {connect} = useConnect();
+  const connecting = useWeb3Store(state => state.connecting);
+  const toggleConnecting = useWeb3Store(state => state.toggleConnecting);
+
+  const {connect, isLoading, status} = useConnect({
+    onSuccess() {
+      toggleConnecting();
+    },
+  });
   const {disconnect} = useDisconnect();
 
   const handleConnect = () => {
     connect({connector});
+    toggleConnecting();
   };
 
   const handleDisconnect = () => {
@@ -28,9 +39,12 @@ const ConnectButton = ({connector, action}: ConnectButtonProps) => {
     <button
       className="p-2 bg-[#406aff] rounded"
       key={connector.id}
+      disabled={!connector.ready || isLoading || status === 'loading' || connecting}
       onClick={action === ButtonAction.CONNECT ? () => handleConnect() : () => handleDisconnect()}
     >
-      <span>{action === ButtonAction.CONNECT ? 'connect' : 'disconnect'}</span>
+      <span>
+        {connecting ? 'connecting' : action === ButtonAction.CONNECT ? 'connect' : 'disconnect'}
+      </span>
     </button>
   );
 };

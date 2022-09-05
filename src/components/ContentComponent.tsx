@@ -27,6 +27,7 @@ import SocialHandles from 'src/components/SocialHandles.js';
 import useAuthHook from 'src/hooks/use-auth.hooks';
 import useFormHook from 'src/hooks/use-form.hooks';
 import useMintHook from 'src/hooks/use-mint.hooks';
+import useWeb3Store from 'src/store';
 import useStore from 'src/store';
 import styles from 'styles/ContentComponent.module.css';
 import {useDebounce} from 'use-debounce';
@@ -73,10 +74,15 @@ const ContentComponent = () => {
 
   const {verifyRefCode, isLoading: isLoadingForm} = useFormHook();
 
-  const {address, isConnected, isDisconnected} = useAccount();
-  const {connect, connectors, error, isLoading, pendingConnector} = useConnect();
+  const connecting = useWeb3Store(state => state.connecting);
+  const toggleConnecting = useWeb3Store(state => state.toggleConnecting);
 
-  const [connectClicked, setConnectClicked] = useState(false);
+  const {address, isConnected, isDisconnected} = useAccount();
+  const {connect, connectors, isLoading, status} = useConnect({
+    onSuccess() {
+      toggleConnecting();
+    },
+  });
 
   const currentWallet = useStore(state => state.currentWallet);
   const updateWallet = useStore(state => state.updateWallet);
@@ -93,7 +99,6 @@ const ContentComponent = () => {
     fetchActiveStage();
     fetchMaxSupply();
     fetchNFTImage();
-    setConnectClicked(false);
   }, []);
 
   useEffect(() => {
@@ -202,7 +207,7 @@ const ContentComponent = () => {
 
   const handleConnectWallet = (connector: InjectedConnector) => {
     connect({connector});
-    setConnectClicked(true);
+    toggleConnecting();
   };
 
   const handleMintPressed = () => {
@@ -413,18 +418,13 @@ const ContentComponent = () => {
                 {connectors.map((connector: InjectedConnector) => (
                   <button
                     className="w-full p-2 bg-[#406aff]"
-                    disabled={!connector.ready || isLoading}
+                    disabled={!connector.ready || isLoading || status === 'loading' || connecting}
                     key={connector.id}
                     onClick={() => handleConnectWallet(connector)}
                   >
-                    <span>
-                      {`Connect ${connector.name}`}
-                      {isLoading && connector.id === pendingConnector?.id && ' (connecting)'}
-                    </span>
+                    <span>{connecting ? 'Connecting' : 'Connect'}</span>
                   </button>
                 ))}
-
-                {error && <div>{error.message}</div>}
               </>
             )}
           </div>
